@@ -34,7 +34,7 @@ $(document).ready(function () {
         }];
 
         var tableSchema = {
-            id: "rainfall-monthly-total",
+            id: "rainfall_monthly_total",
             alias: "The total monthly rainfall recorded at the Changi Climate Station",
             columns: cols
         };
