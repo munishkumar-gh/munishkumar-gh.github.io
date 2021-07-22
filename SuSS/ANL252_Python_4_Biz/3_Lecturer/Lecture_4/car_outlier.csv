@@ -1,8 +1,59 @@
 Year,Make,Model,Category,Price
-2000,Ford,E350,Family,31489.58629
-2003,Jeep,Grand Cherokee,Unknown,50508.90589
-2005,Honda,Jaxx,SUV,29106.68264
-2006,Nissan,Skyline,SUV,47948.16762
-2007,Ford,Mustang,Sedan,39035.06934
-2010,BMW,i3,SUV,51615.34449
-2013,Audi,R8,Sedan,38356.58875
+2020,Chrysler,Pacifica,Van/Minivan,34000.0
+2020,Ford,Fusion,Sedan,35400.0
+2020,Buick,Encore,SUV,31800.0
+2020,GMC,Sierra 2500 HD Crew Cab,Pickup,33395.0
+2020,Cadillac,XT4,SUV,35795.0
+2020,Hyundai,Santa Fe,SUV,28800.0
+2020,Ford,EcoSport,SUV,36500.0
+2020,GMC,Sierra 3500 HD Crew Cab,Pickup,33200.0
+2020,Jeep,Gladiator,Pickup,34900.0
+2020,Cadillac,CT6-V,Sedan,35300.0
+2020,Jeep,Compass,SUV,29800.0
+2020,Chrysler,Voyager,Van/Minivan,31370.0
+2020,Honda,Accord Hybrid,Sedan,35820.0
+2020,Chevrolet,Spark,Hatchback,28870.0
+2020,GMC,Sierra 1500 Crew Cab,Pickup,30570.0
+2020,Hyundai,NEXO,SUV,32570.0
+2020,Cadillac,CT5,Sedan,32750.0
+2020,GMC,Yukon XL,SUV,32675.0
+2020,GMC,Yukon,SUV,36000.0
+2020,Chevrolet,Bolt EV,Hatchback,29800.0
+2020,Ford,Expedition,SUV,28700.0
+2020,Honda,Passport,SUV,29700.0
+2020,BMW,X5,SUV,30560.0
+2020,Chevrolet,Trax,SUV,31790.0
+2020,Hyundai,Ioniq Plug-in Hybrid,Hatchback,32790.0
+2020,Jaguar,E-PACE,SUV,32550.0
+2020,Hyundai,Tucson,SUV,36490.0
+2020,Jaguar,I-PACE,SUV,33245.0
+2020,Hyundai,Accent,Sedan,32675.0
+2020,Jeep,Wrangler Unlimited,SUV,34040.0
+2020,Kia,Soul,Wagon,33120.0
+2020,Land Rover,Discovery,SUV,31975.0
+2020,Lexus,LX,SUV,30400.0
+2020,Lexus,GX,SUV,29390.0
+2020,Lexus,LS,Sedan,33090.0
+2020,Lexus,UX,SUV,32190.0
+2020,Lincoln,Corsair,SUV,33000.0
+2020,Mercedes-Benz,G-Class,SUV,36105.0
+2020,Nissan,NV3500 HD Passenger,Van/Minivan,34160.0
+2020,Mercedes-Benz,E-Class,"Coupe, Wagon, Sedan, Convertible",33045.0
+2020,MINI,Countryman,SUV,33650.0
+2020,Nissan,370Z,Coupe,36230.0
+2020,Nissan,Pathfinder,SUV,31670.0
+2020,Nissan,NV200,Van/Minivan,32810.0
+2020,Porsche,911,Convertible,36330.0
+2020,Subaru,Legacy,Sedan,35645.0
+2020,Toyota,Corolla,Sedan,32385.0
+2020,Subaru,Forester,SUV,31540.0
+2020,Toyota,4Runner,SUV,32295.0
+2020,Toyota,RAV4,SUV,36125.0
+2020,Toyota,Tacoma Double Cab,Pickup,35085.0
+2019,Audi,A6,Sedan,28500.0
+2019,Audi,A4,Sedan,34460.0
+2019,Acura,MDX,SUV,34025.0
+2019,Acura,NSX,Coupe,32570.0
+2019,Audi,A7,Sedan,31545.0
+2019,Alfa Romeo,4C Spider,Convertible,30855.0
+2019,Acura,ILX,Sedan,33700.0
