@@ -20,6 +20,6 @@ f"The car you have entered is {input_brand}, {input_model}, {input_price}"
 )
 
 # Impact of double quatation Marks
-print(f""What does this print?"")
+#print(f""What does this print?"")
 print(f"\"What does this print?\"")
 print(f"What does this print?")
