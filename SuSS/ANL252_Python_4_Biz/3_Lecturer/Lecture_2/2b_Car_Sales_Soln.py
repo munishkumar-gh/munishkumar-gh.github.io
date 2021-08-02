@@ -19,6 +19,7 @@ while proceed == True:
         proceed = False
         break
 
+# There is a bug in this code - can you fix it?
     valid_in2 = False
     while valid_in2 == False:
         std_price = input(f"\n Price of Car {i}: ")

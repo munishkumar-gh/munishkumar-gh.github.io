@@ -5,16 +5,18 @@ Created on Thu Jul 29 12:17:37 2021
 @author: mkumar
 
 Car sales program:
-Modify the Car sales program in a way that the trailing and leading 
-white spaces in the inputs of the car brand and model 
-should be removed by some built-in Python functions. 
+Modify the Car sales program in a way that the trailing and leading
+white spaces in the inputs of the car brand and model
+should be removed by some built-in Python functions.
 
-Furthermore, the first letter of the brand should be stored in 
-capital letters (only the first letter of the entire input, 
-not the first letter of each word in the input) while all the subsequent 
+Furthermore, the first letter of the brand should be stored in
+capital letters (only the first letter of the entire input,
+not the first letter of each word in the input) while all the subsequent
 letters should be kept in the format as entered by the user.
 
 """
+
+# Find and fix the bug if you can
 
 finallist = {}
 
@@ -30,9 +32,9 @@ while proceed == True:
         break
     std_brand = std_brand.lstrip(" ").rstrip(" ") # Remove leading and trailing spaces
     s = list(std_brand) # A string is just a list of characters
-    s[0] = s[0].upper()  # Only focus on the first letter 
+    s[0] = s[0].upper()  # Only focus on the first letter
     std_brand_new = ''.join(s) # combine to characters to form a string again
-    
+
     std_model = str(input(f"\n Model of Car {i}: "))
     if std_model == "":
         proceed = False
@@ -56,8 +58,8 @@ while proceed == True:
         if proceed == True:
             templist = {std_brand_new: {std_model: std_price}}
             finallist = {**finallist, **templist} #merge 2 dict
-            
-            i = i+1          
+
+            i = i+1
 
 if i > 1:
     print(f"\nThe following data has been entered:\n{finallist}\n")

@@ -29,6 +29,7 @@ for j in range(lenlist):
         count_car = j
         break
 
+# This part of the code is buggy - can you fix it?
 if count_car > 0:
     print(f"You have entered a valid car brand {car_brands[count_car]}")
 else:
