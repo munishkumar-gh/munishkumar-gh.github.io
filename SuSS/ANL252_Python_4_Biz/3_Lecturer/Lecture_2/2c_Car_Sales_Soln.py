@@ -44,7 +44,7 @@ while proceed == True:
         # Nested Dict
         if proceed == True:
             templist = {std_brand: {std_model: std_price}}
-            finallist = {**finallist, **templist}
+            finallist = {**finallist, **templist} #merge 2 dict
             
             i = i+1          
 
