@@ -35,7 +35,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='AmazingMart' name='excel-direct.0lw5rgn048m0w7177io2f0huwe9s'>
-            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/mkumar/Documents/GitHub/@Working/9_No_Code_Tableau/00_Data/AmazingMart.xlsx' interpretationMode='0' password='' server='' validate='no' />
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/mkumar/Documents/GitHub/No_Code_Tableau/00_Data/AmazingMart.xlsx' interpretationMode='0' password='' server='' validate='no' />
           </named-connection>
         </named-connections>
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation join='inner' type='join'>
@@ -1220,8 +1220,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='900' minheight='900' sizing-mode='vscroll' />
           <zones>
-            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='37' w='100000' x='0' y='0'>
-              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98230' id='36' param='vert' w='99064' x='468' y='885'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='39' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='84000' id='38' param='vert' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='49115' id='5' is-fixed='true' name='1a_Profit_vs_Order_Cnt' show-title='false' w='99064' x='468' y='885'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1334,8 +1334,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='950' minheight='950' sizing-mode='vscroll' />
           <zones>
-            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='31' w='100000' x='0' y='0'>
-              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98230' id='30' param='vert' w='99064' x='468' y='885'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='33' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='84000' id='32' param='vert' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='49115' id='3' is-fixed='true' name='2a_Profit_Cat' show-title='false' w='89702' x='468' y='885'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1473,7 +1473,7 @@
       <simple-id uuid='{07AE505E-4D51-49C1-9896-F9360A291C7B}' />
     </dashboard>
   </dashboards>
-  <windows source-height='30'>
+  <windows saved-dpi-scale-factor='1.25' source-height='30'>
     <window class='worksheet' name='0_Preparing_Data'>
       <cards>
         <edge name='left'>
@@ -1769,7 +1769,7 @@
     <window class='worksheet' maximized='true' name='2d_Dashboard'>
       <cards>
         <edge name='left'>
-          <strip size='160'>
+          <strip size='200'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -1782,7 +1782,7 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='31'>
+          <strip size='2147483647'>
             <card type='title' />
           </strip>
         </edge>
@@ -1801,7 +1801,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='27' />
+      <active id='-1' />
       <simple-id uuid='{484066A0-DB5C-4FE4-B223-959DC1F4E7B5}' />
     </window>
     <window class='dashboard' name='STORY'>

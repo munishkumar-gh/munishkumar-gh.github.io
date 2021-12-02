@@ -21,7 +21,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='global_superstore_2016' name='excel-direct.0wlusqa0lbtc0r11f0i5e0bs70h2'>
-            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/mkumar/Documents/GitHub/@Working/9_No_Code_Tableau/00_Data/global_superstore_2016.xlsx' interpretationMode='0' password='' server='' validate='no' />
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/mkumar/Documents/GitHub/No_Code_Tableau/00_Data/global_superstore_2016.xlsx' interpretationMode='0' password='' server='' validate='no' />
           </named-connection>
         </named-connections>
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='excel-direct.0wlusqa0lbtc0r11f0i5e0bs70h2' name='Orders' table='[Orders$]' type='table'>
@@ -1706,7 +1706,7 @@
       <simple-id uuid='{5DDA04E1-9432-40C1-8F3C-280B197901C4}' />
     </worksheet>
   </worksheets>
-  <windows source-height='30'>
+  <windows saved-dpi-scale-factor='1.25' source-height='30'>
     <window class='worksheet' name='Soln_Data'>
       <cards>
         <edge name='left'>
