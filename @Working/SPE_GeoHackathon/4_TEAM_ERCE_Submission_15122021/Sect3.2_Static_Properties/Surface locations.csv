@@ -1,0 +1,15 @@
+Label,Type,x,y
+E01,Exploration,195,70
+E02,Exploration,145,41
+E03,Exploration,46,46
+E04,Exploration,52,100
+E05,Exploration,72,152
+E06,Exploration,170,170
+I01,Injector,190,100
+I02,Injector,136,75
+I03,Injector,109,113
+P01,Producer,164,110
+P02,Producer,162,87
+P03,Producer,134,115
+D1,Demand,94,65
+D2,Demand,125,170
