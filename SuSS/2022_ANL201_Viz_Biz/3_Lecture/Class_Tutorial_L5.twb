@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
-<!-- build 20204.21.0114.0916                               -->
-<workbook original-version='18.1' source-build='2020.4.1 (20204.21.0114.0916)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+<!-- build 20212.21.1217.2251                               -->
+<workbook original-version='18.1' source-build='2021.2.7 (20212.21.1217.2251)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
     <MapboxVectorStylesAndLayers />
     <_.fcp.MarkAnimation.true...MarkAnimation />
     <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
@@ -16,6 +17,11 @@
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
   </preferences>
+  <style>
+    <_.fcp.MarkAnimation.true...style-rule element='animation'>
+      <format attr='animation-on' value='ao-off' />
+    </_.fcp.MarkAnimation.true...style-rule>
+  </style>
   <datasources>
     <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
       <aliases enabled='yes' />
@@ -28,7 +34,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='global_superstore_2016' name='excel-direct.0ogc1i102e5x9u146l0lo0zc9fes'>
-            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='E:/!@[Archive] Munish/8_Lecture_SuSS/Datasets/global_superstore_2016.xlsx' interpretationMode='0' password='' server='' validate='no' />
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/quant/Documents/Github_Archive/SuSS/ANL201_Visualization_Biz/[Archived]Sem1_2021/00_Data/global_superstore_2016.xlsx' interpretationMode='0' password='' server='' validate='no' />
           </named-connection>
         </named-connections>
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='excel-direct.0ogc1i102e5x9u146l0lo0zc9fes' name='Orders' table='[Orders$]' type='table'>
