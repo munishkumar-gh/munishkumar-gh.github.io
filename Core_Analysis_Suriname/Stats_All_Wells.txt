@@ -1,0 +1,42 @@
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 40 entries, 0 to 64
+Data columns (total 9 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Well Name             40 non-null     object 
+ 1   Sample ID             40 non-null     object 
+ 2   Depth (m)             40 non-null     float64
+ 3   NOB (psi)             40 non-null     float64
+ 4   K_air (mD)            40 non-null     float64
+ 5   Porosity (%)          40 non-null     float64
+ 6   Grain Density (g/cc)  40 non-null     float64
+ 7   Core Type             40 non-null     int64  
+ 8   color                 40 non-null     object 
+dtypes: float64(5), int64(1), object(3)
+memory usage: 3.1+ KB
+None
+       Well Name Sample ID   Depth (m)  NOB (psi)   K_air (mD)  Porosity (%)  \
+count         40        40    40.00000  40.000000    40.000000     40.000000   
+unique         4        40         NaN        NaN          NaN           NaN   
+top        CRC-1        1a         NaN        NaN          NaN           NaN   
+freq          11         1         NaN        NaN          NaN           NaN   
+mean         NaN       NaN  4500.00875  48.525000   250.385875     19.753992   
+std          NaN       NaN  1709.49335  21.163451   584.731644      7.320309   
+min          NaN       NaN  2360.80000  14.700000     0.016000      4.858228   
+25%          NaN       NaN  2799.50000  26.450000     0.213750     14.727500   
+50%          NaN       NaN  4556.00000  52.200000     1.310000     17.900000   
+75%          NaN       NaN  6160.76500  65.950000   171.000000     24.335000   
+max          NaN       NaN  6387.00000  78.700000  2310.000000     40.500000   
+
+        Grain Density (g/cc)  Core Type    color  
+count              40.000000       40.0       40  
+unique                   NaN        NaN        4  
+top                      NaN        NaN  #5d8aa8  
+freq                     NaN        NaN       11  
+mean                1.849298        0.0      NaN  
+std                 1.166044        0.0      NaN  
+min                 0.000000        0.0      NaN  
+25%                 0.000000        0.0      NaN  
+50%                 2.630558        0.0      NaN  
+75%                 2.643950        0.0      NaN  
+max                 2.741000        0.0      NaN 
