@@ -7,7 +7,6 @@ Elastic Properties from Logs
 Prediciton of Pressures
 PRMS and Petrophysics
 
-
 GHG article
 Solar and GHG combined
 Geothermal & GHG combined
