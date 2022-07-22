@@ -876,6 +876,9 @@
             <column-instance column='[Value]' derivation='Sum' name='[pcto:sum:Value:qk]' pivot='key' type='quantitative'>
               <table-calc ordering-type='Columns' type='PctTotal' />
             </column-instance>
+            <column-instance column='[Value (Feature_importance_ET.csv)]' derivation='Sum' name='[rank:sum:Value (Feature_importance_ET.csv):qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' rank-options='Competition,Descending' type='Rank' />
+            </column-instance>
             <column-instance column='[Value (Feature_importance_GBR.csv)]' derivation='Sum' name='[rank:sum:Value (Feature_importance_GBR.csv):qk]' pivot='key' type='quantitative'>
               <table-calc ordering-type='Columns' rank-options='Competition,Descending' type='Rank' />
             </column-instance>
@@ -967,6 +970,7 @@
             <encoding attr='color' field='[federated.1j99pw20x3wmcj14u4cyr10xsrut].[pcto:sum:Value (Feature_importance_GBR.csv):qk]' palette='orange_gold_10_0' reverse='true' type='interpolated' />
             <encoding attr='color' field='[federated.1j99pw20x3wmcj14u4cyr10xsrut].[pcto:sum:Value (Feature_importance_RFR.csv):qk]' palette='orange_gold_10_0' reverse='true' type='interpolated' />
             <encoding attr='color' field='[federated.1j99pw20x3wmcj14u4cyr10xsrut].[pcto:sum:Value (Feature_importance_ET.csv):qk]' palette='orange_gold_10_0' reverse='true' type='interpolated' />
+            <encoding attr='color' field='[federated.1j99pw20x3wmcj14u4cyr10xsrut].[rank:sum:Value (Feature_importance_ET.csv):qk]' palette='orange_gold_10_0' reverse='true' type='interpolated' />
           </style-rule>
           <style-rule element='worksheet'>
             <format attr='color' value='#000000' />
@@ -1063,7 +1067,7 @@
             <mark-sizing mark-sizing-setting='marks-scaling-off' />
             <encodings>
               <color column='[federated.1j99pw20x3wmcj14u4cyr10xsrut].[sum:Value (Feature_importance_ET.csv):qk]' />
-              <text column='[federated.1j99pw20x3wmcj14u4cyr10xsrut].[rank:sum:Value (Feature_importance_GBR.csv):qk]' />
+              <text column='[federated.1j99pw20x3wmcj14u4cyr10xsrut].[rank:sum:Value (Feature_importance_ET.csv):qk]' />
               <lod column='[federated.1j99pw20x3wmcj14u4cyr10xsrut].[:Measure Names]' />
             </encodings>
             <style>

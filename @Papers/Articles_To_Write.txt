@@ -21,6 +21,7 @@ Decarbonisation and GHG Emissions Management and Control
 Analysing the difference methods of carbon reduction and comparing efficiencies
 Differences in carbon markets across regions e.g. Malyasia vs Australia. Is there a use for carbon as a product, rahter than a by-product? What is its value?
 
+Advantages and disadvantages of using artificial neural networks versus logistic regression for predicting oil adn gas outcomes/ out performance of deep learning vs Machine learning in o&g problems
 
 
 
