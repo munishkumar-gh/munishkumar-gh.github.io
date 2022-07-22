@@ -51462,3 +51462,5 @@
                  RandomForestRegressor(n_jobs=-1, random_state=42)]]), probability_threshold=None, encoded_labels=True, drift_report=False, raw_score=False, round=2, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
 2022-07-19 13:16:18,612:INFO:Checking exceptions
 2022-07-19 13:16:18,612:INFO:Preloading libraries
+2022-07-20 19:04:00,315:INFO:Initializing load_model()
+2022-07-20 19:04:00,315:INFO:load_model(model_name=Blended_model_15072022, platform=None, authentication=None, verbose=True)
