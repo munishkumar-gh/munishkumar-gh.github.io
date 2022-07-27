@@ -18,7 +18,7 @@ while valid_input == False:
             print(f"You have entered is {input_b}, {input_m}, {input_p}")
         elif add_car == "no":
             valid_input = True
-            print(f"Goodbye!")
+            print("Goodbye!")
             break
     except ValueError:
-        print(f"Your input is of the wrong type. Please try again")
+        print("Your input is of the wrong type. Please try again")
