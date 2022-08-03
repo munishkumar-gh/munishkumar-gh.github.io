@@ -16,7 +16,7 @@ finallist = {}
 i = 1
 proceed = True
 
-print(f"\nPlease enter following data (ENTER to quit):")
+print("\nPlease enter following data (ENTER to quit):")
 
 while proceed == True:
     std_brand = str(input(f"\n Brand of Car {i}: "))

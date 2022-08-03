@@ -33,4 +33,4 @@ for j in range(lenlist):
 if count_car > 0:
     print(f"You have entered a valid car brand {car_brands[count_car]}")
 else:
-    print(f"You have entered an invalid car brand")
+    print("You have entered an invalid car brand")

@@ -32,4 +32,4 @@ for j in range(lenlist):
 if (car_brands[count_car] == User_qn):
     print(f"You have entered a valid car brand {car_brands[count_car]}")
 else:
-    print(f"You have entered an invalid car brand")
+    print("You have entered an invalid car brand")
