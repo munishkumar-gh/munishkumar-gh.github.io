@@ -27,6 +27,6 @@ if terminate_qns == "Y":
     )
 
 elif terminate_qns == "N":
-    print(f"Goodbye")
+    print("Goodbye")
 else:
-    print(f"Your input is incorrect")
+    print("Your input is incorrect")
