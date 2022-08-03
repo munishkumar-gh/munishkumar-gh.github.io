@@ -1,0 +1,100 @@
+ USER PROGRAM INTERP PARAMETERS
+
+ Well    : MinSolve Test
+ Company : PGL
+ Field   : Somewhere
+ KB Elev : 60ft
+
+ Input Curves 
+    Rt         = ILDC (OHMM)
+    Gr         = SGR (GAPI)
+    Den        = RHOB (G/C3)
+    Son        = DTLN (US/F)
+ Output Curves 
+    Phi        = PHI (Dec)
+    Vcl        = VCL (Dec)
+    Sw         = SW (Dec)
+    BVW        = BVW (Dec)
+    Rwapp      = Rwapp (ohmm)
+    NetPay Flg = NetPay
+    NetRes Flg = NetRes
+
+ Zone 1 Input Parameters 
+    a          = 01.0000
+    m          = 02.0000
+    n          = 02.0000
+    Rw         = 00.1000
+    Sw Eq      = Indonesian
+    Son Matrix = 55.7000
+    Son Fluid  = 189.0000
+    Son CP     = 01.0000
+    Son Clay   = 100.0000
+    Den Matrix = 02.6500
+    Den Fluid  = 01.0000
+    Por Eq     = Sonic
+    Den Clay   = 02.7000
+    Gr Clean   = 10.0000
+    Gr Clay    = 100.0000
+    Depth Interval
+    Top = 7614.0000
+    Bottom = 7769.0000
+
+ Zone 2 Input Parameters 
+    a          = 01.0000
+    m          = 02.0000
+    n          = 02.0000
+    Rw         = 00.1000
+    Sw Eq      = Archie
+    Son Matrix = 55.7000
+    Son Fluid  = 189.0000
+    Son CP     = 01.0000
+    Son Clay   = 100.0000
+    Den Matrix = 02.6500
+    Den Fluid  = 01.0000
+    Por Eq     = Density
+    Den Clay   = 02.7000
+    Gr Clean   = 10.0000
+    Gr Clay    = 100.0000
+    Depth Interval
+    Top = 7769.0000
+    Bottom = 8105.5000
+
+ Zone 3 Input Parameters 
+    a          = 01.0000
+    m          = 02.0000
+    n          = 02.0000
+    Rw         = 00.1000
+    Sw Eq      = Indonesian
+    Son Matrix = 55.7000
+    Son Fluid  = 189.0000
+    Son CP     = 01.0000
+    Son Clay   = 100.0000
+    Den Matrix = 02.6500
+    Den Fluid  = 01.0000
+    Por Eq     = Sonic
+    Den Clay   = 02.7000
+    Gr Clean   = 10.0000
+    Gr Clay    = 100.0000
+    Depth Interval
+    Top = 8105.5000
+    Bottom = 8363.5000
+
+ Zone 4 Input Parameters 
+    a          = 01.0000
+    m          = 02.0000
+    n          = 02.0000
+    Rw         = 00.1000
+    Sw Eq      = Archie
+    Son Matrix = 55.7000
+    Son Fluid  = 189.0000
+    Son CP     = 01.0000
+    Son Clay   = 100.0000
+    Den Matrix = 02.6500
+    Den Fluid  = 01.0000
+    Por Eq     = Density
+    Den Clay   = 02.7000
+    Gr Clean   = 10.0000
+    Gr Clay    = 100.0000
+    Depth Interval
+    Top = 8363.5000
+    Bottom = 8738.0000

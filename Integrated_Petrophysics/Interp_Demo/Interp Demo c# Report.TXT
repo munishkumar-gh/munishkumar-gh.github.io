@@ -1,0 +1,96 @@
+ USER PROGRAM INTERP PARAMETERS
+
+ Well    : MinSolve Test
+ Company : PGL
+ Field   : Somewhere
+ KB Elev : 60ft
+
+ Input Curves 
+    Rt     = ILDC (OHMM)
+    Gr     = SGR (GAPI)
+    Den    = RHOB (G/C3)
+    Son    = DTLN (US/F)
+ Output Curve 
+    Phi    = PHI (Dec)
+    Vcl    = VCL (Dec)
+    Sw     = SW (Dec)
+    Rwapp  = Rwapp (ohmm)
+    BVW    = BVW (Dec)
+    NetPay = NetPay
+    NetRes = NetRes
+
+ Input Parameters 
+    a          = 1
+    m          = 2
+    n          = 2
+    Rw         = 0.1
+    Sw Eq      = Archie
+    Son Matrix = 55.7
+    Son Fluid  = 189
+    Son CP     = 1
+    Son Clay   = 100
+    Den Matrix = 2.65
+    Den Fluid  = 1
+    Por Eq     = Density
+    Den Clay   = 2.7
+    Gr Clean   = 10
+    Gr Clay    = 100
+    Depth Interval
+    Top = 7614    Bottom = 7769
+
+ Input Parameters 
+    a          = 1
+    m          = 2
+    n          = 2
+    Rw         = 0.1
+    Sw Eq      = Archie
+    Son Matrix = 55.7
+    Son Fluid  = 189
+    Son CP     = 1
+    Son Clay   = 100
+    Den Matrix = 2.65
+    Den Fluid  = 1
+    Por Eq     = Density
+    Den Clay   = 2.7
+    Gr Clean   = 10
+    Gr Clay    = 100
+    Depth Interval
+    Top = 7769    Bottom = 8105.5
+
+ Input Parameters 
+    a          = 1
+    m          = 2
+    n          = 2
+    Rw         = 0.1
+    Sw Eq      = Archie
+    Son Matrix = 55.7
+    Son Fluid  = 189
+    Son CP     = 1
+    Son Clay   = 100
+    Den Matrix = 2.65
+    Den Fluid  = 1
+    Por Eq     = Density
+    Den Clay   = 2.7
+    Gr Clean   = 10
+    Gr Clay    = 100
+    Depth Interval
+    Top = 8105.5    Bottom = 8363.5
+
+ Input Parameters 
+    a          = 1
+    m          = 2
+    n          = 2
+    Rw         = 0.1
+    Sw Eq      = Archie
+    Son Matrix = 55.7
+    Son Fluid  = 189
+    Son CP     = 1
+    Son Clay   = 100
+    Den Matrix = 2.65
+    Den Fluid  = 1
+    Por Eq     = Density
+    Den Clay   = 2.7
+    Gr Clean   = 10
+    Gr Clay    = 100
+    Depth Interval
+    Top = 8363.5    Bottom = 8738

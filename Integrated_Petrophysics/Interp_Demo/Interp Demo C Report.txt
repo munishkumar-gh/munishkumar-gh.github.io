@@ -1,0 +1,101 @@
+ USER PROGRAM INTERP PARAMETERS 
+
+ Well    : MinSolve Test
+ Company : PGL
+ Field   : Somewhere
+ KB Elev : 60ft
+
+ Input Curves
+
+    Rt     = ILDC (OHMM)
+    Gr     = SGR (GAPI)
+    Den    = RHOB (G/C3)
+    Son    = DTLN (US/F)
+ Output Curves
+
+    Phi    = UPTest:Phi (dec)
+    Vcl    = UPTest:Vcl (dec)
+    Sw     = UPTest:Sw (dec)
+    Rwapp  = UPTest:RwApp (ohmm)
+    BVW    = UPTest:BVW (dec)
+    NetPay = UPTest:Phi 
+    NetRes = UPTest:Phi 
+
+ Zone 1 Input Parameters
+    a          = 1.000000 
+    m          = 2.000000 
+    n          = 2.000000 
+    Rw         = 0.100000 
+    Sw Eq      = Archie 
+    Son Matrix = 51.000000 
+    Son Fluid  = 189.000000 
+    Son CP     = 1.000000 
+    Son Clay   = 96.000000 
+    Den Matrix = 2.645000 
+    Den Fluid  = 1.000000 
+    Por Eq     = Sonic 
+    Den Clay   = 2.472000 
+    Gr Clean   = 10.000000 
+    Gr Clay    = 100.000000 
+    Depth Interval
+    Top = 7614.000000     Bottom = 7778.500000
+
+
+ Zone 2 Input Parameters
+    a          = 1.000000 
+    m          = 2.000000 
+    n          = 2.000000 
+    Rw         = 0.100000 
+    Sw Eq      = Indonesian 
+    Son Matrix = 55.700001 
+    Son Fluid  = 189.000000 
+    Son CP     = 1.000000 
+    Son Clay   = 86.000000 
+    Den Matrix = 2.650000 
+    Den Fluid  = 1.000000 
+    Por Eq     = Density 
+    Den Clay   = 2.635000 
+    Gr Clean   = 16.000000 
+    Gr Clay    = 140.000000 
+    Depth Interval
+    Top = 7778.500000     Bottom = 8053.500000
+
+
+ Zone 3 Input Parameters
+    a          = 1.000000 
+    m          = 2.000000 
+    n          = 2.000000 
+    Rw         = 0.100000 
+    Sw Eq      = Archie 
+    Son Matrix = 55.700001 
+    Son Fluid  = 189.000000 
+    Son CP     = 1.000000 
+    Son Clay   = 86.000000 
+    Den Matrix = 2.650000 
+    Den Fluid  = 1.000000 
+    Por Eq     = Sonic 
+    Den Clay   = 2.635000 
+    Gr Clean   = 18.000000 
+    Gr Clay    = 140.000000 
+    Depth Interval
+    Top = 8053.500000     Bottom = 8332.500000
+
+
+ Zone 4 Input Parameters
+    a          = 1.000000 
+    m          = 2.000000 
+    n          = 2.000000 
+    Rw         = 0.100000 
+    Sw Eq      = Indonesian 
+    Son Matrix = 55.700001 
+    Son Fluid  = 189.000000 
+    Son CP     = 1.000000 
+    Son Clay   = 86.000000 
+    Den Matrix = 2.650000 
+    Den Fluid  = 1.000000 
+    Por Eq     = Density 
+    Den Clay   = 2.635000 
+    Gr Clean   = 22.000000 
+    Gr Clay    = 142.000000 
+    Depth Interval
+    Top = 8332.500000     Bottom = 8738.000000

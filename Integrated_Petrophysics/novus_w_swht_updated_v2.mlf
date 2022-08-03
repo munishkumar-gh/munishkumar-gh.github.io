@@ -1,0 +1,513 @@
+<?xml version="1.0" standalone="yes"?>
+<MultiLineFormulae>
+  <Formula>
+    <Cont. />
+    <Unit />
+    <Formula>Bad hole flag</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:Bad_hole</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>if(or(Composite:CALI&gt;9, Composite:DEN&lt;2),1,0)</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Cont. />
+    <Out />
+    <Unit />
+    <Formula>Phit from DENsity formula</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:RHOMA</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>g/cm3</Unit>
+    <Formula>2.65</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>rhofl</Name>
+    <Type>Numeric</Type>
+    <Unit>g/cm3</Unit>
+    <Formula>if(ERCE:Fluid_zone=1, 0.4, if(ERCE:Fluid_zone=2,0.8,1))</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Out />
+    <Name>phi</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>(rhoma-Composite:DEN)/(rhoma-rhofl)</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>phi</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>if(ERCE:Bad_hole&gt;0.5,-999,(ERCE:RHOMA-Composite:DEN)/(ERCE:RHOMA-rhofl))</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:PHIT_D</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>if(phi&lt;0,0,if(phi&gt;0.42,0.42,phi))</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Out />
+    <Unit />
+    <Formula>Phit from sonic formula</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out />
+    <Name>DTma</Name>
+    <Type>Numeric</Type>
+    <Unit>us/ft</Unit>
+    <Formula>53</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out />
+    <Name>DTfl</Name>
+    <Type>Numeric</Type>
+    <Unit>us/ft</Unit>
+    <Formula>if(ERCE:Fluid_zone=1, 200, if(ERCE:Fluid_zone=2,189,189))</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>compaction correction factor</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>c</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit />
+    <Formula>(0.0004*Sur:TVDss)+0.1</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:PHIT_S</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>(Composite:AC-DTma)/(DTfl-DTma)*(1/c)</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Unit />
+    <Formula>Phit neutron DENsity</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Cont. />
+    <Out>✓</Out>
+    <Name>ERCE:PHI_ND</Name>
+    <Type>Numeric</Type>
+    <Unit>v/v</Unit>
+    <Formula>(ERCE:PHIT_D + Composite:NEU) /2</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Phie</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>phish</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>0.13</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>phie</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>ERCE:PHIT_D-(ERCE:VSH*phish)</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out />
+    <Name>phiecheck</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>ERCE:PHIT_D*(1-ERCE:VSH)</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:PHIE</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>if(phie&gt;ERCE:PHIT_D,ERCE:PHIT_D,if(phie&lt;0,-999,phie))</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:PHIE2</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>if(PHIEcheck&lt;0,-999,PHIEcheck)</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Cont. />
+    <Unit />
+    <Formula>apparent matrix DENsity</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:RHOMA_ND</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>g/cm3</Unit>
+    <Formula> (Composite:DEN-ERCE:PHI_ND*rhofl)/(1-ERCE:PHI_ND)</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Temp - degF and ft</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Out />
+    <Name>ERCE:FTEMP</Name>
+    <Type>Numeric</Type>
+    <Unit>degF</Unit>
+    <Formula> (0.0143*Sur:TVDSS)+40</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Temp - degC and m</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:FTEMP</Name>
+    <Type>Numeric</Type>
+    <Unit>degC</Unit>
+    <Formula> (0.034*(Sur:TVDSS))+5</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Unit />
+    <Formula>Rw = 59 kppm</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>Rw_Garn</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>0.0443*((95+6.77)/(ERCE:FTEMP+6.77))</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>80kppm</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out />
+    <Name>Rw_Tilje</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>0.033*((99.5+6.77)/(ERCE:FTEMP+6.77))</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:RW_CALC</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>ohmm</Unit>
+    <Formula>if(Depth&gt;2822,rw_tilje,rw_garn)</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Out />
+    <Unit />
+    <Formula>Archie Sw</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>m</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>1.85</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>n</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>1.85</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>apparent water resistivity</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:RWA</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>ohmm</Unit>
+    <Formula>Composite:RDEP*(ERCE:PHIT_D)^m</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula />
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:SW_UNCL</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>if(ERCE:PHIT_D&gt;0,((ERCE:RW_calc)/(Composite:RDEP*(ERCE:PHIT_D^m)))^(1/n),1)</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>clipped Sw</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:SW</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>if(OR(ERCE:SW_uncl&gt;=1,ERCE:VSH&gt;0.8),1,</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Cont.>✓</Cont.>
+    <Out>✓</Out>
+    <Name />
+    <Unit />
+    <Formula>if(ERCE:SW_uncl&lt;=0,0,ERCE:SW_uncl))</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>BVW NEW</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:BVW</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>ERCE:SW*ERCE:PHIT_D</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Effective Sw</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:SWb</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>(ERCE:PHIT_D- ERCE:PHIE)/ERCE:PHIT_D</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:SWE_uncl</Name>
+    <Type>Numeric</Type>
+    <Unit>v/v</Unit>
+    <Formula>( ERCE:SW-ERCE:SWb)/(1-ERCE:SWb)</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>clipped Swe</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:SWE</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>if(OR(ERCE:SWE_uncl&gt;=1,ERCE:VSH&gt;0.8),1,</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Cont.>✓</Cont.>
+    <Out>✓</Out>
+    <Unit />
+    <Formula>if(ERCE:SWE_uncl&lt;=0.01,0,ERCE:SWE_uncl))</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula />
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:BVWE</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>ERCE:SWE*ERCE:PHIE</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Net flag</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Cont. />
+    <Out>✓</Out>
+    <Name>ERCE:Net_flag</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit />
+    <Formula>if(and(ERCE:VSH&lt;0.4,ERCE:PHIE&gt;0.1),1,0)</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Pay flag</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:Pay_flag</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit />
+    <Formula>if(and(ERCE:Net_flag=1, ERCE:SWE&lt;0.6),1,0)</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Perm</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>Perm1</Name>
+    <Type>Numeric</Type>
+    <Unit>mD</Unit>
+    <Formula>10**(1.39155409 * ((ERCE:PHIT_D*100) ^ 0.312789945))</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>Perm2</Name>
+    <Type>Numeric</Type>
+    <Unit>mD</Unit>
+    <Formula>10**(1.0365174 *( (ERCE:PHIT_D*100) ^ 0.360863059))</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>PERM</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>if(and(Depth&gt;2670,Depth&lt;2682),Perm1,Perm2)</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Out />
+    <Name>PERM</Name>
+    <Type>Numeric</Type>
+    <Unit>mD</Unit>
+    <Formula>if(Composite:GR&lt;35,Perm1,Perm2)</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:PERM</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>mD</Unit>
+    <Formula>if(PERM&lt;0,0.1,if(PERM&gt;12000,12000,PERM))</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Swht</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:HAFWL</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>m</Unit>
+    <Formula>2617-Sur:TVDss</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Swht - porosity &amp; height function 3</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Cont. />
+    <Out />
+    <Name>Swht</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>if(ERCE:HAFWL&lt;0,1,(( 0.03939 -0.06986 * Log(ERCE:HAFWL) + 0.01125 * Log(ERCE:HAFWL)^2 + 0.02714 * Log(ERCE:HAFWL)^3 ) / ( ERCE:PHIE^0.95472 )))</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:SWHT</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>if(Swht&lt;0,0,if(Swht&gt;1,1,Swht))</Formula>
+  </Formula>
+  <Formula>
+    <Use />
+    <Out />
+    <Name>ERCE:SWHT</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>if(Swht=-999,1,Swht)</Formula>
+  </Formula>
+  <Formula>
+    <Unit />
+    <Formula>Swht - permeability &amp; height function 3</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Name>Swht2</Name>
+    <Type>Numeric</Type>
+    <Unit />
+    <Formula>( 475.08172 -715.6657 * Log(ERCE:HAFWL) + 50.16899 * Log(ERCE:HAFWL)^2 + 216.76852 * Log(ERCE:HAFWL)^3 ) / ( ERCE:PERM^0.9126 )</Formula>
+  </Formula>
+  <Formula>
+    <Use>✓</Use>
+    <Out>✓</Out>
+    <Name>ERCE:SWHT2</Name>
+    <Type>Numeric</Type>
+    <Array />
+    <Unit>v/v</Unit>
+    <Formula>if(Swht2&lt;0,0,if(Swht2&gt;1,1,Swht2))</Formula>
+  </Formula>
+  <Header>
+    <DepthTop>0</DepthTop>
+    <DepthBottom>15000</DepthBottom>
+    <CheckNull>True</CheckNull>
+    <CheckIntermediateResultNull>True</CheckIntermediateResultNull>
+    <ShowProgress>True</ShowProgress>
+  </Header>
+</MultiLineFormulae>
