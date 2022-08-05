@@ -1,5 +1,5 @@
 # /***********************************************/
-#  * File dynamically created from IP: 03/22/2022 12:08:28
+#  * File dynamically created from IP: 08/04/2022 16:29:49
 #  * DO NOT MANUALLY EDIT
 # /***********************************************/
 
@@ -358,4 +358,25 @@ class Methods:
 
 	def Save_Array_SWE_Text(self, index, xVal, yVal, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[5], index, str(value), xVal, yVal)
+
+	def PHI_MAX(self, index):
+		if self._parCnIn[0] > 0:
+			return self._IPProxy.GetCurveData(self._parCnIn[0], index)
+		else:
+			return self._inputParameters[0]
+
+	def Save_PHI_MAX(self, index, value):
+		if self._parCnIn[0] > 0:
+			self._IPProxy.SetCurveData(self._parCnIn[0], index, float(value))
+		else:
+			self._IPProxy.SetNumericParam(1, float(value))
+			self._inputParameters[0] = float(value)
+
+	def get_PHI_MAX_Name(self):
+		if self._parCnIn[0] > 0:
+			return self._IPProxy.GetCurveText(self._parCnIn[0], 1)
+		else:
+			return str(self._inputParameters[0])
+
+	PHI_MAX_Name = property(fget=get_PHI_MAX_Name)
 

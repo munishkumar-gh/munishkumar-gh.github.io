@@ -142,7 +142,7 @@ SWE , Effective Water Saturation , ERCE_INTERP:SWE
  ,  , 
  ,  , 
  ,  , 
- ,  ,  ,  ,  ,  ,  , 
+PHI_MAX , Maximum Allowable Porosity , 0.38 ,  ,  , 2 , 1 , False
  ,  ,  ,  ,  ,  ,  , 
  ,  ,  ,  ,  ,  ,  , 
  ,  ,  ,  ,  ,  ,  , 
