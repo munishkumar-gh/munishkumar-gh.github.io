@@ -1,218 +1,218 @@
 Year,Make,Model,Category,Price
-2021,Acura,ILX,Sedan,26100.0
-2021,Acura,RDX,SUV,38400.0
-2021,Acura,TLX,Sedan,37500.0
-2021,Alfa Romeo,Giulia,Sedan,40350.0
-2021,Alfa Romeo,Stelvio,SUV,42350.0
-2021,Audi,A6 allroad,Wagon,65900.0
-2021,Audi,A7,Sedan,69200.0
-2021,Audi,Q3,SUV,34000.0
-2021,Audi,Q5,SUV,43300.0
-2021,Audi,Q8,SUV,68200.0
-2021,Audi,S5,"Convertible,Sedan,Coupe",52500.0
-2021,BMW,3 Series,Sedan,41250.0
-2021,BMW,X1,SUV,35400.0
-2021,BMW,X3,SUV,43000.0
-2021,BMW,X5,SUV,59400.0
-2021,Buick,Enclave,SUV,40300.0
-2021,Buick,Encore,SUV,23200.0
-2021,Buick,Encore GX,SUV,24200.0
-2021,Buick,Envision,SUV,31800.0
-2021,Cadillac,CT4,Sedan,33395.0
-2021,Cadillac,CT5,Sedan,36995.0
-2021,Cadillac,XT4,SUV,35795.0
-2021,Cadillac,XT5,SUV,43995.0
-2021,Cadillac,XT6,SUV,48045.0
-2021,Chevrolet,Blazer,SUV,28800.0
-2021,Chevrolet,Bolt EV,Hatchback,36500.0
-2021,Chevrolet,Camaro,Coupe,25000.0
-2021,Chevrolet,Colorado Extended Cab,Pickup,25200.0
-2021,Chevrolet,Colorado Crew Cab,Pickup,27100.0
-2021,Chevrolet,Corvette,"Convertible,Coupe",59900.0
-2021,Chevrolet,Express 3500 Cargo,Van/Minivan,39895.0
-2021,Chevrolet,Equinox,SUV,23800.0
-2021,Chevrolet,Malibu,Sedan,22270.0
-2021,Chevrolet,Silverado 1500 Crew Cab,Pickup,33200.0
-2021,Chevrolet,Silverado 2500 HD Crew Cab,Pickup,34900.0
-2021,Chevrolet,Silverado 2500 HD Double Cab,Pickup,37700.0
-2021,Chevrolet,Silverado 2500 HD Regular Cab,Pickup,35300.0
-2021,Chevrolet,Spark,Hatchback,13600.0
-2021,Chevrolet,Suburban,SUV,52300.0
-2021,Chevrolet,Tahoe,SUV,49600.0
-2021,Chevrolet,Trailblazer,SUV,19000.0
-2021,Chevrolet,Traverse,SUV,29800.0
-2021,Chevrolet,Trax,SUV,21400.0
-2021,Chrysler,300,Sedan,31370.0
-2021,Chrysler,Pacifica,Van/Minivan,35820.0
-2021,Chrysler,Voyager,Van/Minivan,27860.0
-2021,Dodge,Challenger,Coupe,28870.0
-2021,Dodge,Durango,SUV,32570.0
-2021,Dodge,Charger,Sedan,30570.0
-2021,FIAT,500X,SUV,25815.0
-2021,Ford,Bronco Sport,SUV,26820.0
-2021,Ford,EcoSport,SUV,20395.0
-2021,Ford,Edge,SUV,32750.0
-2021,Ford,Escape,SUV,25555.0
-2021,Ford,Expedition,SUV,49025.0
-2021,Ford,Expedition MAX,SUV,54810.0
-2021,Ford,Explorer,SUV,32675.0
-2021,Ford,F150 SuperCrew Cab,Pickup,37000.0
-2021,Ford,F250 Super Duty Crew Cab,Pickup,53200.0
-2021,Ford,Mustang,"Coupe,Convertible",27155.0
-2021,Ford,Ranger SuperCrew,Pickup,27470.0
-2021,Ford,Transit Connect Cargo Van,Van/Minivan,24655.0
-2021,Genesis,G70,Sedan,36000.0
-2021,Genesis,G80,Sedan,47700.0
-2021,Genesis,GV80,SUV,48900.0
-2021,GMC,Acadia,SUV,29800.0
-2021,GMC,Canyon Crew Cab,Pickup,28700.0
-2021,GMC,Canyon Extended Cab,Pickup,26800.0
-2021,GMC,Sierra 1500 Crew Cab,Pickup,29700.0
-2021,GMC,Sierra 2500 HD Crew Cab,Pickup,40600.0
-2021,GMC,Sierra 3500 HD Crew Cab,Pickup,41800.0
-2021,GMC,Terrain,SUV,25000.0
-2021,GMC,Yukon,SUV,51000.0
-2021,GMC,Yukon XL,SUV,53700.0
-2021,Honda,Accord,Sedan,24970.0
-2021,Honda,Accord Hybrid,Sedan,26570.0
-2021,Honda,Civic,"Hatchback,Sedan",21250.0
-2021,Honda,Civic Type R,Hatchback,37895.0
-2021,Honda,CR-V,SUV,25350.0
-2021,Honda,CR-V Hybrid,SUV,30560.0
-2021,Honda,HR-V,SUV,21220.0
-2021,Honda,Insight,Sedan,23130.0
-2021,Honda,Odyssey,Van/Minivan,31790.0
-2021,Honda,Passport,SUV,32790.0
-2021,Honda,Ridgeline,Pickup,36490.0
-2021,Honda,Pilot,SUV,32550.0
-2021,Hyundai,Accent,Sedan,15395.0
-2021,Hyundai,Elantra,Sedan,19650.0
-2021,Hyundai,Ioniq Electric,Hatchback,33245.0
-2021,Hyundai,Ioniq Hybrid,Hatchback,23400.0
-2021,Hyundai,Ioniq Plug-in Hybrid,Hatchback,26700.0
-2021,Hyundai,Kona Electric,SUV,37390.0
-2021,Hyundai,Kona,SUV,20500.0
-2021,Hyundai,Palisade,SUV,32675.0
-2021,Hyundai,Santa Fe,SUV,27000.0
-2021,Hyundai,Sonata,Sedan,23950.0
-2021,Hyundai,Sonata Hybrid,Sedan,27750.0
-2021,Hyundai,Veloster,Coupe,18900.0
-2021,Hyundai,Venue,SUV,18750.0
-2021,Hyundai,Tucson,SUV,23700.0
-2021,INFINITI,Q50,Sedan,36700.0
-2021,INFINITI,QX50,SUV,38050.0
-2021,Jaguar,E-PACE,SUV,40995.0
-2021,INFINITI,QX80,SUV,69150.0
-2021,Jaguar,I-PACE,SUV,69850.0
-2021,Jeep,Cherokee,SUV,27210.0
-2021,Jeep,Compass,SUV,24495.0
-2021,Jeep,Gladiator,Pickup,34040.0
-2021,Jeep,Grand Cherokee,SUV,33120.0
-2021,Jeep,Grand Cherokee L,SUV,36995.0
-2021,Jeep,Wrangler,SUV,27900.0
-2021,Jeep,Renegade,SUV,22850.0
-2021,Jeep,Wrangler Unlimited,SUV,31975.0
-2021,Kia,Forte,Sedan,17890.0
-2021,Kia,K5,Sedan,23590.0
-2021,Kia,Rio,"Hatchback,Sedan",16050.0
-2021,Kia,Sorento,SUV,29390.0
-2021,Kia,Seltos,SUV,21990.0
-2021,Kia,Soul,Wagon,17590.0
-2021,Kia,Sportage,SUV,24090.0
-2021,Kia,Stinger,Sedan,33090.0
-2021,Kia,Telluride,SUV,32190.0
-2021,Land Rover,Discovery,SUV,53900.0
-2021,Kia,Sedona,Van/Minivan,30400.0
-2021,Land Rover,Range Rover Sport,SUV,69500.0
-2021,Land Rover,Range Rover Velar,SUV,56900.0
-2021,Lexus,ES,Sedan,40000.0
-2021,Lexus,GX,SUV,53450.0
-2021,Lexus,IS,Sedan,39050.0
-2021,Lexus,NX,SUV,37610.0
-2021,Lexus,RC,Coupe,42220.0
-2021,Lexus,RX,SUV,45220.0
-2021,Lexus,UX,SUV,33000.0
-2021,Lincoln,Aviator,SUV,51570.0
-2021,Lincoln,Corsair,SUV,36105.0
-2021,Lincoln,Nautilus,SUV,42500.0
-2021,MAZDA,CX-3,SUV,20790.0
-2021,MAZDA,CX-30,SUV,22050.0
-2021,MAZDA,CX-5,SUV,25370.0
-2021,MAZDA,CX-9,SUV,34160.0
-2021,MAZDA,MAZDA6,Sedan,24475.0
-2021,MAZDA,MAZDA3,"Hatchback,Sedan",20650.0
-2021,MAZDA,MX-5 Miata,Convertible,26830.0
-2021,MAZDA,MX-5 Miata RF,Convertible,33045.0
-2021,Mercedes-Benz,C-Class,Coupe,41600.0
-2021,Mercedes-Benz,A-Class,Sedan,33650.0
-2021,Mercedes-Benz,GLA,SUV,36230.0
-2021,Mercedes-Benz,GLB,SUV,38050.0
-2021,Mercedes-Benz,GLE,SUV,54750.0
-2021,Mercedes-Benz,GLC,SUV,43200.0
-2021,Mitsubishi,Outlander Sport,SUV,20995.0
-2021,Nissan,Altima,Sedan,24450.0
-2021,Nissan,Frontier King Cab,Pickup,27190.0
-2021,Nissan,Frontier Crew Cab,Pickup,28300.0
-2021,Nissan,Kicks,SUV,19550.0
-2021,Nissan,LEAF,Hatchback,31670.0
-2021,Nissan,Maxima,Sedan,37090.0
-2021,Nissan,Murano,SUV,32810.0
-2021,Nissan,NV3500 HD Cargo,Van/Minivan,36330.0
-2021,Nissan,Rogue,SUV,25850.0
-2021,Nissan,Sentra,Sedan,19460.0
-2021,Nissan,TITAN XD Crew Cab,Pickup,45430.0
-2021,Nissan,Versa,Sedan,14980.0
-2021,Polestar,2,Hatchback,59900.0
-2021,Porsche,718 Boxster,Convertible,62000.0
-2021,Porsche,718 Cayman,Coupe,59900.0
-2021,Porsche,Cayenne,SUV,67500.0
-2021,Porsche,Macan,SUV,52100.0
-2021,Ram,2500 Crew Cab,Pickup,38575.0
-2021,Ram,1500 Crew Cab,Pickup,35645.0
-2021,Ram,ProMaster Cargo Van,Van/Minivan,32385.0
-2021,Ram,ProMaster City,Van/Minivan,25065.0
-2021,Ram,2500 Mega Cab,Pickup,47875.0
-2021,Subaru,Crosstrek,SUV,22245.0
-2021,Ram,ProMaster Window Van,Van/Minivan,31540.0
-2021,Subaru,Ascent,SUV,32295.0
-2021,Subaru,Impreza,"Wagon,Sedan",18795.0
-2021,Subaru,Forester,SUV,24795.0
-2021,Subaru,Legacy,Sedan,22895.0
-2021,Subaru,Outback,SUV,26795.0
-2021,Tesla,Model S,Sedan,69420.0
-2021,Toyota,4Runner,SUV,36765.0
-2021,Toyota,Avalon,Sedan,36125.0
-2021,Toyota,Avalon Hybrid,Sedan,37100.0
-2021,Toyota,Camry,Sedan,25045.0
-2021,Toyota,Camry Hybrid,Sedan,27270.0
-2021,Toyota,C-HR,SUV,21595.0
-2021,Toyota,Corolla,Sedan,20025.0
-2021,Toyota,Corolla Hatchback,Hatchback,20715.0
-2021,Toyota,Corolla Hybrid,Sedan,23600.0
-2021,Toyota,GR Supra,Coupe,43090.0
-2021,Toyota,Highlander,SUV,35085.0
-2021,Toyota,Highlander Hybrid,SUV,38735.0
-2021,Toyota,Prius,Hatchback,24525.0
-2021,Toyota,Prius Prime,Hatchback,28220.0
-2021,Toyota,RAV4,SUV,26250.0
-2021,Toyota,RAV4 Hybrid,SUV,28500.0
-2021,Toyota,RAV4 Prime,SUV,38250.0
-2021,Toyota,Sequoia,SUV,50400.0
-2021,Toyota,Sienna,Van/Minivan,34460.0
-2021,Toyota,Tacoma Access Cab,Pickup,26400.0
-2021,Toyota,Tacoma Double Cab,Pickup,27230.0
-2021,Toyota,Tundra CrewMax,Pickup,38320.0
-2021,Toyota,Tundra Double Cab,Pickup,34025.0
-2021,Toyota,Venza,SUV,32570.0
-2021,Volkswagen,Atlas,SUV,31545.0
-2021,Volkswagen,Atlas Cross Sport,SUV,30855.0
-2021,Volkswagen,Jetta,Sedan,18995.0
-2021,Volkswagen,Golf,Hatchback,23195.0
-2021,Volkswagen,Passat,Sedan,23995.0
-2021,Volvo,S90,Sedan,60050.0
-2021,Volvo,V90,Wagon,51800.0
-2021,Volvo,V60,Wagon,40950.0
-2021,Volkswagen,Tiguan,SUV,25245.0
-2021,Volvo,XC40,SUV,33700.0
-2021,Volvo,XC60,SUV,41700.0
-2021,Volvo,XC90,SUV,49000.0
+2021,Acura,ILX,Sedan,26100
+2021,Acura,RDX,SUV,38400
+2021,Acura,TLX,Sedan,37500
+2021,Alfa Romeo,Giulia,Sedan,40350
+2021,Alfa Romeo,Stelvio,SUV,42350
+2021,Audi,A6 allroad,Wagon,65900
+2021,Audi,A7,Sedan,69200
+2021,Audi,Q3,SUV,34000
+2021,Audi,Q5,SUV,43300
+2021,Audi,Q8,SUV,68200
+2021,Audi,S5,"Convertible,Sedan,Coupe",52500
+2021,BMW,3 Series,Sedan,41250
+2021,BMW,X1,SUV,35400
+2021,BMW,X3,SUV,43000
+2021,BMW,X5,SUV,59400
+2021,Buick,Enclave,SUV,40300
+2021,Buick,Encore,SUV,23200
+2021,Buick,Encore GX,SUV,24200
+2021,Buick,Envision,SUV,31800
+2021,Cadillac,CT4,Sedan,33395
+2021,Cadillac,CT5,Sedan,36995
+2021,Cadillac,XT4,SUV,35795
+2021,Cadillac,XT5,SUV,43995
+2021,Cadillac,XT6,SUV,48045
+2021,Chevrolet,Blazer,SUV,28800
+2021,Chevrolet,Bolt EV,Hatchback,36500
+2021,Chevrolet,Camaro,Coupe,25000
+2021,Chevrolet,Colorado Extended Cab,Pickup,25200
+2021,Chevrolet,Colorado Crew Cab,Pickup,27100
+2021,Chevrolet,Corvette,"Convertible,Coupe",59900
+2021,Chevrolet,Express 3500 Cargo,Van/Minivan,39895
+2021,Chevrolet,Equinox,SUV,23800
+2021,Chevrolet,Malibu,Sedan,22270
+2021,Chevrolet,Silverado 1500 Crew Cab,Pickup,33200
+2021,Chevrolet,Silverado 2500 HD Crew Cab,Pickup,34900
+2021,Chevrolet,Silverado 2500 HD Double Cab,Pickup,37700
+2021,Chevrolet,Silverado 2500 HD Regular Cab,Pickup,35300
+2021,Chevrolet,Spark,Hatchback,13600
+2021,Chevrolet,Suburban,SUV,52300
+2021,Chevrolet,Tahoe,SUV,49600
+2021,Chevrolet,Trailblazer,SUV,19000
+2021,Chevrolet,Traverse,SUV,29800
+2021,Chevrolet,Trax,SUV,21400
+2021,Chrysler,300,Sedan,31370
+2021,Chrysler,Pacifica,Van/Minivan,35820
+2021,Chrysler,Voyager,Van/Minivan,27860
+2021,Dodge,Challenger,Coupe,28870
+2021,Dodge,Durango,SUV,32570
+2021,Dodge,Charger,Sedan,30570
+2021,FIAT,500X,SUV,25815
+2021,Ford,Bronco Sport,SUV,26820
+2021,Ford,EcoSport,SUV,20395
+2021,Ford,Edge,SUV,32750
+2021,Ford,Escape,SUV,25555
+2021,Ford,Expedition,SUV,49025
+2021,Ford,Expedition MAX,SUV,54810
+2021,Ford,Explorer,SUV,32675
+2021,Ford,F150 SuperCrew Cab,Pickup,37000
+2021,Ford,F250 Super Duty Crew Cab,Pickup,53200
+2021,Ford,Mustang,"Coupe,Convertible",27155
+2021,Ford,Ranger SuperCrew,Pickup,27470
+2021,Ford,Transit Connect Cargo Van,Van/Minivan,24655
+2021,Genesis,G70,Sedan,36000
+2021,Genesis,G80,Sedan,47700
+2021,Genesis,GV80,SUV,48900
+2021,GMC,Acadia,SUV,29800
+2021,GMC,Canyon Crew Cab,Pickup,28700
+2021,GMC,Canyon Extended Cab,Pickup,26800
+2021,GMC,Sierra 1500 Crew Cab,Pickup,29700
+2021,GMC,Sierra 2500 HD Crew Cab,Pickup,40600
+2021,GMC,Sierra 3500 HD Crew Cab,Pickup,41800
+2021,GMC,Terrain,SUV,25000
+2021,GMC,Yukon,SUV,51000
+2021,GMC,Yukon XL,SUV,53700
+2021,Honda,Accord,Sedan,24970
+2021,Honda,Accord Hybrid,Sedan,26570
+2021,Honda,Civic,"Hatchback,Sedan",21250
+2021,Honda,Civic Type R,Hatchback,37895
+2021,Honda,CR-V,SUV,25350
+2021,Honda,CR-V Hybrid,SUV,30560
+2021,Honda,HR-V,SUV,21220
+2021,Honda,Insight,Sedan,23130
+2021,Honda,Odyssey,Van/Minivan,31790
+2021,Honda,Passport,SUV,32790
+2021,Honda,Ridgeline,Pickup,36490
+2021,Honda,Pilot,SUV,32550
+2021,Hyundai,Accent,Sedan,15395
+2021,Hyundai,Elantra,Sedan,19650
+2021,Hyundai,Ioniq Electric,Hatchback,33245
+2021,Hyundai,Ioniq Hybrid,Hatchback,23400
+2021,Hyundai,Ioniq Plug-in Hybrid,Hatchback,26700
+2021,Hyundai,Kona Electric,SUV,37390
+2021,Hyundai,Kona,SUV,20500
+2021,Hyundai,Palisade,SUV,32675
+2021,Hyundai,Santa Fe,SUV,27000
+2021,Hyundai,Sonata,Sedan,23950
+2021,Hyundai,Sonata Hybrid,Sedan,27750
+2021,Hyundai,Veloster,Coupe,18900
+2021,Hyundai,Venue,SUV,18750
+2021,Hyundai,Tucson,SUV,23700
+2021,INFINITI,Q50,Sedan,36700
+2021,INFINITI,QX50,SUV,38050
+2021,Jaguar,E-PACE,SUV,40995
+2021,INFINITI,QX80,SUV,69150
+2021,Jaguar,I-PACE,SUV,69850
+2021,Jeep,Cherokee,SUV,27210
+2021,Jeep,Compass,SUV,24495
+2021,Jeep,Gladiator,Pickup,34040
+2021,Jeep,Grand Cherokee,SUV,33120
+2021,Jeep,Grand Cherokee L,SUV,36995
+2021,Jeep,Wrangler,SUV,27900
+2021,Jeep,Renegade,SUV,22850
+2021,Jeep,Wrangler Unlimited,SUV,31975
+2021,Kia,Forte,Sedan,17890
+2021,Kia,K5,Sedan,23590
+2021,Kia,Rio,"Hatchback,Sedan",16050
+2021,Kia,Sorento,SUV,29390
+2021,Kia,Seltos,SUV,21990
+2021,Kia,Soul,Wagon,17590
+2021,Kia,Sportage,SUV,24090
+2021,Kia,Stinger,Sedan,33090
+2021,Kia,Telluride,SUV,32190
+2021,Land Rover,Discovery,SUV,53900
+2021,Kia,Sedona,Van/Minivan,30400
+2021,Land Rover,Range Rover Sport,SUV,69500
+2021,Land Rover,Range Rover Velar,SUV,56900
+2021,Lexus,ES,Sedan,40000
+2021,Lexus,GX,SUV,53450
+2021,Lexus,IS,Sedan,39050
+2021,Lexus,NX,SUV,37610
+2021,Lexus,RC,Coupe,42220
+2021,Lexus,RX,SUV,45220
+2021,Lexus,UX,SUV,33000
+2021,Lincoln,Aviator,SUV,51570
+2021,Lincoln,Corsair,SUV,36105
+2021,Lincoln,Nautilus,SUV,42500
+2021,MAZDA,CX-3,SUV,20790
+2021,MAZDA,CX-30,SUV,22050
+2021,MAZDA,CX-5,SUV,25370
+2021,MAZDA,CX-9,SUV,34160
+2021,MAZDA,MAZDA6,Sedan,24475
+2021,MAZDA,MAZDA3,"Hatchback,Sedan",20650
+2021,MAZDA,MX-5 Miata,Convertible,26830
+2021,MAZDA,MX-5 Miata RF,Convertible,33045
+2021,Mercedes-Benz,C-Class,Coupe,41600
+2021,Mercedes-Benz,A-Class,Sedan,33650
+2021,Mercedes-Benz,GLA,SUV,36230
+2021,Mercedes-Benz,GLB,SUV,38050
+2021,Mercedes-Benz,GLE,SUV,54750
+2021,Mercedes-Benz,GLC,SUV,43200
+2021,Mitsubishi,Outlander Sport,SUV,20995
+2021,Nissan,Altima,Sedan,24450
+2021,Nissan,Frontier King Cab,Pickup,27190
+2021,Nissan,Frontier Crew Cab,Pickup,28300
+2021,Nissan,Kicks,SUV,19550
+2021,Nissan,LEAF,Hatchback,31670
+2021,Nissan,Maxima,Sedan,37090
+2021,Nissan,Murano,SUV,32810
+2021,Nissan,NV3500 HD Cargo,Van/Minivan,36330
+2021,Nissan,Rogue,SUV,25850
+2021,Nissan,Sentra,Sedan,19460
+2021,Nissan,TITAN XD Crew Cab,Pickup,45430
+2021,Nissan,Versa,Sedan,14980
+2021,Polestar,2,Hatchback,59900
+2021,Porsche,718 Boxster,Convertible,62000
+2021,Porsche,718 Cayman,Coupe,59900
+2021,Porsche,Cayenne,SUV,67500
+2021,Porsche,Macan,SUV,52100
+2021,Ram,2500 Crew Cab,Pickup,38575
+2021,Ram,1500 Crew Cab,Pickup,35645
+2021,Ram,ProMaster Cargo Van,Van/Minivan,32385
+2021,Ram,ProMaster City,Van/Minivan,25065
+2021,Ram,2500 Mega Cab,Pickup,47875
+2021,Subaru,Crosstrek,SUV,22245
+2021,Ram,ProMaster Window Van,Van/Minivan,31540
+2021,Subaru,Ascent,SUV,32295
+2021,Subaru,Impreza,"Wagon,Sedan",18795
+2021,Subaru,Forester,SUV,24795
+2021,Subaru,Legacy,Sedan,22895
+2021,Subaru,Outback,SUV,26795
+2021,Tesla,Model S,Sedan,69420
+2021,Toyota,4Runner,SUV,36765
+2021,Toyota,Avalon,Sedan,36125
+2021,Toyota,Avalon Hybrid,Sedan,37100
+2021,Toyota,Camry,Sedan,25045
+2021,Toyota,Camry Hybrid,Sedan,27270
+2021,Toyota,C-HR,SUV,21595
+2021,Toyota,Corolla,Sedan,20025
+2021,Toyota,Corolla Hatchback,Hatchback,20715
+2021,Toyota,Corolla Hybrid,Sedan,23600
+2021,Toyota,GR Supra,Coupe,43090
+2021,Toyota,Highlander,SUV,35085
+2021,Toyota,Highlander Hybrid,SUV,38735
+2021,Toyota,Prius,Hatchback,24525
+2021,Toyota,Prius Prime,Hatchback,28220
+2021,Toyota,RAV4,SUV,26250
+2021,Toyota,RAV4 Hybrid,SUV,28500
+2021,Toyota,RAV4 Prime,SUV,38250
+2021,Toyota,Sequoia,SUV,50400
+2021,Toyota,Sienna,Van/Minivan,34460
+2021,Toyota,Tacoma Access Cab,Pickup,26400
+2021,Toyota,Tacoma Double Cab,Pickup,27230
+2021,Toyota,Tundra CrewMax,Pickup,38320
+2021,Toyota,Tundra Double Cab,Pickup,34025
+2021,Toyota,Venza,SUV,32570
+2021,Volkswagen,Atlas,SUV,31545
+2021,Volkswagen,Atlas Cross Sport,SUV,30855
+2021,Volkswagen,Jetta,Sedan,18995
+2021,Volkswagen,Golf,Hatchback,23195
+2021,Volkswagen,Passat,Sedan,23995
+2021,Volvo,S90,Sedan,60050
+2021,Volvo,V90,Wagon,51800
+2021,Volvo,V60,Wagon,40950
+2021,Volkswagen,Tiguan,SUV,25245
+2021,Volvo,XC40,SUV,33700
+2021,Volvo,XC60,SUV,41700
+2021,Volvo,XC90,SUV,49000
