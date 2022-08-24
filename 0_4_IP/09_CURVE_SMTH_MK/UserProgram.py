@@ -27,197 +27,107 @@ class IPLink:
 		
 		index = self.TopDepth
 		# Enter user code here
-		# Compute depth step by subtracting the depth from the next depth
-		wellStep = self.Depth(index +1) - self.Depth(index)
+			# Compute depth step by subtracting the depth from the next depth
+			wellStep = self.Depth(index +1) - self.Depth(index)
 
-		# Convert the user entered depths into depth levels
-		depthAbove = self.depthAbove(index) / wellStep
-		depthBelow = self.depthBelow(index) / wellStep
-		
-		valsAbove = 0
-		valsBelow = 0
-
-		while index <= self.BottomDepth:
-
-			# Default values reset at each depth level
-			depthAboveCount = depthAbove
-			depthBelowCount = depthBelow
-			sumAbove = prodAbove = harmAbove = sumBelow = prodBelow = harmBelow = valsAbove = valsBelow = 0
-
-			# Checks if the depthAboveCount is between 0 and the user defined depth. If it is sum the value.
-			while depthAboveCount <= depthAbove and depthAboveCount > 0: 
-				if self.input(index - depthAboveCount) != -999: 
-					sumAbove += self.input(index - depthAboveCount)
-					prodAbove += math.log(self.input(index - depthAboveCount))
-					harmAbove += 1/self.input(index - depthAboveCount)
-					valsAbove += 1
-				depthAboveCount -= 1
+			# Convert the user entered depths into depth levels
+			depthAbove = self.depthAbove(index) / wellStep
+			depthBelow = self.depthBelow(index) / wellStep
 			
-			# Sum up the values below
-			while depthBelowCount <= depthBelow and depthBelowCount > 0:
-				if self.input(index + depthBelowCount) != -999:
-					sumBelow += self.input(index + depthBelowCount)
-					prodBelow += math.log(self.input(index + depthBelowCount))
-					harmBelow += 1/self.input(index - depthAboveCount)
-					valsBelow += 1
-				depthBelowCount -= 1
+			valsAbove = 0
+			valsBelow = 0
 
-			# Compute the average by summing values above, below and at current depth level
-			# As current depth level is not accounted for in the while loops above, 1 needs to be added
-			# to the denominator
-			# If the current depth level is a null, only use the data above and below
-			if (self.OPT_MEAN_MTD == "ARITHMETIC"):
-				if self.input(index) != -999:
-					finalAverage = (sumAbove + sumBelow + self.input(index)) / (valsAbove + valsBelow + 1)
-				else:
-					finalAverage = (sumAbove + sumBelow) / (valsAbove + valsBelow)
-			elif (self.OPT_MEAN_MTD == "GEOMETRIC"):
-				if self.input(index) != -999:
-					finalAverage = math.exp((prodAbove + prodBelow + math.log(self.input(index)))/(valsAbove + valsBelow + 1))
-				else:
-					finalAverage = math.exp((prodAbove + prodBelow )/(valsAbove + valsBelow))
-			elif (self.OPT_MEAN_MTD == "HARMONIC"):
-				if self.input(index) != -999:
-					finalAverage = ((harmAbove + harmBelow + 1/self.input(index)) / (valsAbove + valsBelow + 1))**(-1)
-				else:
-					finalAverage = ((harmAbove + harmBelow) / (valsAbove + valsBelow))**(-1)
-			else:
-				finalAverage = self.input	
+			while index <= self.BottomDepth:
+				try:
+					# Default values reset at each depth level
+					depthAboveCount = depthAbove
+					depthBelowCount = depthBelow
+					sumAbove = prodAbove = harmAbove = sumBelow = prodBelow = harmBelow = valsAbove = valsBelow = 0
 
-			# This section computes the difference between the values below and above to the depth levels below and above
-			# There is the added option to check for nulls within the values above or values below
-			# If a null is detected the current depth level is set to null
-			
-			x = self.input(index + depthBelow) - self.input(index - depthAbove)
-			
-			if self.input(index - depthAbove) != -999 and self.input(index + depthBelow) != -999:
-				self.Save_DiffBelowAbove(index, x)
-			else:
-				self.Save_DiffBelowAbove(index, -999)		
+					# Checks if the depthAboveCount is between 0 and the user defined depth. If it is sum the value.
+					while depthAboveCount <= depthAbove and depthAboveCount > 0: 
+						if self.input(index - depthAboveCount) != -999: 
+							sumAbove += self.input(index - depthAboveCount)
+							prodAbove += math.log(self.input(index - depthAboveCount))
+							harmAbove += 1/self.input(index - depthAboveCount)
+							valsAbove += 1
+						depthAboveCount -= 1
+					
+					# Sum up the values below
+					while depthBelowCount <= depthBelow and depthBelowCount > 0:
+						if self.input(index + depthBelowCount) != -999:
+							sumBelow += self.input(index + depthBelowCount)
+							prodBelow += math.log(self.input(index + depthBelowCount))
+							harmBelow += 1/self.input(index - depthAboveCount)
+							valsBelow += 1
+						depthBelowCount -= 1
 
-			if self.nullCheck is True:
-				if valsAbove != depthAbove or valsBelow != depthBelow:
-					self.Save_SumDiffBelowAbove(index, -999) #Save back a null value
-				else:
-					# Calculated Difference between the summation of data below and above current depth level
-					self.Save_SumDiffBelowAbove(index, sumBelow-sumAbove)
-			else:
-				self.Save_SumDiffBelowAbove(index, sumBelow-sumAbove)
+					# Compute the average by summing values above, below and at current depth level
+					# As current depth level is not accounted for in the while loops above, 1 needs to be added
+					# to the denominator
+					# If the current depth level is a null, only use the data above and below
+					if (self.OPT_MEAN_MTD == "ARITHMETIC"):
+						if self.input(index) != -999:
+							finalAverage = (sumAbove + sumBelow + self.input(index)) / (valsAbove + valsBelow + 1)
+						else:
+							finalAverage = (sumAbove + sumBelow) / (valsAbove + valsBelow)
+					elif (self.OPT_MEAN_MTD == "GEOMETRIC"):
+						if self.input(index) != -999:
+							finalAverage = math.exp((prodAbove + prodBelow + math.log(self.input(index)))/(valsAbove + valsBelow + 1))
+						else:
+							finalAverage = math.exp((prodAbove + prodBelow )/(valsAbove + valsBelow))
+					elif (self.OPT_MEAN_MTD == "HARMONIC"):
+						if self.input(index) != -999:
+							finalAverage = ((harmAbove + harmBelow + 1/self.input(index)) / (valsAbove + valsBelow + 1))**(-1)
+						else:
+							finalAverage = ((harmAbove + harmBelow) / (valsAbove + valsBelow))**(-1)
+					else:
+						finalAverage = self.input	
 
-			# Save the Average curves back to IP			
-			if (index - depthAbove) < self.TopDepth:
-				# At the start of the well, null the output when index-depthAbove is above the start of the well
-				self.Save_OutCurve(index, -999)
-			
-			elif (index + depthBelow) > self.BottomDepth:
-				# At the end of the well, null the output when index+depthBelow is below the end of the well
-				self.Save_OutCurve(index, -999)
-			else:
-				# Else save the result back to IP
-				self.Save_OutCurve(index, finalAverage)
+					# This section computes the difference between the values below and above to the depth levels below and above
+					# There is the added option to check for nulls within the values above or values below
+					# If a null is detected the current depth level is set to null
+					
+					x = self.input(index + depthBelow) - self.input(index - depthAbove)
+					
+					if self.input(index - depthAbove) != -999 and self.input(index + depthBelow) != -999:
+						self.Save_DiffBelowAbove(index, x)
+					else:
+						self.Save_DiffBelowAbove(index, -999)		
 
-			#Additional output curves used for QC
-			self.Save_SumAbove(index, sumAbove)
-			self.Save_SumBelow(index, sumBelow)			
-			self.Save_ProdAbove(index, prodAbove)			
-			self.Save_ProdBelow(index, prodBelow)
-			self.Save_HarmAbove(index, harmAbove)			
-			self.Save_HarmBelow(index, harmBelow)
+					if self.nullCheck is True:
+						if valsAbove != depthAbove or valsBelow != depthBelow:
+							self.Save_SumDiffBelowAbove(index, -999) #Save back a null value
+						else:
+							# Calculated Difference between the summation of data below and above current depth level
+							self.Save_SumDiffBelowAbove(index, sumBelow-sumAbove)
+					else:
+						self.Save_SumDiffBelowAbove(index, sumBelow-sumAbove)
 
-			index += 1
-	def SetupParameters(self, CnIn, CnOut, ParIn, TxtParIn, FlagIn, StIndex, SpIndex, ZoneNum, TotZones, AXIn, AYIn, AXOut, AYOut, ParamCrvIn):
-		self._inputCurves = List[int](CnIn)
-		self._outputCurves = List[int](CnOut)
-		self._inputParameters = List[Single](ParIn)
-		self._textInputParameters = List[str](TxtParIn)
-		self._flagInputParameters = List[Boolean](FlagIn)
-		self._topIndex = StIndex
-		self._bottomIndex = SpIndex
-		self._totalZones = TotZones
-		self._zoneNumber = ZoneNum
-		self._inArrayX = List[int](AXIn)
-		self._inArrayY = List[int](AYIn)
-		self._outArrayX = List[int](AXOut)
-		self._outArrayY = List[int](AYOut)
-		self._parCnIn = List[int](ParamCrvIn)
+					# Save the Average curves back to IP			
+					if (index - depthAbove) < self.TopDepth:
+						# At the start of the well, null the output when index-depthAbove is above the start of the well
+						self.Save_OutCurve(index, -999)
+					
+					elif (index + depthBelow) > self.BottomDepth:
+						# At the end of the well, null the output when index+depthBelow is below the end of the well
+						self.Save_OutCurve(index, -999)
+					else:
+						# Else save the result back to IP
+						self.Save_OutCurve(index, finalAverage)
 
-	def ResetZoneParameters(self, ParIn, TxtParIn, FlagIn, ParamCrvIn, StIndex, SpIndex, ZoneNum):
-		self._inputParameters = List[Single](ParIn)
-		self._textInputParameters = List[str](TxtParIn)
-		self._flagInputParameters = List[Boolean](FlagIn)
-		self._parCnIn = List[int](ParamCrvIn)
-		self._topIndex = StIndex
-		self._bottomIndex = SpIndex
-		self._zoneNumber = ZoneNum
+					#Additional output curves used for QC
+					self.Save_SumAbove(index, sumAbove)
+					self.Save_SumBelow(index, sumBelow)			
+					self.Save_ProdAbove(index, prodAbove)			
+					self.Save_ProdBelow(index, prodBelow)
+					self.Save_HarmAbove(index, harmAbove)			
+					self.Save_HarmBelow(index, harmBelow)
 
-	def SetupIPProxy(self, ip):
-		self._IPProxy = ip
-
-	def Run(self):
-		self.UserCode()
-
-	def get_TopDepth(self):
-		return self._topIndex
-
-	TopDepth = property(fget=get_TopDepth)
-
-	def get_BottomDepth(self):
-		return self._bottomIndex
-
-	BottomDepth = property(fget=get_BottomDepth)
-
-	def get_TotalZones(self):
-		return self._totalZones
-
-	TotalZones = property(fget=get_TotalZones)
-
-	def get_ZoneNumber(self):
-		return self._zoneNumber
-
-	ZoneNumber = property(fget=get_ZoneNumber)
-
-	def SetZone(self, zoneNum):
-		self._IPProxy.SetZone(zoneNum)
-
-	def get_Well_Name(self):
-		return self.Read_Well_Attribute("WellName")
-
-	Well_Name = property(fget=get_Well_Name)
-
-	def get_Well_Company(self):
-		return self.Read_Well_Attribute("Company")
-
-	Well_Company = property(fget=get_Well_Company)
-
-	def get_Well_Field(self):
-		return self.Read_Well_Attribute("Field")
-
-	Well_Field = property(fget=get_Well_Field)
-
-	def Read_Well_Attribute(self, attributeName):
-		return self._IPProxy.GetWellText(attributeName)
-
-	def Write_Well_Attribute(self, attributeName, value):
-		self._IPProxy.SetWellText(attributeName, value)
-
-	def Read_Log_Attribute(self, attributeName, logRunNum):
-		return self._IPProxy.GetLogText(attributeName, logRunNum)
-
-	def Write_Log_Attribute(self, attributeName, value, logRunNum):
-		self._IPProxy.SetLogText(attributeName, value, logRunNum)
-
-	def Read_Curve_Attribute(self, curveNumber, attributeName):
-		return self._IPProxy.GetText(2, curveNumber, attributeName)
-
-	def Write_Curve_Attribute(self, curveNumber, attributeName, value):
-		self._IPProxy.SetText(2, curveNumber, attributeName, value)
-
-	# flags: 0 = Well, 1 = Log, 2 = Curve...
-	def Read_Text(self, flags, index, attributeName):
-		return self._IPProxy.GetText(flags, index, attributeName)
-
-	def Write_Text(self, flags, index, attributeName, value):
-		self._IPProxy.SetText(flags, index, attributeName, value)
+					index += 1
+				except Exception:
+					index += 1
+					continue
 
 	def __init__(self):
 		self._FIRST_AVAILABLE_LOG_RUN = -1
@@ -263,10 +173,10 @@ class IPLink:
 		self._IPProxy.SetText(2, self._inputCurves[0], attributeName, newValue)
 
 	def Save_input(self, index, value):
-		self._IPProxy.SetCurveData(self._inputCurves[0], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._inputCurves[0], index, value)
 
 	def Save_Array_input(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._inputCurves[0], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._inputCurves[0], index, value, xVal, yVal)
 
 	def Save_input_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._inputCurves[0], index, value)
@@ -285,10 +195,10 @@ class IPLink:
 	Array_input_MaxY = property(fget=get_Array_input_MaxY)
 
 	def Save_OutCurve(self, index, value):
-		self._IPProxy.SetCurveData(self._outputCurves[0], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._outputCurves[0], index, value)
 
 	def Save_Array_OutCurve(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._outputCurves[0], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._outputCurves[0], index, value, xVal, yVal)
 
 	def Save_OutCurve_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[0], index, value)
@@ -343,10 +253,10 @@ class IPLink:
 		self._IPProxy.SetText(2, self._outputCurves[0], attributeName, newValue)
 
 	def Save_SumAbove(self, index, value):
-		self._IPProxy.SetCurveData(self._outputCurves[1], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._outputCurves[1], index, value)
 
 	def Save_Array_SumAbove(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._outputCurves[1], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._outputCurves[1], index, value, xVal, yVal)
 
 	def Save_SumAbove_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[1], index, value)
@@ -401,10 +311,10 @@ class IPLink:
 		self._IPProxy.SetText(2, self._outputCurves[1], attributeName, newValue)
 
 	def Save_SumBelow(self, index, value):
-		self._IPProxy.SetCurveData(self._outputCurves[2], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._outputCurves[2], index, value)
 
 	def Save_Array_SumBelow(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._outputCurves[2], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._outputCurves[2], index, value, xVal, yVal)
 
 	def Save_SumBelow_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[2], index, value)
@@ -459,10 +369,10 @@ class IPLink:
 		self._IPProxy.SetText(2, self._outputCurves[2], attributeName, newValue)
 
 	def Save_SumDiffBelowAbove(self, index, value):
-		self._IPProxy.SetCurveData(self._outputCurves[3], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._outputCurves[3], index, value)
 
 	def Save_Array_SumDiffBelowAbove(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._outputCurves[3], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._outputCurves[3], index, value, xVal, yVal)
 
 	def Save_SumDiffBelowAbove_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[3], index, value)
@@ -517,10 +427,10 @@ class IPLink:
 		self._IPProxy.SetText(2, self._outputCurves[3], attributeName, newValue)
 
 	def Save_DiffBelowAbove(self, index, value):
-		self._IPProxy.SetCurveData(self._outputCurves[4], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._outputCurves[4], index, value)
 
 	def Save_Array_DiffBelowAbove(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._outputCurves[4], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._outputCurves[4], index, value, xVal, yVal)
 
 	def Save_DiffBelowAbove_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[4], index, value)
@@ -575,10 +485,10 @@ class IPLink:
 		self._IPProxy.SetText(2, self._outputCurves[4], attributeName, newValue)
 
 	def Save_ProdAbove(self, index, value):
-		self._IPProxy.SetCurveData(self._outputCurves[5], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._outputCurves[5], index, value)
 
 	def Save_Array_ProdAbove(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._outputCurves[5], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._outputCurves[5], index, value, xVal, yVal)
 
 	def Save_ProdAbove_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[5], index, value)
@@ -633,10 +543,10 @@ class IPLink:
 		self._IPProxy.SetText(2, self._outputCurves[5], attributeName, newValue)
 
 	def Save_ProdBelow(self, index, value):
-		self._IPProxy.SetCurveData(self._outputCurves[6], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._outputCurves[6], index, value)
 
 	def Save_Array_ProdBelow(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._outputCurves[6], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._outputCurves[6], index, value, xVal, yVal)
 
 	def Save_ProdBelow_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[6], index, value)
@@ -691,10 +601,10 @@ class IPLink:
 		self._IPProxy.SetText(2, self._outputCurves[6], attributeName, newValue)
 
 	def Save_HarmAbove(self, index, value):
-		self._IPProxy.SetCurveData(self._outputCurves[7], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._outputCurves[7], index, value)
 
 	def Save_Array_HarmAbove(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._outputCurves[7], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._outputCurves[7], index, value, xVal, yVal)
 
 	def Save_HarmAbove_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[7], index, value)
@@ -749,10 +659,10 @@ class IPLink:
 		self._IPProxy.SetText(2, self._outputCurves[7], attributeName, newValue)
 
 	def Save_HarmBelow(self, index, value):
-		self._IPProxy.SetCurveData(self._outputCurves[8], index, Convert.ToSingle(value))
+		self._IPProxy.SetCurveData(self._outputCurves[8], index, value)
 
 	def Save_Array_HarmBelow(self, index, xVal, yVal, value):
-		self._IPProxy.SetCurveData(self._outputCurves[8], index, Convert.ToSingle(value), xVal, yVal)
+		self._IPProxy.SetCurveData(self._outputCurves[8], index, value, xVal, yVal)
 
 	def Save_HarmBelow_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[8], index, value)
@@ -858,3 +768,96 @@ class IPLink:
 
 	nullCheck = property(fget=get_nullCheck)
 
+	def SetupParameters(self, CnIn, CnOut, ParIn, TxtParIn, FlagIn, StIndex, SpIndex, ZoneNum, TotZones, AXIn, AYIn, AXOut, AYOut, ParamCrvIn):
+		self._inputCurves = List[int](CnIn)
+		self._outputCurves = List[int](CnOut)
+		self._inputParameters = List[Single](ParIn)
+		self._textInputParameters = List[str](TxtParIn)
+		self._flagInputParameters = List[Boolean](FlagIn)
+		self._topIndex = StIndex
+		self._bottomIndex = SpIndex
+		self._totalZones = TotZones
+		self._zoneNumber = ZoneNum
+		self._inArrayX = List[int](AXIn)
+		self._inArrayY = List[int](AYIn)
+		self._outArrayX = List[int](AXOut)
+		self._outArrayY = List[int](AYOut)
+		self._parCnIn = List[int](ParamCrvIn)
+
+	def ResetZoneParameters(self, ParIn, TxtParIn, FlagIn, ParamCrvIn, StIndex, SpIndex, ZoneNum):
+		self._inputParameters = List[Single](ParIn)
+		self._textInputParameters = List[str](TxtParIn)
+		self._flagInputParameters = List[Boolean](FlagIn)
+		self._parCnIn = List[int](ParamCrvIn)
+		self._topIndex = StIndex
+		self._bottomIndex = SpIndex
+		self._zoneNumber = ZoneNum
+
+	def SetupIPProxy(self, ip):
+		self._IPProxy = ip
+
+	def Run(self):
+		self.UserCode()
+
+	def get_TopDepth(self):
+		return self._topIndex
+
+	TopDepth = property(fget=get_TopDepth)
+
+	def get_BottomDepth(self):
+		return self._bottomIndex
+
+	BottomDepth = property(fget=get_BottomDepth)
+
+	def get_TotalZones(self):
+		return self._totalZones
+
+	TotalZones = property(fget=get_TotalZones)
+
+	def get_ZoneNumber(self):
+		return self._zoneNumber
+
+	ZoneNumber = property(fget=get_ZoneNumber)
+
+	def SetZone(self, zoneNum):
+		self._IPProxy.SetZone(zoneNum)
+
+	def get_Well_Name(self):
+		return self.Read_Well_Attribute("WellName")
+
+	Well_Name = property(fget=get_Well_Name)
+
+	def get_Well_Company(self):
+		return self.Read_Well_Attribute("Company")
+
+	Well_Company = property(fget=get_Well_Company)
+
+	def get_Well_Field(self):
+		return self.Read_Well_Attribute("Field")
+
+	Well_Field = property(fget=get_Well_Field)
+
+	def Read_Well_Attribute(self, attributeName):
+		return self._IPProxy.GetWellText(attributeName)
+
+	def Write_Well_Attribute(self, attributeName, value):
+		self._IPProxy.SetWellText(attributeName, value)
+
+	def Read_Log_Attribute(self, attributeName, logRunNum):
+		return self._IPProxy.GetLogText(attributeName, logRunNum)
+
+	def Write_Log_Attribute(self, attributeName, value, logRunNum):
+		self._IPProxy.SetLogText(attributeName, value, logRunNum)
+
+	def Read_Curve_Attribute(self, curveNumber, attributeName):
+		return self._IPProxy.GetText(2, curveNumber, attributeName)
+
+	def Write_Curve_Attribute(self, curveNumber, attributeName, value):
+		self._IPProxy.SetText(2, curveNumber, attributeName, value)
+
+	# flags: 0 = Well, 1 = Log, 2 = Curve...
+	def Read_Text(self, flags, index, attributeName):
+		return self._IPProxy.GetText(flags, index, attributeName)
+
+	def Write_Text(self, flags, index, attributeName, value):
+		self._IPProxy.SetText(flags, index, attributeName, value)

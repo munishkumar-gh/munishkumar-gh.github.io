@@ -1,42 +1,42 @@
 <class 'pandas.core.frame.DataFrame'>
-Int64Index: 40 entries, 0 to 64
+Int64Index: 74 entries, 0 to 73
 Data columns (total 9 columns):
  #   Column                Non-Null Count  Dtype  
 ---  ------                --------------  -----  
- 0   Well Name             40 non-null     object 
- 1   Sample ID             40 non-null     object 
- 2   Depth (m)             40 non-null     float64
- 3   NOB (psi)             40 non-null     float64
- 4   K_air (mD)            40 non-null     float64
- 5   Porosity (%)          40 non-null     float64
- 6   Grain Density (g/cc)  40 non-null     float64
- 7   Core Type             40 non-null     int64  
- 8   color                 40 non-null     object 
-dtypes: float64(5), int64(1), object(3)
-memory usage: 3.1+ KB
+ 0   Well Name             74 non-null     object 
+ 1   Sample ID             74 non-null     int64  
+ 2   Depth (m)             74 non-null     float64
+ 3   NOB (psi)             74 non-null     int64  
+ 4   K_air (mD)            74 non-null     float64
+ 5   Porosity (%)          74 non-null     float64
+ 6   Grain Density (g/cc)  74 non-null     float64
+ 7   Core Type             74 non-null     object 
+ 8   color                 74 non-null     object 
+dtypes: float64(4), int64(2), object(3)
+memory usage: 5.8+ KB
 None
-       Well Name Sample ID   Depth (m)  NOB (psi)   K_air (mD)  Porosity (%)  \
-count         40        40    40.00000  40.000000    40.000000     40.000000   
-unique         4        40         NaN        NaN          NaN           NaN   
-top        CRC-1        1a         NaN        NaN          NaN           NaN   
-freq          11         1         NaN        NaN          NaN           NaN   
-mean         NaN       NaN  4500.00875  48.525000   250.385875     19.753992   
-std          NaN       NaN  1709.49335  21.163451   584.731644      7.320309   
-min          NaN       NaN  2360.80000  14.700000     0.016000      4.858228   
-25%          NaN       NaN  2799.50000  26.450000     0.213750     14.727500   
-50%          NaN       NaN  4556.00000  52.200000     1.310000     17.900000   
-75%          NaN       NaN  6160.76500  65.950000   171.000000     24.335000   
-max          NaN       NaN  6387.00000  78.700000  2310.000000     40.500000   
+         Well Name  Sample ID    Depth (m)  NOB (psi)   K_air (mD)  \
+count           74  74.000000    74.000000       74.0    74.000000   
+unique           1        NaN          NaN        NaN          NaN   
+top     CHUDITCH-1        NaN          NaN        NaN          NaN   
+freq            74        NaN          NaN        NaN          NaN   
+mean           NaN  37.500000  2936.647432    99999.0   242.405743   
+std            NaN  21.505813     7.486779        0.0   291.736387   
+min            NaN   1.000000  2925.050000    99999.0     0.018000   
+25%            NaN  19.250000  2930.450000    99999.0    18.720500   
+50%            NaN  37.500000  2935.900000    99999.0   127.170500   
+75%            NaN  55.750000  2942.540000    99999.0   339.511000   
+max            NaN  74.000000  2950.340000    99999.0  1176.130000   
 
-        Grain Density (g/cc)  Core Type    color  
-count              40.000000       40.0       40  
-unique                   NaN        NaN        4  
-top                      NaN        NaN  #5d8aa8  
-freq                     NaN        NaN       11  
-mean                1.849298        0.0      NaN  
-std                 1.166044        0.0      NaN  
-min                 0.000000        0.0      NaN  
-25%                 0.000000        0.0      NaN  
-50%                 2.630558        0.0      NaN  
-75%                 2.643950        0.0      NaN  
-max                 2.741000        0.0      NaN 
+        Porosity (%)  Grain Density (g/cc) Core Type    color  
+count      74.000000             74.000000        74       74  
+unique           NaN                   NaN         1        1  
+top              NaN                   NaN       CCA  #5d8aa8  
+freq             NaN                   NaN        74       74  
+mean       11.437838              2.658649       NaN      NaN  
+std         5.174217              0.021282       NaN      NaN  
+min         0.400000              2.640000       NaN      NaN  
+25%         9.650000              2.650000       NaN      NaN  
+50%        12.350000              2.650000       NaN      NaN  
+75%        15.650000              2.660000       NaN      NaN  
+max        18.400000              2.750000       NaN      NaN 

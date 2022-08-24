@@ -1,6 +1,6 @@
 ~V20
 useZones=true
-Compiler=Python
+Compiler=ClassicPython
 140 , 20
 input , Input Curve , 
  ,  , 

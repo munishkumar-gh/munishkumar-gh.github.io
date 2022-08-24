@@ -33,6 +33,7 @@ Stage 4 - Bulk Volumes
 from Methods import Methods
 from IpClassicPythonLink import IPLink
 import math
+import cmath
 
 class UserApp(Methods, IPLink):
 
@@ -149,24 +150,20 @@ class UserApp(Methods, IPLink):
 				
                 # There is an error where FORM_FACT gives a negative number
                 # for all values of M not 2 i.e. any decimal number. 
-                # Subsequently, all calculations return FORM_FACT as a 
-                # -ve number, meaning that "<" cannot be executed.
-                # Its not clear why this is occuring.
-                # Using math.pow to see if this fixes the issue, 
-                # as it defaults the complex number to a float
-                # Alternative is to force a real number for FORM_FACT
-                # using FORM_FACT.real              
-                
+                # This is because the missing value in IP = -999
+				# is still mathematically valid for operations.
+                # Solution is to use complex numbers cmath
+				# where a**b in complex space = e*8(b*ln*a)
                 #FORM_FACT = A*(PHIT_SST_MOD**-M)
-				FORM_FACT = A*(math.pow(PHIT_SST_MOD,-M))
+				FORM_FACT = A*cmath.exp(-M*cmath.log(PHIT_SST_MOD)).real
 				if (RES > 0):
 					RO = min(RES,FORM_FACT*RW)
-                    # Alternative solution
-                    #RO = min(RES,FORM_FACT.real*RW)
+					# Alternative solution
+					#RO = min(RES,FORM_FACT.real*RW)
 				
-                    # Original
-                    #SW = (RO/RES)**(1/float(N))
-                    SW = math.pow((RO/RES),(1/float(N)))
+					# Original
+					#SW = (RO/RES)**(1/float(N))
+					SW = cmath.exp(1/float(N)*cmath.log(RO/RES)).real
 					SWTU = SW
 					SWT_ARCH = min(1, max(0.03,SWTU))
 				else:

@@ -131,7 +131,7 @@ from IpClassicPythonLink import IPLink
 import math
 
 # Debugging Code
-import ptvsd
+#import ptvsd
 
 class UserApp(Methods, IPLink):
 
@@ -146,167 +146,171 @@ class UserApp(Methods, IPLink):
         index = self.TopDepth
         while index <= self.BottomDepth:
             # Enter user code here
-            ##################################################
-            ### Code to calculate RW and Salinity from SP  ###
-            ##################################################
-            # Setting ouput in Coal & Volcanics
-            #self.ipprint("Entered Depth " + str( self.Depth(index) ))
-            if (self.FLAG_COAL(index) > 0) or (self.FLAG_VOLC(index) > 0):
-                RW_SP, SALINITY_SP, PHIX, PHIA, PHIT_HC, PHIT, PHID, CWA, RWA, SALINITY, RHOGM = self.COAL_VOLC() 
+            try:
+                ##################################################
+                ### Code to calculate RW and Salinity from SP  ###
+                ##################################################
+                # Setting ouput in Coal & Volcanics
                 #self.ipprint("Entered Depth " + str( self.Depth(index) ))
-            else:
-                # GEOTHERMAL GRADIENT & FORMATION TEMPERATURE
-                if (self.OPT_TEMPLOG == 'AVAILABLE'):
-                    FT = self.FTEMP_L(index)
+                if (self.FLAG_COAL(index) > 0) or (self.FLAG_VOLC(index) > 0):
+                    RW_SP, SALINITY_SP, PHIX, PHIA, PHIT_HC, PHIT, PHID, CWA, RWA, SALINITY, RHOGM = self.COAL_VOLC() 
+                    #self.ipprint("Entered Depth " + str( self.Depth(index) ))
                 else:
-                    GG = (self.BHT(index) - self.SBT(index))/(self.TD(index) - self.WD(index) - self.RTE(index))
-                    FT = ((self.Depth(index) - self.WD(index) - self.RTE(index))*GG) + self.SBT(index)
-                    #self.ipprint("Entered FT " + str( FT ))
-
-                # Conversion of Temperature units
-                if (self.OPT_TEMP_UNITS == 'CELSIUS'):
-                    FTF = (FT*9/5)+32
-                else:
-                    FTF = FT
-                #self.ipprint("Entered FTF " + str( FTF ))
-                # Calculation of RMF @ 75 deg F and at Formation Temperatutre (deg F)
-                if (self.OPT_TEMP_UNITS == 'CELSIUS'):
-                    TRMFF = (self.TRMF(index)*9/5)+32
-                else:
-                    TRMFF = self.TRMF(index)
-                
-                RMFA = self.RMF(index)*(TRMFF+6.77)/81.77
-                RMFI = RMFA*(TRMFF+6.77)/(FTF+6.77)
-            
-                # Setting the values of SP Baseline either as a constant or as a log
-                if (self.SPB_L(index) != None):
-                    SPB = self.SPB_C(index)
-                else:
-                    SPB = self.SPB_L(index)
-                # Calculation of RMFE
-                if (RMFA > 0.1):
-                    RMFE = 0.75*RMFI
-                else:
-                    RMFE = (RMFA + (0.131*10**((1/math.log10(FTF/19.9))-2)))/((10**(0.0426/math.log10(FTF/50.8))) - 0.5*RMFA)
-                
-                # Calculation of RWE
-                if (self.OPT_MUD_TYPE == 'CACL2') or (self.OPT_MUD_TYPE == 'NACL') or (self.OPT_MUD_TYPE == 'GYPSUM'):
-                    RWE = RMFE * (10**((self.SP(index) - SPB)/(61+0.133*FTF)) )
-                elif (self.OPT_MUD_TYPE == 'KCL'):
-                    RWE = 10**(((self.SP(index)-SPB-22)/(56+0.12*FTF)) + math.log10(RMFE))
-
-                # Calculation of RW
-                RW_SP = (RWE + (0.131*10**((1/math.log10(FTF/19.9))-2)))/((10**(0.0426/math.log10(FTF/50.8)))-0.5*RWE)
-                #self.ipprint("Entered RW_SP " + str( RW_SP ))
-
-                # Formation Water Salinity
-                SALINITY_SP = (300000/((max(0.001,RW_SP))*(FTF+6.77)-1))**1.05
-
-                ##################################################
-                ### Calculation of PHIX, RWA and salinity      ###
-                ##################################################
-                # Setting Value of RHOBWSH as Curve or Constant
-                if (self.RHOB(index) != None) and (self.NPHI(index) != None):
-                    if (self.RHOBWSH_L(index) == None):
-                        RHOBWSH = self.RHOBWSH_C
-                        NPHIWSH = self.NPHIWSH_C
+                    # GEOTHERMAL GRADIENT & FORMATION TEMPERATURE
+                    if (self.OPT_TEMPLOG == 'AVAILABLE'):
+                        FT = self.FTEMP_L(index)
                     else:
-                        RHOBWSH = self.RHOBWSH_L(index)
-                        NPHIWSH = self.NPHIWSH_L(index)
-                
-                # Calculate apparent grain density dry shale or RHOBDSH         
-                RHOBDSH = (self.CLAY_FRACTION(index)*self.GRD_CLAY(index))+ ((1-self.CLAY_FRACTION(index))*2.65)
-                
-                if (self.DT(index) != None):    
-                    DT = self.DT(index)
-                    DTM = self.DTM(index)
-                    DTF = self.DTF(index)
-                    CF = self.CF(index)
-                # PHIX - Density-Neutron Cross-Plot Porosity, Density Porsity or Sonic Porosity           
-                if (self.RHOB(index) == None) and (self.DT(index) != None) and (self.RT(index) != None):
-                    PHIA = self.SONIC_POR(DT, DTM, DTF, CF)
-                    PHIX = PHIA
-                    PHIT = None
-                    PHID = None
-                    PHIT_HC = None
-                    RHOGM = None
-                    # self.ipprint("Entered Loop 1 " + str( PHIA ))
-                elif (self.RHOB(index) != None) and (self.NPHI(index) == None) \
-                    and (self.DT(index) != None) and (self.RT(index) != None):
-                    PHID = min(1,(max(0,((self.RHOGA(index) - self.RHOB(index))/(self.RHOGA(index)-self.RHOFL(index))))))
-                    PHIX = PHID
-                    RHOGM = None
-                    PHIT_HC = None
-                    PHIT = None
-                    PHIA = self.SONIC_POR(DT, DTM, DTF, CF)
-                    # self.ipprint("Entered Loop 2 " + str( PHIA ))
-                elif (self.RHOB(index) != None) and (self.NPHI(index) == None) \
-                    and (self.RT(index) != None):
-                    PHID = min(1,(max(0,((self.RHOGA(index) - self.RHOB(index))/(self.RHOGA(index)-self.RHOFL(index))))))
-                    PHIX = PHID
-                    RHOGM = None
-                    PHIT = None
-                    PHIT_HC = None
-                    PHIA = None
-                    # self.ipprint("Entered Loop 3 " + str( PHID ))
-                elif (self.RHOB(index) != None) and (self.NPHI(index) != None) \
-                    and (self.RT(index) != None):
-                    m2 = (1-RHOBWSH)/(1-NPHIWSH)
-                    c2 = 1-m2
-                    NPHIDSH = (m2-1+RHOBDSH)/m2    
-                    m3 = (self.RHOBQ(index) - RHOBDSH)/(self.NPHIQ(index) - NPHIDSH)
-                    c3 = RHOBDSH-(m3*NPHIDSH)
-                    m4 = (1-self.RHOB(index))/(1-self.NPHI(index))
-                    c4 = self.RHOB(index) - (m4*self.NPHI(index))
-                    RHOGM = ((c3*m4) - (m3*c4))/(m4 - m3)
-                    PHIX = max(0,min(1,((RHOGM - self.RHOB(index))/(RHOGM - self.RHOFL(index)))))
-                    PHID = max(0, min(1,(self.RHOGA(index)-self.RHOB(index))/(self.RHOGA(index)-self.RHOFL(index))))
-                    PHIA = self.SONIC_POR(DT, DTM, DTF, CF)
-                    # self.ipprint("Entered Loop 4 " + str( RHOGM ))
+                        GG = (self.BHT(index) - self.SBT(index))/(self.TD(index) - self.WD(index) - self.RTE(index))
+                        FT = ((self.Depth(index) - self.WD(index) - self.RTE(index))*GG) + self.SBT(index)
+                        #self.ipprint("Entered FT " + str( FT ))
 
-                # Total Porosity in the presence of light hydrocarbons
-                PHIDSND = (self.RHOBQ(index) - self.RHOB(index))/(self.RHOBQ(index) - self.RHOFL(index))
-                NPHISND = self.NPHI(index) + self.NPHIQ(index)
-                B1 = 7.0- 11*NPHISND
-                B2 = abs(B1**2 + 308*PHIDSND)
-                # self.ipprint("Entered B2 " + str( B2 ))
-                B3 = math.sqrt(B2) - B1
-
-                # HC corrected Total Porosity
-                PHIT_HC = B3/22                          
-                PHIT_HC = (max(0,min(1,PHIT_HC)))
-                # self.ipprint("Entered PHIT_HC " + str( PHIT_HC ))
+                    # Conversion of Temperature units
+                    if (self.OPT_TEMP_UNITS == 'CELSIUS'):
+                        FTF = (FT*9/5)+32
+                    else:
+                        FTF = FT
+                    #self.ipprint("Entered FTF " + str( FTF ))
+                    # Calculation of RMF @ 75 deg F and at Formation Temperatutre (deg F)
+                    if (self.OPT_TEMP_UNITS == 'CELSIUS'):
+                        TRMFF = (self.TRMF(index)*9/5)+32
+                    else:
+                        TRMFF = self.TRMF(index)
+                    
+                    RMFA = self.RMF(index)*(TRMFF+6.77)/81.77
+                    RMFI = RMFA*(TRMFF+6.77)/(FTF+6.77)
                 
-                # Combined Total Porosity - Light hydrocarb corrected + non-hydrocarb bearing Total Porosity
-                if (RHOGM < 2.64):
-                    PHIT = PHIT_HC
-                else:
-                    PHIT = PHIX     
+                    # Setting the values of SP Baseline either as a constant or as a log
+                    if (self.SPB_L(index) != None):
+                        SPB = self.SPB_C(index)
+                    else:
+                        SPB = self.SPB_L(index)
+                    # Calculation of RMFE
+                    if (RMFA > 0.1):
+                        RMFE = 0.75*RMFI
+                    else:
+                        RMFE = (RMFA + (0.131*10**((1/math.log10(FTF/19.9))-2)))/((10**(0.0426/math.log10(FTF/50.8))) - 0.5*RMFA)
+                    
+                    # Calculation of RWE
+                    if (self.OPT_MUD_TYPE == 'CACL2') or (self.OPT_MUD_TYPE == 'NACL') or (self.OPT_MUD_TYPE == 'GYPSUM'):
+                        RWE = RMFE * (10**((self.SP(index) - SPB)/(61+0.133*FTF)) )
+                    elif (self.OPT_MUD_TYPE == 'KCL'):
+                        RWE = 10**(((self.SP(index)-SPB-22)/(56+0.12*FTF)) + math.log10(RMFE))
 
-                # RWA
-                RWA = self.RT(index) * (PHIX**self.M(index))
-                if RWA == 0:
-                    CWA = -999
-                    SALINITY = -999
-                else:
-                    CWA = 1/RWA
-                    # APPARENT SALINITY
-                    SALINITY = (300000/(RWA*(FTF+6.77))-1)**1.05
-                    # self.ipprint("Entered SALINITY " + str( SALINITY ))            
-    
-            # Output the curve results
-            self.Save_RW_SP(index, RW_SP)
-            self.Save_SALINITY_SP(index, SALINITY_SP)
-            self.Save_PHIX(index, PHIX)
-            self.Save_PHIA(index, PHIA)
-            self.Save_PHIT_HC(index, PHIT_HC)
-            self.Save_PHIT(index, PHIT)
-            self.Save_PHID(index, PHID)
-            self.Save_CWA(index, CWA)
-            self.Save_RWA(index, RWA)
-            self.Save_SALINITY(index, SALINITY)
-            self.Save_RHOGM(index, RHOGM)
-            index += 1
+                    # Calculation of RW
+                    RW_SP = (RWE + (0.131*10**((1/math.log10(FTF/19.9))-2)))/((10**(0.0426/math.log10(FTF/50.8)))-0.5*RWE)
+                    #self.ipprint("Entered RW_SP " + str( RW_SP ))
+
+                    # Formation Water Salinity
+                    SALINITY_SP = (300000/((max(0.001,RW_SP))*(FTF+6.77)-1))**1.05
+
+                    ##################################################
+                    ### Calculation of PHIX, RWA and salinity      ###
+                    ##################################################
+                    # Setting Value of RHOBWSH as Curve or Constant
+                    if (self.RHOB(index) != None) and (self.NPHI(index) != None):
+                        if (self.RHOBWSH_L(index) == None):
+                            RHOBWSH = self.RHOBWSH_C
+                            NPHIWSH = self.NPHIWSH_C
+                        else:
+                            RHOBWSH = self.RHOBWSH_L(index)
+                            NPHIWSH = self.NPHIWSH_L(index)
+                    
+                    # Calculate apparent grain density dry shale or RHOBDSH         
+                    RHOBDSH = (self.CLAY_FRACTION(index)*self.GRD_CLAY(index))+ ((1-self.CLAY_FRACTION(index))*2.65)
+                    
+                    if (self.DT(index) != None):    
+                        DT = self.DT(index)
+                        DTM = self.DTM(index)
+                        DTF = self.DTF(index)
+                        CF = self.CF(index)
+                    # PHIX - Density-Neutron Cross-Plot Porosity, Density Porsity or Sonic Porosity           
+                    if (self.RHOB(index) == None) and (self.DT(index) != None) and (self.RT(index) != None):
+                        PHIA = self.SONIC_POR(DT, DTM, DTF, CF)
+                        PHIX = PHIA
+                        PHIT = None
+                        PHID = None
+                        PHIT_HC = None
+                        RHOGM = None
+                        # self.ipprint("Entered Loop 1 " + str( PHIA ))
+                    elif (self.RHOB(index) != None) and (self.NPHI(index) == None) \
+                        and (self.DT(index) != None) and (self.RT(index) != None):
+                        PHID = min(1,(max(0,((self.RHOGA(index) - self.RHOB(index))/(self.RHOGA(index)-self.RHOFL(index))))))
+                        PHIX = PHID
+                        RHOGM = None
+                        PHIT_HC = None
+                        PHIT = None
+                        PHIA = self.SONIC_POR(DT, DTM, DTF, CF)
+                        # self.ipprint("Entered Loop 2 " + str( PHIA ))
+                    elif (self.RHOB(index) != None) and (self.NPHI(index) == None) \
+                        and (self.RT(index) != None):
+                        PHID = min(1,(max(0,((self.RHOGA(index) - self.RHOB(index))/(self.RHOGA(index)-self.RHOFL(index))))))
+                        PHIX = PHID
+                        RHOGM = None
+                        PHIT = None
+                        PHIT_HC = None
+                        PHIA = None
+                        # self.ipprint("Entered Loop 3 " + str( PHID ))
+                    elif (self.RHOB(index) != None) and (self.NPHI(index) != None) \
+                        and (self.RT(index) != None):
+                        m2 = (1-RHOBWSH)/(1-NPHIWSH)
+                        c2 = 1-m2
+                        NPHIDSH = (m2-1+RHOBDSH)/m2    
+                        m3 = (self.RHOBQ(index) - RHOBDSH)/(self.NPHIQ(index) - NPHIDSH)
+                        c3 = RHOBDSH-(m3*NPHIDSH)
+                        m4 = (1-self.RHOB(index))/(1-self.NPHI(index))
+                        c4 = self.RHOB(index) - (m4*self.NPHI(index))
+                        RHOGM = ((c3*m4) - (m3*c4))/(m4 - m3)
+                        PHIX = max(0,min(1,((RHOGM - self.RHOB(index))/(RHOGM - self.RHOFL(index)))))
+                        PHID = max(0, min(1,(self.RHOGA(index)-self.RHOB(index))/(self.RHOGA(index)-self.RHOFL(index))))
+                        PHIA = self.SONIC_POR(DT, DTM, DTF, CF)
+                        # self.ipprint("Entered Loop 4 " + str( RHOGM ))
+
+                    # Total Porosity in the presence of light hydrocarbons
+                    PHIDSND = (self.RHOBQ(index) - self.RHOB(index))/(self.RHOBQ(index) - self.RHOFL(index))
+                    NPHISND = self.NPHI(index) + self.NPHIQ(index)
+                    B1 = 7.0- 11*NPHISND
+                    B2 = abs(B1**2 + 308*PHIDSND)
+                    # self.ipprint("Entered B2 " + str( B2 ))
+                    B3 = math.sqrt(B2) - B1
+
+                    # HC corrected Total Porosity
+                    PHIT_HC = B3/22                          
+                    PHIT_HC = (max(0,min(1,PHIT_HC)))
+                    # self.ipprint("Entered PHIT_HC " + str( PHIT_HC ))
+                    
+                    # Combined Total Porosity - Light hydrocarb corrected + non-hydrocarb bearing Total Porosity
+                    if (RHOGM < 2.64):
+                        PHIT = PHIT_HC
+                    else:
+                        PHIT = PHIX     
+
+                    # RWA
+                    RWA = self.RT(index) * (PHIX**self.M(index))
+                    if RWA == 0:
+                        CWA = -999
+                        SALINITY = -999
+                    else:
+                        CWA = 1/RWA
+                        # APPARENT SALINITY
+                        SALINITY = (300000/(RWA*(FTF+6.77))-1)**1.05
+                        # self.ipprint("Entered SALINITY " + str( SALINITY ))            
+        
+                # Output the curve results
+                self.Save_RW_SP(index, RW_SP)
+                self.Save_SALINITY_SP(index, SALINITY_SP)
+                self.Save_PHIX(index, PHIX)
+                self.Save_PHIA(index, PHIA)
+                self.Save_PHIT_HC(index, PHIT_HC)
+                self.Save_PHIT(index, PHIT)
+                self.Save_PHID(index, PHID)
+                self.Save_CWA(index, CWA)
+                self.Save_RWA(index, RWA)
+                self.Save_SALINITY(index, SALINITY)
+                self.Save_RHOGM(index, RHOGM)
+                index += 1
+            except Exception:
+                index += 1
+                continue                
             # self.ipprint("Entered Loop 7 " + str( PHIT ))
 
     def COAL_VOLC(self):
