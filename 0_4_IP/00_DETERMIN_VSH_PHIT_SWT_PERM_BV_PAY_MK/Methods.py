@@ -1,5 +1,5 @@
 # /***********************************************/
-#  * File dynamically created from IP: 11/18/2020 08:28:23
+#  * File dynamically created from IP: 08/24/2022 14:25:38
 #  * DO NOT MANUALLY EDIT
 # /***********************************************/
 
@@ -881,62 +881,62 @@ class Methods:
 	def Set_VSH_SP_Attribute(self, attributeName, newValue):
 		self._IPProxy.SetText(2, self._outputCurves[4], attributeName, str(newValue))
 
-	def Save_PHIT(self, index, value):
+	def Save_VCL(self, index, value):
 		self._IPProxy.SetCurveData(self._outputCurves[5], index, float(value))
 
-	def Save_Array_PHIT(self, index, xVal, yVal, value):
+	def Save_Array_VCL(self, index, xVal, yVal, value):
 		self._IPProxy.SetCurveData(self._outputCurves[5], index, float(value), xVal, yVal)
 
-	def Save_PHIT_Text(self, index, value):
+	def Save_VCL_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[5], index, str(value))
 
-	def Save_Array_PHIT_Text(self, index, xVal, yVal, value):
+	def Save_Array_VCL_Text(self, index, xVal, yVal, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[5], index, str(value), xVal, yVal)
 
-	def PHIT(self, index):
+	def VCL(self, index):
 		return self._IPProxy.GetCurveData(self._outputCurves[5], index)
 
-	def Array_PHIT(self, index, xVal, yVal):
+	def Array_VCL(self, index, xVal, yVal):
 		return self._IPProxy.GetCurveData(self._outputCurves[5], index, xVal, yVal)
 
-	def PHIT_Text(self, index):
+	def VCL_Text(self, index):
 		return self._IPProxy.GetTextCurveValue(self._outputCurves[5], index)
 
-	def Array_PHIT_Text(self, index, xVal, yVal):
+	def Array_VCL_Text(self, index, xVal, yVal):
 		return self._IPProxy.GetTextCurveValue(self._outputCurves[5], index, xVal, yVal)
 
-	def get_PHIT_Name(self):
+	def get_VCL_Name(self):
 		return self._IPProxy.GetCurveText(self._outputCurves[5], 1)
 
-	PHIT_Name = property(fget=get_PHIT_Name)
+	VCL_Name = property(fget=get_VCL_Name)
 
-	def get_PHIT_Units(self):
+	def get_VCL_Units(self):
 		return self._IPProxy.GetCurveText(self._outputCurves[5], 2)
 
-	PHIT_Units = property(fget=get_PHIT_Units)
+	VCL_Units = property(fget=get_VCL_Units)
 
-	def get_PHIT_Comments(self):
+	def get_VCL_Comments(self):
 		return self._IPProxy.GetCurveText(self._outputCurves[5], 3)
 
-	PHIT_Comments = property(fget=get_PHIT_Comments)
+	VCL_Comments = property(fget=get_VCL_Comments)
 
-	def Save_PHIT_Comments(self, newValue):
+	def Save_VCL_Comments(self, newValue):
 		self._IPProxy.SetCurveText(self._outputCurves[5], 3, str(newValue))
 
-	def get_Array_PHIT_MaxX(self):
+	def get_Array_VCL_MaxX(self):
 		return self._outArrayX[5]
 
-	Array_PHIT_MaxX = property(fget=get_Array_PHIT_MaxX)
+	Array_VCL_MaxX = property(fget=get_Array_VCL_MaxX)
 
-	def get_Array_PHIT_MaxY(self):
+	def get_Array_VCL_MaxY(self):
 		return self._outArrayY[5]
 
-	Array_PHIT_MaxY = property(fget=get_Array_PHIT_MaxY)
+	Array_VCL_MaxY = property(fget=get_Array_VCL_MaxY)
 
-	def Get_PHIT_Attribute(self, attributeName):
+	def Get_VCL_Attribute(self, attributeName):
 		return self._IPProxy.GetText(2, self._outputCurves[5], attributeName)
 
-	def Set_PHIT_Attribute(self, attributeName, newValue):
+	def Set_VCL_Attribute(self, attributeName, newValue):
 		self._IPProxy.SetText(2, self._outputCurves[5], attributeName, str(newValue))
 
 	def Save_PHIE(self, index, value):
@@ -1113,62 +1113,62 @@ class Methods:
 	def Set_PHIT_HC_Attribute(self, attributeName, newValue):
 		self._IPProxy.SetText(2, self._outputCurves[8], attributeName, str(newValue))
 
-	def Save_PHIA(self, index, value):
+	def Save_PHIT(self, index, value):
 		self._IPProxy.SetCurveData(self._outputCurves[9], index, float(value))
 
-	def Save_Array_PHIA(self, index, xVal, yVal, value):
+	def Save_Array_PHIT(self, index, xVal, yVal, value):
 		self._IPProxy.SetCurveData(self._outputCurves[9], index, float(value), xVal, yVal)
 
-	def Save_PHIA_Text(self, index, value):
+	def Save_PHIT_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[9], index, str(value))
 
-	def Save_Array_PHIA_Text(self, index, xVal, yVal, value):
+	def Save_Array_PHIT_Text(self, index, xVal, yVal, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[9], index, str(value), xVal, yVal)
 
-	def PHIA(self, index):
+	def PHIT(self, index):
 		return self._IPProxy.GetCurveData(self._outputCurves[9], index)
 
-	def Array_PHIA(self, index, xVal, yVal):
+	def Array_PHIT(self, index, xVal, yVal):
 		return self._IPProxy.GetCurveData(self._outputCurves[9], index, xVal, yVal)
 
-	def PHIA_Text(self, index):
+	def PHIT_Text(self, index):
 		return self._IPProxy.GetTextCurveValue(self._outputCurves[9], index)
 
-	def Array_PHIA_Text(self, index, xVal, yVal):
+	def Array_PHIT_Text(self, index, xVal, yVal):
 		return self._IPProxy.GetTextCurveValue(self._outputCurves[9], index, xVal, yVal)
 
-	def get_PHIA_Name(self):
+	def get_PHIT_Name(self):
 		return self._IPProxy.GetCurveText(self._outputCurves[9], 1)
 
-	PHIA_Name = property(fget=get_PHIA_Name)
+	PHIT_Name = property(fget=get_PHIT_Name)
 
-	def get_PHIA_Units(self):
+	def get_PHIT_Units(self):
 		return self._IPProxy.GetCurveText(self._outputCurves[9], 2)
 
-	PHIA_Units = property(fget=get_PHIA_Units)
+	PHIT_Units = property(fget=get_PHIT_Units)
 
-	def get_PHIA_Comments(self):
+	def get_PHIT_Comments(self):
 		return self._IPProxy.GetCurveText(self._outputCurves[9], 3)
 
-	PHIA_Comments = property(fget=get_PHIA_Comments)
+	PHIT_Comments = property(fget=get_PHIT_Comments)
 
-	def Save_PHIA_Comments(self, newValue):
+	def Save_PHIT_Comments(self, newValue):
 		self._IPProxy.SetCurveText(self._outputCurves[9], 3, str(newValue))
 
-	def get_Array_PHIA_MaxX(self):
+	def get_Array_PHIT_MaxX(self):
 		return self._outArrayX[9]
 
-	Array_PHIA_MaxX = property(fget=get_Array_PHIA_MaxX)
+	Array_PHIT_MaxX = property(fget=get_Array_PHIT_MaxX)
 
-	def get_Array_PHIA_MaxY(self):
+	def get_Array_PHIT_MaxY(self):
 		return self._outArrayY[9]
 
-	Array_PHIA_MaxY = property(fget=get_Array_PHIA_MaxY)
+	Array_PHIT_MaxY = property(fget=get_Array_PHIT_MaxY)
 
-	def Get_PHIA_Attribute(self, attributeName):
+	def Get_PHIT_Attribute(self, attributeName):
 		return self._IPProxy.GetText(2, self._outputCurves[9], attributeName)
 
-	def Set_PHIA_Attribute(self, attributeName, newValue):
+	def Set_PHIT_Attribute(self, attributeName, newValue):
 		self._IPProxy.SetText(2, self._outputCurves[9], attributeName, str(newValue))
 
 	def Save_SWTU(self, index, value):
@@ -1635,62 +1635,62 @@ class Methods:
 	def Set_BVW_Attribute(self, attributeName, newValue):
 		self._IPProxy.SetText(2, self._outputCurves[17], attributeName, str(newValue))
 
-	def Save_BVWE(self, index, value):
+	def Save_PHIA(self, index, value):
 		self._IPProxy.SetCurveData(self._outputCurves[18], index, float(value))
 
-	def Save_Array_BVWE(self, index, xVal, yVal, value):
+	def Save_Array_PHIA(self, index, xVal, yVal, value):
 		self._IPProxy.SetCurveData(self._outputCurves[18], index, float(value), xVal, yVal)
 
-	def Save_BVWE_Text(self, index, value):
+	def Save_PHIA_Text(self, index, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[18], index, str(value))
 
-	def Save_Array_BVWE_Text(self, index, xVal, yVal, value):
+	def Save_Array_PHIA_Text(self, index, xVal, yVal, value):
 		self._IPProxy.SetTextCurveValue(self._outputCurves[18], index, str(value), xVal, yVal)
 
-	def BVWE(self, index):
+	def PHIA(self, index):
 		return self._IPProxy.GetCurveData(self._outputCurves[18], index)
 
-	def Array_BVWE(self, index, xVal, yVal):
+	def Array_PHIA(self, index, xVal, yVal):
 		return self._IPProxy.GetCurveData(self._outputCurves[18], index, xVal, yVal)
 
-	def BVWE_Text(self, index):
+	def PHIA_Text(self, index):
 		return self._IPProxy.GetTextCurveValue(self._outputCurves[18], index)
 
-	def Array_BVWE_Text(self, index, xVal, yVal):
+	def Array_PHIA_Text(self, index, xVal, yVal):
 		return self._IPProxy.GetTextCurveValue(self._outputCurves[18], index, xVal, yVal)
 
-	def get_BVWE_Name(self):
+	def get_PHIA_Name(self):
 		return self._IPProxy.GetCurveText(self._outputCurves[18], 1)
 
-	BVWE_Name = property(fget=get_BVWE_Name)
+	PHIA_Name = property(fget=get_PHIA_Name)
 
-	def get_BVWE_Units(self):
+	def get_PHIA_Units(self):
 		return self._IPProxy.GetCurveText(self._outputCurves[18], 2)
 
-	BVWE_Units = property(fget=get_BVWE_Units)
+	PHIA_Units = property(fget=get_PHIA_Units)
 
-	def get_BVWE_Comments(self):
+	def get_PHIA_Comments(self):
 		return self._IPProxy.GetCurveText(self._outputCurves[18], 3)
 
-	BVWE_Comments = property(fget=get_BVWE_Comments)
+	PHIA_Comments = property(fget=get_PHIA_Comments)
 
-	def Save_BVWE_Comments(self, newValue):
+	def Save_PHIA_Comments(self, newValue):
 		self._IPProxy.SetCurveText(self._outputCurves[18], 3, str(newValue))
 
-	def get_Array_BVWE_MaxX(self):
+	def get_Array_PHIA_MaxX(self):
 		return self._outArrayX[18]
 
-	Array_BVWE_MaxX = property(fget=get_Array_BVWE_MaxX)
+	Array_PHIA_MaxX = property(fget=get_Array_PHIA_MaxX)
 
-	def get_Array_BVWE_MaxY(self):
+	def get_Array_PHIA_MaxY(self):
 		return self._outArrayY[18]
 
-	Array_BVWE_MaxY = property(fget=get_Array_BVWE_MaxY)
+	Array_PHIA_MaxY = property(fget=get_Array_PHIA_MaxY)
 
-	def Get_BVWE_Attribute(self, attributeName):
+	def Get_PHIA_Attribute(self, attributeName):
 		return self._IPProxy.GetText(2, self._outputCurves[18], attributeName)
 
-	def Set_BVWE_Attribute(self, attributeName, newValue):
+	def Set_PHIA_Attribute(self, attributeName, newValue):
 		self._IPProxy.SetText(2, self._outputCurves[18], attributeName, str(newValue))
 
 	def Save_BVSH(self, index, value):
@@ -2679,6 +2679,64 @@ class Methods:
 	def Set_PAY_Attribute(self, attributeName, newValue):
 		self._IPProxy.SetText(2, self._outputCurves[35], attributeName, str(newValue))
 
+	def Save_BVWE(self, index, value):
+		self._IPProxy.SetCurveData(self._outputCurves[36], index, float(value))
+
+	def Save_Array_BVWE(self, index, xVal, yVal, value):
+		self._IPProxy.SetCurveData(self._outputCurves[36], index, float(value), xVal, yVal)
+
+	def Save_BVWE_Text(self, index, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[36], index, str(value))
+
+	def Save_Array_BVWE_Text(self, index, xVal, yVal, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[36], index, str(value), xVal, yVal)
+
+	def BVWE(self, index):
+		return self._IPProxy.GetCurveData(self._outputCurves[36], index)
+
+	def Array_BVWE(self, index, xVal, yVal):
+		return self._IPProxy.GetCurveData(self._outputCurves[36], index, xVal, yVal)
+
+	def BVWE_Text(self, index):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[36], index)
+
+	def Array_BVWE_Text(self, index, xVal, yVal):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[36], index, xVal, yVal)
+
+	def get_BVWE_Name(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[36], 1)
+
+	BVWE_Name = property(fget=get_BVWE_Name)
+
+	def get_BVWE_Units(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[36], 2)
+
+	BVWE_Units = property(fget=get_BVWE_Units)
+
+	def get_BVWE_Comments(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[36], 3)
+
+	BVWE_Comments = property(fget=get_BVWE_Comments)
+
+	def Save_BVWE_Comments(self, newValue):
+		self._IPProxy.SetCurveText(self._outputCurves[36], 3, str(newValue))
+
+	def get_Array_BVWE_MaxX(self):
+		return self._outArrayX[36]
+
+	Array_BVWE_MaxX = property(fget=get_Array_BVWE_MaxX)
+
+	def get_Array_BVWE_MaxY(self):
+		return self._outArrayY[36]
+
+	Array_BVWE_MaxY = property(fget=get_Array_BVWE_MaxY)
+
+	def Get_BVWE_Attribute(self, attributeName):
+		return self._IPProxy.GetText(2, self._outputCurves[36], attributeName)
+
+	def Set_BVWE_Attribute(self, attributeName, newValue):
+		self._IPProxy.SetText(2, self._outputCurves[36], attributeName, str(newValue))
+
 	def TVD(self, index):
 		if self._parCnIn[0] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[0], index)
@@ -2784,236 +2842,236 @@ class Methods:
 
 	SBT_Name = property(fget=get_SBT_Name)
 
-	def GRMIN_L(self, index):
+	def RTE(self, index):
 		if self._parCnIn[5] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[5], index)
 		else:
 			return self._inputParameters[5]
 
-	def Save_GRMIN_L(self, index, value):
+	def Save_RTE(self, index, value):
 		if self._parCnIn[5] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[5], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(6, float(value))
 			self._inputParameters[5] = float(value)
 
-	def get_GRMIN_L_Name(self):
+	def get_RTE_Name(self):
 		if self._parCnIn[5] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[5], 1)
 		else:
 			return str(self._inputParameters[5])
 
-	GRMIN_L_Name = property(fget=get_GRMIN_L_Name)
+	RTE_Name = property(fget=get_RTE_Name)
 
-	def GRMAX_L(self, index):
+	def GRMIN_L(self, index):
 		if self._parCnIn[6] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[6], index)
 		else:
 			return self._inputParameters[6]
 
-	def Save_GRMAX_L(self, index, value):
+	def Save_GRMIN_L(self, index, value):
 		if self._parCnIn[6] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[6], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(7, float(value))
 			self._inputParameters[6] = float(value)
 
-	def get_GRMAX_L_Name(self):
+	def get_GRMIN_L_Name(self):
 		if self._parCnIn[6] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[6], 1)
 		else:
 			return str(self._inputParameters[6])
 
-	GRMAX_L_Name = property(fget=get_GRMAX_L_Name)
+	GRMIN_L_Name = property(fget=get_GRMIN_L_Name)
 
-	def RSAND_L(self, index):
+	def GRMAX_L(self, index):
 		if self._parCnIn[7] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[7], index)
 		else:
 			return self._inputParameters[7]
 
-	def Save_RSAND_L(self, index, value):
+	def Save_GRMAX_L(self, index, value):
 		if self._parCnIn[7] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[7], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(8, float(value))
 			self._inputParameters[7] = float(value)
 
-	def get_RSAND_L_Name(self):
+	def get_GRMAX_L_Name(self):
 		if self._parCnIn[7] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[7], 1)
 		else:
 			return str(self._inputParameters[7])
 
-	RSAND_L_Name = property(fget=get_RSAND_L_Name)
+	GRMAX_L_Name = property(fget=get_GRMAX_L_Name)
 
-	def RSHALE_L(self, index):
+	def RSAND_L(self, index):
 		if self._parCnIn[8] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[8], index)
 		else:
 			return self._inputParameters[8]
 
-	def Save_RSHALE_L(self, index, value):
+	def Save_RSAND_L(self, index, value):
 		if self._parCnIn[8] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[8], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(9, float(value))
 			self._inputParameters[8] = float(value)
 
-	def get_RSHALE_L_Name(self):
+	def get_RSAND_L_Name(self):
 		if self._parCnIn[8] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[8], 1)
 		else:
 			return str(self._inputParameters[8])
 
-	RSHALE_L_Name = property(fget=get_RSHALE_L_Name)
+	RSAND_L_Name = property(fget=get_RSAND_L_Name)
 
-	def SPSAND_L(self, index):
+	def RSHALE_L(self, index):
 		if self._parCnIn[9] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[9], index)
 		else:
 			return self._inputParameters[9]
 
-	def Save_SPSAND_L(self, index, value):
+	def Save_RSHALE_L(self, index, value):
 		if self._parCnIn[9] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[9], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(10, float(value))
 			self._inputParameters[9] = float(value)
 
-	def get_SPSAND_L_Name(self):
+	def get_RSHALE_L_Name(self):
 		if self._parCnIn[9] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[9], 1)
 		else:
 			return str(self._inputParameters[9])
 
-	SPSAND_L_Name = property(fget=get_SPSAND_L_Name)
+	RSHALE_L_Name = property(fget=get_RSHALE_L_Name)
 
-	def SPSHALE_L(self, index):
+	def SPSAND_L(self, index):
 		if self._parCnIn[10] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[10], index)
 		else:
 			return self._inputParameters[10]
 
-	def Save_SPSHALE_L(self, index, value):
+	def Save_SPSAND_L(self, index, value):
 		if self._parCnIn[10] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[10], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(11, float(value))
 			self._inputParameters[10] = float(value)
 
-	def get_SPSHALE_L_Name(self):
+	def get_SPSAND_L_Name(self):
 		if self._parCnIn[10] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[10], 1)
 		else:
 			return str(self._inputParameters[10])
 
-	SPSHALE_L_Name = property(fget=get_SPSHALE_L_Name)
+	SPSAND_L_Name = property(fget=get_SPSAND_L_Name)
 
-	def RHOBWSH(self, index):
+	def SPSHALE_L(self, index):
 		if self._parCnIn[11] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[11], index)
 		else:
 			return self._inputParameters[11]
 
-	def Save_RHOBWSH(self, index, value):
+	def Save_SPSHALE_L(self, index, value):
 		if self._parCnIn[11] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[11], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(12, float(value))
 			self._inputParameters[11] = float(value)
 
-	def get_RHOBWSH_Name(self):
+	def get_SPSHALE_L_Name(self):
 		if self._parCnIn[11] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[11], 1)
 		else:
 			return str(self._inputParameters[11])
 
-	RHOBWSH_Name = property(fget=get_RHOBWSH_Name)
+	SPSHALE_L_Name = property(fget=get_SPSHALE_L_Name)
 
-	def NPHIWSH(self, index):
+	def RHOBWSH(self, index):
 		if self._parCnIn[12] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[12], index)
 		else:
 			return self._inputParameters[12]
 
-	def Save_NPHIWSH(self, index, value):
+	def Save_RHOBWSH(self, index, value):
 		if self._parCnIn[12] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[12], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(13, float(value))
 			self._inputParameters[12] = float(value)
 
-	def get_NPHIWSH_Name(self):
+	def get_RHOBWSH_Name(self):
 		if self._parCnIn[12] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[12], 1)
 		else:
 			return str(self._inputParameters[12])
 
-	NPHIWSH_Name = property(fget=get_NPHIWSH_Name)
+	RHOBWSH_Name = property(fget=get_RHOBWSH_Name)
 
-	def RHOBQ(self, index):
+	def NPHIWSH(self, index):
 		if self._parCnIn[13] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[13], index)
 		else:
 			return self._inputParameters[13]
 
-	def Save_RHOBQ(self, index, value):
+	def Save_NPHIWSH(self, index, value):
 		if self._parCnIn[13] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[13], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(14, float(value))
 			self._inputParameters[13] = float(value)
 
-	def get_RHOBQ_Name(self):
+	def get_NPHIWSH_Name(self):
 		if self._parCnIn[13] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[13], 1)
 		else:
 			return str(self._inputParameters[13])
 
-	RHOBQ_Name = property(fget=get_RHOBQ_Name)
+	NPHIWSH_Name = property(fget=get_NPHIWSH_Name)
 
-	def NPHIQ(self, index):
+	def RHOBQ(self, index):
 		if self._parCnIn[14] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[14], index)
 		else:
 			return self._inputParameters[14]
 
-	def Save_NPHIQ(self, index, value):
+	def Save_RHOBQ(self, index, value):
 		if self._parCnIn[14] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[14], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(15, float(value))
 			self._inputParameters[14] = float(value)
 
-	def get_NPHIQ_Name(self):
+	def get_RHOBQ_Name(self):
 		if self._parCnIn[14] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[14], 1)
 		else:
 			return str(self._inputParameters[14])
 
-	NPHIQ_Name = property(fget=get_NPHIQ_Name)
+	RHOBQ_Name = property(fget=get_RHOBQ_Name)
 
-	def RHOFL(self, index):
+	def NPHIQ(self, index):
 		if self._parCnIn[15] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[15], index)
 		else:
 			return self._inputParameters[15]
 
-	def Save_RHOFL(self, index, value):
+	def Save_NPHIQ(self, index, value):
 		if self._parCnIn[15] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[15], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(16, float(value))
 			self._inputParameters[15] = float(value)
 
-	def get_RHOFL_Name(self):
+	def get_NPHIQ_Name(self):
 		if self._parCnIn[15] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[15], 1)
 		else:
 			return str(self._inputParameters[15])
 
-	RHOFL_Name = property(fget=get_RHOFL_Name)
+	NPHIQ_Name = property(fget=get_NPHIQ_Name)
 
 	def RMF(self, index):
 		if self._parCnIn[16] > 0:
@@ -3141,26 +3199,26 @@ class Methods:
 
 	T_RWI_Name = property(fget=get_T_RWI_Name)
 
-	def RTE(self, index):
+	def RHOFL(self, index):
 		if self._parCnIn[22] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[22], index)
 		else:
 			return self._inputParameters[22]
 
-	def Save_RTE(self, index, value):
+	def Save_RHOFL(self, index, value):
 		if self._parCnIn[22] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[22], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(23, float(value))
 			self._inputParameters[22] = float(value)
 
-	def get_RTE_Name(self):
+	def get_RHOFL_Name(self):
 		if self._parCnIn[22] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[22], 1)
 		else:
 			return str(self._inputParameters[22])
 
-	RTE_Name = property(fget=get_RTE_Name)
+	RHOFL_Name = property(fget=get_RHOFL_Name)
 
 	def VSH_IP(self, index):
 		if self._parCnIn[23] > 0:
@@ -3225,47 +3283,47 @@ class Methods:
 
 	PHIECO_Name = property(fget=get_PHIECO_Name)
 
-	def CLAY_FRAC(self, index):
+	def PHITCO(self, index):
 		if self._parCnIn[26] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[26], index)
 		else:
 			return self._inputParameters[26]
 
-	def Save_CLAY_FRAC(self, index, value):
+	def Save_PHITCO(self, index, value):
 		if self._parCnIn[26] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[26], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(27, float(value))
 			self._inputParameters[26] = float(value)
 
-	def get_CLAY_FRAC_Name(self):
+	def get_PHITCO_Name(self):
 		if self._parCnIn[26] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[26], 1)
 		else:
 			return str(self._inputParameters[26])
 
-	CLAY_FRAC_Name = property(fget=get_CLAY_FRAC_Name)
+	PHITCO_Name = property(fget=get_PHITCO_Name)
 
-	def GRD_CLAY(self, index):
+	def SWTCO(self, index):
 		if self._parCnIn[27] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[27], index)
 		else:
 			return self._inputParameters[27]
 
-	def Save_GRD_CLAY(self, index, value):
+	def Save_SWTCO(self, index, value):
 		if self._parCnIn[27] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[27], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(28, float(value))
 			self._inputParameters[27] = float(value)
 
-	def get_GRD_CLAY_Name(self):
+	def get_SWTCO_Name(self):
 		if self._parCnIn[27] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[27], 1)
 		else:
 			return str(self._inputParameters[27])
 
-	GRD_CLAY_Name = property(fget=get_GRD_CLAY_Name)
+	SWTCO_Name = property(fget=get_SWTCO_Name)
 
 	def DTM(self, index):
 		if self._parCnIn[28] > 0:
@@ -3708,47 +3766,47 @@ class Methods:
 
 	SAND_FRAC_Name = property(fget=get_SAND_FRAC_Name)
 
-	def PHITCO(self, index):
+	def CLAY_FRAC(self, index):
 		if self._parCnIn[49] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[49], index)
 		else:
 			return self._inputParameters[49]
 
-	def Save_PHITCO(self, index, value):
+	def Save_CLAY_FRAC(self, index, value):
 		if self._parCnIn[49] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[49], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(50, float(value))
 			self._inputParameters[49] = float(value)
 
-	def get_PHITCO_Name(self):
+	def get_CLAY_FRAC_Name(self):
 		if self._parCnIn[49] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[49], 1)
 		else:
 			return str(self._inputParameters[49])
 
-	PHITCO_Name = property(fget=get_PHITCO_Name)
+	CLAY_FRAC_Name = property(fget=get_CLAY_FRAC_Name)
 
-	def SWTCO(self, index):
+	def GRD_CLAY(self, index):
 		if self._parCnIn[50] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[50], index)
 		else:
 			return self._inputParameters[50]
 
-	def Save_SWTCO(self, index, value):
+	def Save_GRD_CLAY(self, index, value):
 		if self._parCnIn[50] > 0:
 			self._IPProxy.SetCurveData(self._parCnIn[50], index, float(value))
 		else:
 			self._IPProxy.SetNumericParam(51, float(value))
 			self._inputParameters[50] = float(value)
 
-	def get_SWTCO_Name(self):
+	def get_GRD_CLAY_Name(self):
 		if self._parCnIn[50] > 0:
 			return self._IPProxy.GetCurveText(self._parCnIn[50], 1)
 		else:
 			return str(self._inputParameters[50])
 
-	SWTCO_Name = property(fget=get_SWTCO_Name)
+	GRD_CLAY_Name = property(fget=get_GRD_CLAY_Name)
 
 	def get_FLAG_LITH(self):
 		return self._textInputParameters[0]

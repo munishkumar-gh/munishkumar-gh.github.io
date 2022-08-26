@@ -6,21 +6,21 @@ PROGRAM: Determin_VSH_PHIT_SWT_PERM_BV_PAY_MK
 from Methods import Methods
 from IpClassicPythonLink import IPLink
 import math
+import cmath
 
 # Debugging Code
-import ptvsd
+# import ptvsd
 
 class UserApp(Methods, IPLink):
 
     def UserCode(self):
         # Uncomment the next two lines to enable debgugging
-        ptvsd.enable_attach(address=('127.0.0.1', 5678))
-        ptvsd.wait_for_attach() 
+        # ptvsd.enable_attach(address=('127.0.0.1', 5678))
+        # ptvsd.wait_for_attach() 
         #
         # Loop through the data one level at a time
         # TopDepth and BottomDepth are the index equivalent depths entered on the run window. 
         #
-        #try: 
         index = self.TopDepth
         while index <= self.BottomDepth:
             # Enter user code here
@@ -43,6 +43,7 @@ class UserApp(Methods, IPLink):
                 RHOB = self.RHOB(index)
                 NPHI = self.NPHI(index)
                 RHOFL = self.RHOFL(index)
+                RHOHC = self.RHOHC(index)
                 RHOBQ = self.RHOBQ(index)
                 NPHIQ = self.NPHIQ(index)
                 NPHIWSH = self.NPHIWSH(index)
@@ -89,16 +90,20 @@ class UserApp(Methods, IPLink):
                 RHOGL = self.RHOGL(index)
                 RHOGU = self.RHOGU(index)
 
-                VSH = VSH_GR = VSH_SP= VSH_RES= VSH_ND= PHIX= PHIA= PHIT_HC= PHIT= PHID_A= PHIE= RW_SP= SALINITY_SP= RW= SALINITY= RHOGM= RHOGC= SWT= SWE= SXOT= SXOE= BVW= BVWE= BVSH= BVO = -999
+                SAND_FRAC  = self.SAND_FRAC(index)
+                OPT_CLAY_SILT = self.OPT_CLAY_SILT
+                PHITCO = self.PHITCO(index)
+                SWTCO = self.SWTCO(index)
+
+                #global VSH, VSH_GR, VSH_SP, VSH_RES, VSH_ND, PHIX, PHIA, PHIT_HC, PHIT, PHID_A, PHIE, RW_SP, SALINITY_SP, RW, SALINITY, RHOGM, RHOGC, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO
+                VSH= VSH_GR= VSH_SP= VSH_RES= VSH_ND= PHIX= PHIA= PHIT_HC= PHIT= PHID_A= PHIE= VCL= -999
+                RW_SP= SALINITY_SP= RW= SALINITY= RHOGM= RHOGC= SWT= SWE= SXOT= SXOE= BVW= BVWE= BVSH= BVO= -999
+                BVLIM= BVSAND= -999
                 
                 ##################################################
                 ### Code to calculate RW and Salinity from SP  ###
                 ##################################################
-                # Setting output in Coal & Volcanics
-                if (self.FLAG_COAL == True) or (self.FLAG_VOLC == True):
-                    VSH, VSH_GR, VSH_SP, VSH_RES, VSH_ND, PHIX, PHIA, PHIT_HC, PHIT, PHID_A, PHIE, RW_SP, SALINITY_SP, RW, SALINITY, RHOGM, RHOGC, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO = self.COAL_VOLC()
-                    #self.ipprint("Entered Depth " + str( self.Depth(index) ))
-                
+            
                 # GEOTHERMAL GRADIENT & FORMATION TEMPERATURE
                 if (self.OPT_TEMPLOG == 'AVAILABLE'):
                     FT = self.FTEMP_L(index)
@@ -153,7 +158,7 @@ class UserApp(Methods, IPLink):
                         VSH_ALL, VSH_GR, VSH_SP, VSH_RES, VSH_ND = self.VSH_ALL(GR, GRMIN, GRMAX, 
                         RT, RSAND, RSHALE, 
                         SP, SPSHALE, SPSAND,
-                        RHOB, NPHI, RHOFL, RHOBQ, NPHIQ, NPHIWSH, RHOBWSH,
+                        RHOB, NPHI, RHOHC, RHOBQ, NPHIQ, NPHIWSH, RHOBWSH,
                         FLAG_LITH,
                         )
                         VSH_COR = self.VSH_CORR(index, OPT_VSH_CORR, VSH_ALL)
@@ -166,6 +171,7 @@ class UserApp(Methods, IPLink):
                         VSH_ND = -999
 
                 # Calculate apparent grain density of dry shale or RHOBDSH & PHIT of Shale*/
+                PHISH = 0
                 if (RHOB != -999):
                     RHOBDSH = (CLAY_FRAC*GRD_CLAY)+ ((1-CLAY_FRAC)*2.65)
                     PHISH = (RHOBDSH-RHOBWSH)/(RHOBDSH-RHOFL)
@@ -175,18 +181,21 @@ class UserApp(Methods, IPLink):
                     PHISH = PHIA
                 
                 # Calculate RWB from PHISH & Archie
-                RWB = ((RTSH)*(PHISH**M))/A
+                #RWB = ((RTSH)*(PHISH**M))/A
+                RWB = (RTSH*cmath.exp(M*cmath.log(PHISH)).real)/A
 
                 #------------------------------------------------------------------------------------
                 # Conditional checks for Porosity-Water Saturation - refer to documentation for help
                 #------------------------------------------------------------------------------------
                 # No porosity logs are present, or FLAG_LITH = ASH & FLAG_LITH = SALT
                 if ((RHOB == -999) and (DTCO == -999) and (NPHI == -999)) or (FLAG_LITH == 'ASH') or (FLAG_LITH == 'SALT'):            
-                    VSH, VSH_GR, VSH_SP, VSH_RES, VSH_ND, PHIX, PHIA, PHIT_HC, PHIT, PHID_A, PHIE, RW_SP, SALINITY_SP, RW, SALINITY, RHOGM, RHOGC, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO = self.COAL_VOLC()
+                    VSH, VSH_GR, VSH_SP, VSH_RES, VSH_ND, PHIX, PHIA, PHIT_HC, PHIT, PHID_A, PHIE, RW_SP, SALINITY_SP, RW, SALINITY, RHOGM, RHOGC, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO, BVSAND, BVLIM = self.COAL_VOLC()
+                    NPHIH = RHOBH = -999
                 # No resistivity logs are present, only interpret PHIT
                 elif (RT == -999):
-                    #self.ipprint("Entered Loop RESDEEP -999 " + str( RT ))     
-                    SWT = SWE = SXOT = SXOE = BVW = BVWE = 1
+                    #self.ipprint("Entered Loop RESDEEP -999 " + str( RT ))
+                    NPHIH = RHOBH = -999     
+                    SWT = SWE = SXOT = SXOE = BVW = BVWE = 0.999
                     if (RHOB == -999):
                         # PHIA out - Neutron Porosity is not used
                         if (DTCO != -999): 
@@ -194,6 +203,7 @@ class UserApp(Methods, IPLink):
                             DT = DTCO
                             PHIT = self.SONIC_POR(OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1)
                             VSH = VSH
+                            VCL = VSH * CLAY_FRAC
                             PHIE = self.TOTAL_EFFECTIVE_SIM(VSH, VSHCO, PHIT, PHISH)
                         # Neutron Porosity is used
                         elif (NPHI != -999):
@@ -207,28 +217,34 @@ class UserApp(Methods, IPLink):
                             else:
                                 PHIT = self.NUET_POR(NPHISND, GRMIN, GRMAX, FRAC_NPHI, GR)
                                 VSH = VSH
+                                VCL = VSH * CLAY_FRAC
                                 PHIE = self.TOTAL_EFFECTIVE_SIM(VSH, VSHCO, PHIT, PHISH)
                         # Density porosity is used; Sonic Porosity as check
                     elif (RHOB != -999) and (NPHI == -999):
-                        PHIT = min(1,(max(0,((RHOGA - RHOB)/(RHOGA-RHOFL)))))
-                        PHIA = self.SONIC_POR(OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1)                     
+                        DT = DTCO
+                        RH = RHOHC 
+                        PHIT = min(0.9999,(max(0.0001,((RHOGA - RHOB)/(RHOGA-RH)))))
+                        if (DT != -999):
+                            PHIA = self.SONIC_POR(OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1)                     
                         VSH = VSH
+                        VCL = VSH * CLAY_FRAC
                         PHIE = self.TOTAL_EFFECTIVE_SIM(VSH, VSHCO, PHIT, PHISH)
                         RHOGM = RHOGM
                         RHOGC = self.CLEAN_MTRX_DEN(RHOBWSH, NPHIWSH, RHOBDSH, RHOBQ, NPHIQ, RHOB, NPHI)
                         # Density-neutron porosity with Hydrocarbon corrections
                     elif (RHOB != -999) and (NPHI != -999):
                         DT = DTCO
-                        PHIA = self.SONIC_POR(OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1)
+                        if (DT != -999):
+                            PHIA = self.SONIC_POR(OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1)
                         PHIT_HC = self.DEN_NEU_HCPOR(RHOBQ, RHOFL, RHOB, NPHI, NPHIQ)
                         RHB = RHOB
                         NPH = NPHI
                         RHOGM, PHIT = self.XPLOT_POR(FLAG_LITH, RHOGA, RHOBQ, RHB, 
-                        NPH, RHOFL, RHOBWSH, NPHIWSH, RHOBDSH, NPHIQ)
+                        NPH, RHOHC, RHOBWSH, NPHIWSH, RHOBDSH, NPHIQ)
                         RHOGC = self.CLEAN_MTRX_DEN(RHOBWSH, NPHIWSH, RHOBDSH, RHOBQ, NPHIQ, RHB, NPH)
                 # Interpret SWT & PHIT
                 else:
-                    #self.ipprint("Entered Loop RESDEEP not -999 " + str( RT ))    
+                    #self.ipprint("Entered Loop RESDEEP not -999 " + str( RT ))
                     if (RHOB == -999):
                         # PHIA out - Neutron Porosity is not used
                         if (DTCO != -999): 
@@ -238,26 +254,27 @@ class UserApp(Methods, IPLink):
                             PHIX = PHIT                   	
                             RES = RT
                             RWC = RW
-                            SWB = max(0,(min(1,(VSH*PHISH/PHIX))))
+                            SWB = max(0.0001,(min(0.9999,(VSH*PHISH/PHIX))))
                             # No matter which water saturation technique 
                             # is selected, conditions stated above and here 
                             # always produce an Archie solution
                             SW = self.SW_DW(OPT_SW_TECH, FLAG_LITH, PHIX, A, M, RES, RWC, RT, N, SWB, RWB, 
                             V_KAO, V_CH, V_SMC, RHOGM, RHOB, RHOFL, NPHI, NPHIQ, FTF)
                             SWTU = SW
-                            SWT = min(1,(max(0,SWTU)))
+                            SWT = min(0.9999,(max(0.0001,SWTU)))
                             if (OPT_RXO =='ABSENT') or (OPT_MUD_TYPE == 'OIL'):
-                                SXOT = SWT**Z
+                                #SXOT = SWT**Z
+                                SXOT = math.pow(SWT, Z)
                             else:
                                 RES = RXO
                                 RWC = RMFI
                                 SW = self.SW_DW(OPT_SW_TECH, FLAG_LITH, PHIX, A, M, RES, RWC, RT, N, SWB, RWB, 
                                 V_KAO, V_CH, V_SMC, RHOGM, RHOB, RHOFL, NPHI, NPHIQ, FTF)
                                 SXOT = SW
-                                SXOT = min(1,(max(0,SXOT,SWT)))
+                                SXOT = min(0.9999,(max(0.0001,SXOT,SWT)))
                             RHOGM = RHOGC = -999
-                            PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO = self.TOTAL_EFFECTIVE(
-                                PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO
+                            PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO, VCL = self.TOTAL_EFFECTIVE(
+                                PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO, CLAY_FRAC
                                 )
                         # Neutron Porosity is used
                         elif (NPHI != -999):
@@ -273,48 +290,54 @@ class UserApp(Methods, IPLink):
                                 PHIX = PHIT
                                 # Archie Solution
                                 RES = RT
-                                FORM_FACT = A*(PHIT**-M)
+                                #FORM_FACT = A*(PHIT**-M)
+                                FORM_FACT = A*cmath.exp(-M*cmath.log(PHIT)).real
                                 RO = min(RES,FORM_FACT*RW)
-                                SW = (RO/RT)**(1/N)
+                                #SW = (RO/RT)**(1/N)
+                                SW = cmath.exp((1/N)*cmath.log(RO/RT)).real
                                 SWTU = SW
-                                SWT = min(1, max(0,SWTU))
-                            PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO = self.TOTAL_EFFECTIVE(
-                            PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO
+                                SWT = min(0.9999, max(0.0001,SWTU))
+                            PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO, VCL = self.TOTAL_EFFECTIVE(
+                            PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO, CLAY_FRAC
                             )
                         # Density porosity is used; Sonic Porosity as check
                     elif (RHOB != -999) and (NPHI == -999):
                         # self.ipprint("Entered Loop RHOB not -999 but NPHI -999" + str( RHOB ) + str( NPHI ))
-                        PHIT = min(1,(max(0,((RHOGA - RHOB)/(RHOGA-RHOFL)))))
-                        PHIA = self.SONIC_POR(OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1)
+                        DT = DTCO
+                        NPHIH = -999
+                        PHIT = min(0.9999,(max(0.0001,((RHOGA - RHOB)/(RHOGA-RHOFL)))))
+                        if (DT != -999):
+                            PHIA = self.SONIC_POR(OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1)
                         EXPHI = 0
-                        RH = 1
+                        RH = 0.9999
                         # Hydrocarbon correction based on Gaymard-Poupon
                         RHOBH = RHOB+1.07*PHIX*(1-SXOT)*((1.11-0.1*P)*RHOFL-1.15*RH)
-                        PHID_A = min(1,(max(0,((RHOGA - RHOBH)/(RHOGA-RHOFL)))))
+                        PHID_A = min(0.9999,(max(0.0001,((RHOGA - RHOBH)/(RHOGA-RHOFL)))))
                         PHIXP = PHID_A
                         FLAG_COUNT = True
                         while (FLAG_COUNT == True) and (abs(PHIXP-PHIX) < 0.008):
                             RES = RT
                             RWC = RW
                             PHIX = PHIT
-                            SWB = max(0,(min(1,(VSH*PHISH/PHIX))))
+                            SWB = max(0.0001,(min(0.9999,(VSH*PHISH/PHIX))))
                             SW = self.SW_DW(OPT_SW_TECH, FLAG_LITH, PHIX, A, M, RES, RWC, RT, N, SWB, RWB, 
                             V_KAO, V_CH, V_SMC, RHOGM, RHOB, RHOFL, NPHI, NPHIQ, FTF)
                             SWTU = SW
-                            SWT = min(1, max(0,SWTU))
+                            SWT = min(0.9999, max(0.0001,SWTU))
                             if (OPT_RXO =='ABSENT') or (OPT_MUD_TYPE == 'OIL'):
-                                SXOT = SWT**Z
+                                #SXOT = SWT**Z
+                                SXOT = math.pow(SWT, Z)
                             else:
                                 RES = RXO
                                 RWC = RMFI
                                 SW = self.SW_DW(OPT_SW_TECH, FLAG_LITH, PHIX, A, M, RES, RWC, RT, N, SWB, RWB, 
                                 V_KAO, V_CH, V_SMC, RHOGM, RHOB, RHOFL, NPHI, NPHIQ, FTF)
                                 SXOT = SW
-                                SXOT = min(1,(max(0,SXOT,SWT)))
-                            RH = RHOFL
+                                SXOT = min(0.9999,(max(0.0001,SXOT,SWT)))
+                            RH = RHOHC
                             # Hydrocarbon correction based on Gaymard-Poupon
                             RHOBH = RHOB+1.07*PHIX*(1-SXOT)*((1.11-0.1*P)*RHOFL-1.15*RH)
-                            PHID_A = min(1,(max(0,((RHOGA - RHOBH)/(RHOGA-RHOFL)))))
+                            PHID_A = min(0.9999,(max(0.0001,((RHOGA - RHOBH)/(RHOGA-RHOFL)))))
                             PHIXP = PHID_A
                             EXPHI = EXPHI+1
                             if (EXPHI >= 5):
@@ -322,14 +345,16 @@ class UserApp(Methods, IPLink):
                         PHIT = PHID_A
                         RHOGM = RHOGA
                         RHOGC = RHOGA
-                        PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO = self.TOTAL_EFFECTIVE(
-                            PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO
+                        PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO, VCL = self.TOTAL_EFFECTIVE(
+                            PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO, CLAY_FRAC
                             )
                     # Density-neutron porosity with Hydrocarbon corrections
                     elif (RHOB != -999) and (NPHI != -999):
                         #self.ipprint("Entered Loop RHOB-NPHI not -999 " + str( RHOB ) + str( NPHI )) 
                         DT = DTCO
-                        PHIA = self.SONIC_POR(OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1)
+                        if (DT != -999):
+                            PHIA = self.SONIC_POR(OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1)
+                            #self.ipprint("PHIA: " + str( PHIA ) + ", index: " + str( index ) + ", stage: " + str( 1 ))
                         PHIT_HC = self.DEN_NEU_HCPOR(RHOBQ, RHOFL, RHOB, NPHI, NPHIQ)
                         RHB = RHOB
                         NPH = NPHI
@@ -346,21 +371,22 @@ class UserApp(Methods, IPLink):
                             while (FLAG_COUNT == True) and (abs(PHIXP-PHIX) < 0.008):
                                 RES = RT
                                 RWC = RW
-                                SWB = max(0,(min(1,(VSH*PHISH/PHIX))))
+                                SWB = max(0.0001,(min(0.9999,(VSH*PHISH/PHIX))))
                                 SW = self.SW_DW(OPT_SW_TECH, FLAG_LITH, PHIX, A, M, RES, RWC, RT, N, SWB, RWB, 
                                 V_KAO, V_CH, V_SMC, RHOGM, RHOB, RHOFL, NPHI, NPHIQ, FTF)
                                 SWTU = SW
-                                SWT = min(1,(max(0,SWTU)))
+                                SWT = min(0.9999,(max(0.0001,SWTU)))
                                 if (OPT_RXO =='ABSENT') or (OPT_MUD_TYPE == 'OIL'):
-                                    SXOT =SWT**Z        
+                                    #SXOT =SWT**Z
+                                    SXOT = math.pow(SWT, Z)        
                                 else:
                                     RES = RXO
                                     RWC = RMFI
                                     SW = self.SW_DW(OPT_SW_TECH, FLAG_LITH, PHIX, A, M, RES, RWC, RT, N, SWB, RWB, 
                                     V_KAO, V_CH, V_SMC, RHOGM, RHOB, RHOFL, NPHI, NPHIQ, FTF)
                                     SXOT = SW
-                                    SXOT = min(1,(max(0,SXOT,SWT)))
-                                RH = RHOFL
+                                    SXOT = min(0.9999,(max(0.0001,SXOT,SWT)))
+                                RH = RHOHC
                                 # Hydrocarbon correction based on Gaymard-Poupon
                                 RHOBH = RHOB+1.07*PHIX*(1-SXOT)*((1.11-0.1*P)*RHOFL-1.15*RH)
                                 NPHIH = NPHI+(1.3*PHIX*(1-SXOT)*(RHOFL*(1-P)-1.5*RH+0.2))/(RHOFL*(1-P))
@@ -381,26 +407,43 @@ class UserApp(Methods, IPLink):
                             NPHIC = (NPHIH-VSH*NPHIWSH)/(1-VSH)
                             RHB = RHOBC
                             NPH = NPHIC
-                            RHOGC = self.CLEAN_MTRX_DEN(RHOBWSH, NPHIWSH, RHOBDSH, RHOBQ, NPHIQ, RHOB, NPHI)
+                            RHOGC = self.CLEAN_MTRX_DEN(RHOBWSH, NPHIWSH, RHOBDSH, RHOBQ, NPHIQ, RHB, NPH)
                             if (RHOGC >= RHOGL) and (RHOGC <=RHOGU):
-                                PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO = self.TOTAL_EFFECTIVE(
-                                    PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO
+                                PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO, VCL = self.TOTAL_EFFECTIVE(
+                                    PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO, CLAY_FRAC
                                     )
                             elif (RHOGC < RHOGL):
                                 VSH = VSH-0.03
-                                VSH = min(1,max(0,VSH))
+                                VSH = min(0.9999,max(0.0001,VSH))
                             else:
                                 VSH = VSH+0.03
-                                VSH = min(1,max(0,VSH))
-                            EXV = EXV+1
+                                VSH = min(0.9999,max(0.0001,VSH))
+                            VSH = max(0.0001,VSH)
+                            EXV = EXV+1                            
                         RHOGC = self.CLEAN_MTRX_DEN(RHOBWSH, NPHIWSH, RHOBDSH, RHOBQ, NPHIQ, RHOB, NPHI)
+                        #self.ipprint("PHIA: " + str( PHIA ) + ", index: " + str( index ) + ", stage: " + str( 2 ))
+                    
+                if (VSH >= 0.99):
+                    PHIE = 0.001
+                    SWT = SWE = SXOT = SXOE = 0.999
+                
+                #BVSAND = (1-PHIT)*(1-VSH)
 
+                #SUM_TOT, BVSILT, BVLIM, BVCLAY, BVSAND = self.SSC(PHIT, OPT_CLAY_SILT, VSH, CLAY_FRAC, SAND_FRAC, FLAG_LITH, BVSAND)
+                SD, RESV, PAY = self.FLAG_PAY(VSH, VSHCO, PHIT, PHITCO, SWT, SWTCO)
+
+                # Setting output in Coal & Volcanics
+                if (self.FLAG_COAL == True) or (self.FLAG_VOLC == True) or (self.FLAG_VOLC > 0) or (self.FLAG_COAL > 0):
+                    VSH, VSH_GR, VSH_SP, VSH_RES, VSH_ND, PHIX, PHIA, PHIT_HC, PHIT, PHID_A, PHIE, RW_SP, SALINITY_SP, RW, SALINITY, RHOGM, RHOGC, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO, BVSAND, BVLIM = self.COAL_VOLC()
+                #self.ipprint("Entered Depth " + str( self.Depth(index) ))
+                            
                 # Output the curve results
                 self.Save_VSH(index, VSH)
                 self.Save_VSH_GR(index, VSH_GR)
                 self.Save_VSH_SP(index, VSH_SP)
                 self.Save_VSH_RES(index, VSH_RES)
                 self.Save_VSH_ND(index, VSH_ND)
+                self.Save_VCL(index, VCL)
 
                 self.Save_RW_SP(index, RW_SP)
                 self.Save_SALINITY_SP(index, SALINITY_SP)
@@ -409,9 +452,13 @@ class UserApp(Methods, IPLink):
 
                 self.Save_PHIX(index, PHIX)
                 self.Save_PHIA(index, PHIA)
+                #self.ipprint("PHIA: " + str( PHIA ) + ", index: " + str( index ) + ", stage: " + str( 3 ))
                 self.Save_PHIT_HC(index, PHIT_HC)
                 self.Save_PHIT(index, PHIT)
                 
+                self.Save_NPHIH(index, NPHIH)
+                self.Save_RHOBH(index, RHOBH)
+
                 self.Save_RHOGM(index, RHOGM)
                 self.Save_RHOGC(index, RHOGC)
 
@@ -425,14 +472,23 @@ class UserApp(Methods, IPLink):
                 self.Save_BVW(index, BVW)
                 self.Save_BVWE(index, BVWE)
                 self.Save_BVSH(index, BVSH)
-                self.Save_BVO(index, BVO)
+                #self.Save_BVO(index, BVO)
+                #self.Save_BVSAND(index, BVSAND)
+                #self.Save_BVSILT(index, BVSILT)
+                #self.Save_BVLIM(index, BVLIM)
+                #self.Save_BVCLAY(index, BVCLAY)
+                #self.Save_SUM_TOT(index, SUM_TOT)
+
+                self.Save_SD(index, SD)
+                self.Save_RESV(index, RESV)
+                self.Save_PAY(index, PAY)
+
                 index += 1
-            except ZeroDivisionError:
+            
+            except Exception:
                 index += 1
                 continue
-            # self.ipprint("Entered Loop 7 " + str( PHIT ))
-        #except Exception:
-        #    raise
+            #self.ipprint("Entered Depth " + str( self.Depth(index) ))
 
     ######################################################
     # IP Print Statement
@@ -450,8 +506,8 @@ class UserApp(Methods, IPLink):
         PHIX = PHIA = PHIT_HC = PHIT = PHID_A = PHIE = -999
         RW_SP = SALINITY_SP = RW = SALINITY = RHOGM = RHOGC = -999
         SWT = SWE = SXOT = SXOE = -999
-        BVW = BVWE = BVSH = BVO = -999
-        return VSH, VSH_GR, VSH_SP, VSH_RES, VSH_ND, PHIX, PHIA, PHIT_HC, PHIT, PHID_A, PHIE, RW_SP, SALINITY_SP, RW, SALINITY, RHOGM, RHOGC, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO
+        BVW = BVWE = BVSH = BVO = BVSAND = BVLIM = -999
+        return VSH, VSH_GR, VSH_SP, VSH_RES, VSH_ND, PHIX, PHIA, PHIT_HC, PHIT, PHID_A, PHIE, RW_SP, SALINITY_SP, RW, SALINITY, RHOGM, RHOGC, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO, BVSAND, BVLIM
 
     ######################################################
     # Determining salinity and Rw from SP 
@@ -491,7 +547,7 @@ class UserApp(Methods, IPLink):
     # 2 - Uses all possible sources (SP, RES, N-D)
     ######################################################
     def VSH_GAPI(self, GR, GRMIN, GRMAX):
-        VSH_GR = max(0,(min(1,((GR-GRMIN)/(GRMAX-GRMIN)))))
+        VSH_GR = max(0.0001,(min(0.9999,((GR-GRMIN)/(GRMAX-GRMIN)))))
         VSH = VSH_GR
         return VSH
     
@@ -503,16 +559,17 @@ class UserApp(Methods, IPLink):
                  NPHIWSH, RHOBWSH, FLAG_LITH
                 ):     
         VSH_GR = self.VSH_GAPI(GR, GRMIN, GRMAX)
-        if (FLAG_LITH == 'CARBONATE'):
+        if (FLAG_LITH == 'CARBONATES'):
             VSH = VSH_GR
+            VSH_RES = VSH_SP = VSH_ND = -999
         else:
             if (RT != -999) and ((RSHALE > 0) and (RSAND > 0)):
-                VSH_RES = max(0,min(1,(RSHALE/RT)*((RSAND-RT)/(RSAND-RSHALE))))
+                VSH_RES = max(0.0001,min(0.9999,(RSHALE/RT)*((RSAND-RT)/(RSAND-RSHALE))))
             else:
                 VSH_RES = -999
             
             if (SP != -999) and ((SPSAND > 0) and (SPSHALE > 0)):
-                VSH_SP = max(0,min(1,((SP-SPSAND)/(SPSHALE-SPSAND))))
+                VSH_SP = max(0.0001,min(0.9999,((SP-SPSAND)/(SPSHALE-SPSAND))))
             else:
                 VSH_SP = -999
             
@@ -525,12 +582,23 @@ class UserApp(Methods, IPLink):
             # C = NPHIMA*RHOFL - RHOMA*NPHIFL            
             if (RHOB != -999) and (NPHI != -999):
                 NPHIFL = RHOFL
+                #RHOFL = 0.9999
                 dd = (RHOBQ - RHOFL)*(NPHIFL-NPHI)
                 ee = (RHOB - RHOFL)*(NPHIFL-NPHIQ)
                 ff = (RHOBQ - RHOFL)*(NPHIFL - NPHIWSH)
                 hh = (RHOBWSH - RHOFL)*(NPHIFL - NPHIQ)
+                VSH_ND = max(0.0001,min(0.9999,((dd-ee)/(ff-hh))))
                 
-                VSH_ND = max(0,min(1,((dd-ee)/(ff-hh))))
+                #NPHIFL = 1
+                #RHOFL = 1
+                #L = ((RHOFL-RHOBQ)/(NPHIFL-NPHIQ))*(-1)
+                #B = 1
+                #C = -L*NPHIQ + RHOBQ
+
+                #J = (L*NPHIWSH + RHOBWSH - C)/(math.sqrt(L**2 + B**2))
+                #I = (L*NPHI + RHOB - C)/(math.sqrt(L**2 + B**2))
+              
+                #VSH_ND = max(0.0001,min(0.9999,I/J))
             else:
                 VSH_ND = -999
               
@@ -565,13 +633,13 @@ class UserApp(Methods, IPLink):
     def SONIC_POR(self, OPT_SONIC_METHOD, DT, DTM, DTF, CF, a1, b1):
         if(OPT_SONIC_METHOD == 'WYLLIE'):
             PHIA = ((DT - DTM)/(DTF - DTM))/CF
-            PHIA = max(0,min(1,PHIA))
+            PHIA = max(0.0001,min(0.9999,PHIA))
         elif (OPT_SONIC_METHOD == 'HUNT-RAYMER'):
             aa = DTF*DT
             bb = DTM*DT-2*DTF*DT
             cc = DTF*(DT-DTM)
             PHIA = ((((-1)*(bb)) - (math.sqrt(bb**2 - 4*aa*cc)))/(2*aa))/CF
-            PHIA = max(0,min(1,PHIA))
+            PHIA = max(0.0001,min(0.9999,PHIA))
         elif (OPT_SONIC_METHOD == 'REGRESSION'):
             PHIA = a1*DT + b1
         return PHIA
@@ -592,7 +660,7 @@ class UserApp(Methods, IPLink):
     ######################################################
     def TOTAL_EFFECTIVE_SIM(self, VSH, VSHCO, PHIT, PHISH):
         if (VSH > VSHCO):
-            PHIE = 0
+            PHIE = 0.001
         else:
             PHIE = max(0.001,(PHIT-(VSH*PHISH)))
         return PHIE
@@ -618,14 +686,14 @@ class UserApp(Methods, IPLink):
     def DEN_NEU_HCPOR(self, RHOBQ, RHOFL, RHOB, NPHI, NPHIQ):
         PHIDSND = (RHOBQ - RHOB)/(RHOBQ-RHOFL)
         if (PHIDSND < 0):
-            PHIT_HC =0
+            PHIT_HC =0.0001
         else:
             NPHISND = NPHI - NPHIQ
             B1 = 7.0 - 11*NPHISND
             B2 = B1**2 + 308*PHIDSND
             B3 = math.sqrt(B2) - B1
             PHIT_HC = B3/22
-            PHIT_HC = max(0, min(1,PHIT_HC))
+            PHIT_HC = max(0.0001, min(0.9999,PHIT_HC))
         return PHIT_HC
 
     ######################################################
@@ -634,7 +702,9 @@ class UserApp(Methods, IPLink):
     def XPLOT_POR(self, FLAG_LITH, RHOGA, RHOBQ, RHOB, NPHI, RHOFL, RHOBWSH, NPHIWSH, RHOBDSH, NPHIQ):
         # Carbonate
         # Warning to check RHOBQ and RHOGA
-        if (FLAG_LITH == 2):
+        RHB = RHOB
+        NPH = NPHI
+        if (FLAG_LITH == 'CARBONATES'):
             if (RHOGA != RHOBQ):
                 self.ipprint("RHOGA = " + str( RHOGA ) + " is not equal to RHOBQ = " 
                 + str( RHOBQ ) + ". Please make them equal to one another."
@@ -645,8 +715,7 @@ class UserApp(Methods, IPLink):
             else:
                 RHOGM = RHOGA-0.5*m2
         else:
-            RHB = RHOB
-            NPH = NPHI
+
             m2 = (1-RHOBWSH)/(1-NPHIWSH)
             c2 = 1-m2
             NPHIDSH = (m2-1+RHOBDSH)/m2
@@ -655,7 +724,7 @@ class UserApp(Methods, IPLink):
             m4 = (1-RHB)/(1-NPH)
             c4 = RHB - (m4*NPH)
             RHOGM = ((c3*m4) - (m3*c4))/(m4 - m3)
-        PHIX = max(0,min(1,((RHOGM - RHB)/(RHOGM - RHOFL))))
+        PHIX = max(0.0001, min(0.9999,((RHOGM - RHB)/(RHOGM - RHOFL))))
         return RHOGM, PHIX
 
     ######################################################
@@ -665,20 +734,26 @@ class UserApp(Methods, IPLink):
     V_KAO, V_CH, V_SMC, RHOGM, RHOB, RHOFL, NPHI, NPHIQ, FTF
     ):
         # Carbonate
-        if (OPT_SW_TECH =='ARCHIE') or (FLAG_LITH == 2):
-            FORM_FACT = A*(PHIX**-M)
+        if (OPT_SW_TECH =='ARCHIE') or (FLAG_LITH == 'CARBONATES'):
+            #FORM_FACT = A*(PHIX**-M)
+            FORM_FACT = A*cmath.exp(-M*cmath.log(PHIX)).real
             RO = min(RES,FORM_FACT*RWC)
             # Based on Archie Eqn, assuming 100% Sw & RO = RESD
             CWAFT = FORM_FACT/RT			
-            SW = (RO/RT)**(1/N)
+            #SW = (RO/RT)**(1/N)
+            SW = cmath.exp((1/N)*cmath.log(RO/RT)).real
         elif (OPT_SW_TECH =='DUAL_WATER'):
             exsw =0
             SW = 0.9
-            g1 = ((PHIX**M)/(A*RWC))
-            g2 = ((SWB*(PHIX**M)/A)*((1/RWB)-(1/RWC)))
+            #g1 = ((PHIX**M)/(A*RWC))
+            #g2 = ((SWB*(PHIX**M)/A)*((1/RWB)-(1/RWC)))
+            g1 = cmath.exp(M*cmath.log(PHIX)).real/(A*RWC)
+            g2 = ((SWB*cmath.exp(M*cmath.log(PHIX)).real/A)*((1/RWB)-(1/RWC)))
             while (exsw < 6):
-                fx1 = (g1*(SW**N)) + (g2*(SW**(N-1)))-(1/RES)
-                fx2 = (N*g1*(SW**(N-1))) + ((N-1)*g2*(SW**(N-2)))
+                #fx1 = (g1*(SW**N)) + (g2*(SW**(N-1)))-(1/RES)
+                #fx2 = (N*g1*(SW**(N-1))) + ((N-1)*g2*(SW**(N-2)))
+                fx1 = (g1*cmath.exp(N*cmath.log(SW)).real) + (g2*cmath.exp((N-1)*cmath.log(SW)).real)-(1/RES)
+                fx2 = (N*g1*cmath.exp((N-1)*cmath.log(SW)).real) + ((N-1)*g2*cmath.exp((N-2)*cmath.log(SW)).real)
                 SWP = SW
                 SW = SWP-(fx1/fx2)
                 exsw = exsw + 1
@@ -688,17 +763,23 @@ class UserApp(Methods, IPLink):
         # If NPHI is missing this technique defaults to Dual Water
         elif (OPT_SW_TECH =='WS_DRY_CLAY'):
             if (RHOB == -999):         				
-                FORM_FACT = A*(PHIX**-M)
+                #FORM_FACT = A*(PHIX**-M)
+                FORM_FACT = A*cmath.exp(-M*cmath.log(PHIX)).real
                 RO = min(RES,FORM_FACT*RWC)
-                SW = min(1, max(0,(RO/RT)**(1/N)))
+                #SW = min(0.9999, max(0.0001,(RO/RT)**(1/N)))
+                SW = min(0.9999, max(0.0001,cmath.exp((1/N)*cmath.log(RO/RT)).real))
             elif (NPHI == -999):    		
                 exsw =0
                 SW = 0.9
-                g1 = ((PHIX**M)/(A*RWC))
-                g2 = ((SWB*(PHIX**M)/A)*((1/RWB)-(1/RWC)))
+                #g1 = ((PHIX**M)/(A*RWC))
+                #g2 = ((SWB*(PHIX**M)/A)*((1/RWB)-(1/RWC)))
+                g1 = cmath.exp(M*cmath.log(PHIX)).real/(A*RWC)
+                g2 = ((SWB*cmath.exp(M*cmath.log(PHIX)).real/A)*((1/RWB)-(1/RWC)))
                 while (exsw < 6):
-                    fx1 = (g1*(SW**N)) + (g2*(SW**(N-1)))-(1/RES)
-                    fx2 = (N*g1*(SW**(N-1))) + ((N-1)*g2*(SW**(N-2)))
+                    #fx1 = (g1*(SW**N)) + (g2*(SW**(N-1)))-(1/RES)
+                    #fx2 = (N*g1*(SW**(N-1))) + ((N-1)*g2*(SW**(N-2)))
+                    fx1 = (g1*cmath.exp(N*cmath.log(SW)).real) + (g2*cmath.exp((N-1)*cmath.log(SW)).real)-(1/RES)
+                    fx2 = (N*g1*cmath.exp((N-1)*cmath.log(SW)).real) + ((N-1)*g2*cmath.exp((N-2)*cmath.log(SW)).real)
                     SWP = SW
                     SW = SWP-(fx1/fx2)
                     exsw = exsw + 1	
@@ -717,11 +798,15 @@ class UserApp(Methods, IPLink):
                 PHIDCL = (RHOGM - RHOB)/(RHOGM - RHOFL)	
                 PHIDDC = (RHOGM - RHOBDC)/(RHOGM - RHOFL)
                 QV = ((NPHISND - PHIDCL)/((HIDC - PHIDDC)* PHIX))* RHOBDC* CECDC 
-                g1 = ((PHIX**M)/(A*RWC))
-                g2 = BMAX*QV*((PHIX**M)/A)
+                #g1 = ((PHIX**M)/(A*RWC))
+                #g2 = BMAX*QV*((PHIX**M)/A)
+                g1 = cmath.exp(M*cmath.log(PHIX)).real/(A*RWC)
+                g2 = BMAX*QV*(cmath.exp(M*cmath.log(PHIX)).real/A)
                 while (exsw < 6):
-                    fx1 = (g1*(SW**N)) + (g2*(SW**(N-1)))-(1/RES)
-                    fx2 = (N*g1*(SW**(N-1))) + ((N-1)*g2*(SW**(N-2)))
+                    #fx1 = (g1*(SW**N)) + (g2*(SW**(N-1)))-(1/RES)
+                    #fx2 = (N*g1*(SW**(N-1))) + ((N-1)*g2*(SW**(N-2)))
+                    fx1 = (g1*cmath.exp(N*cmath.log(SW)).real) + (g2*cmath.exp((N-1)*cmath.log(SW)).real)-(1/RES)
+                    fx2 = (N*g1*cmath.exp((N-1)*cmath.log(SW)).real) + ((N-1)*g2*cmath.exp((N-2)*cmath.log(SW)).real)
                     SWP = SW
                     SW = SWP-(fx1/fx2)
                     exsw = exsw + 1		
@@ -731,11 +816,11 @@ class UserApp(Methods, IPLink):
     # Computes a clean set of product curves, removes 
     # spikes from VSH as well
     ######################################################
-    def TOTAL_EFFECTIVE(self, PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO): 
+    def TOTAL_EFFECTIVE(self, PHIT, VSH, VSHCO, RHOGC, SWIRR, PHISH, SWT, SXOT, PHIECO, CLAY_FRAC): 
         if (VSH > VSHCO):   
-            SWT = SWE = SXOT = SXOE = 1
-            PHIE = 0
-            if (VSH > 0.9):
+            SWT = SWE = SXOT = SXOE = 0.999
+            PHIE = 0.001
+            if (VSH > 0.95):
                 RHOGC = -999
             RHOGC = RHOGC
         else:
@@ -755,10 +840,10 @@ class UserApp(Methods, IPLink):
             SXOE = SXOE
 
         if (VSH > (VSHCO-0.2)):
-            PHIE = PHIE*((VSHCO-VSH)/0.2)
-            SWE = 1-((1-SWE)*((VSHCO-VSH)/0.2))
-            SWT = 1-((1-SWT)*((VSHCO-VSH)/0.2))
-            SXOE = 1-((1-SXOE)*((VSHCO-VSH)/0.2))
+            PHIE = max(0.0001, PHIE*((VSHCO-VSH)/0.2))
+            SWE = max(SWIRR, 1-((1-SWE)*((VSHCO-VSH)/0.2)))
+            SWT = max(SWIRR, 1-((1-SWT)*((VSHCO-VSH)/0.2)))
+            SXOE = max(SWIRR, 1-((1-SXOE)*((VSHCO-VSH)/0.2)))
 
         if (SWE > SWT):
             SWE = SWT
@@ -771,10 +856,10 @@ class UserApp(Methods, IPLink):
             SXOE = SXOE
 
         if (PHIE < PHIECO):
-            SWT = SWE = SXOT = SXOE = 1
+            SWT = SWE = SXOT = SXOE = 0.999
         elif (PHIE < (PHIECO+0.02)):
-            SWE = 1-((1-SWE)*((PHIE-PHIECO)/0.2))
-            SXOE = 1-((1-SXOE)*((PHIE-PHIECO)/0.02))
+            SWE = max(SWIRR, 1-((1-SWE)*((PHIE-PHIECO)/0.2)))
+            SXOE = max(SWIRR, 1-((1-SXOE)*((PHIE-PHIECO)/0.02)))
 
         if (SWE > SWT):
             SWE = SWT
@@ -786,21 +871,82 @@ class UserApp(Methods, IPLink):
         else:
             SXOE = SXOE
 
-        BVW = PHIT * SWT
-        BVWE = PHIE * SWE
-        BVSH = (1-PHIT) * VSH
-        BVO = PHIT - BVW
-
-        # SMOOTHING IS NOT WORKING WELL
-        #if (OPT_PERM == 'YES'):
-        #    PERFORM PERMEABILITY
-
-        #if (OPT_VSA_SI_CL == 'YES'):		
-        #    PERFORM SSC
-
-        #if (OPT_PAY_FLAG == 'YES'):
-        #    PERFORM FLAG_PAY
+        if (PHIE == -999):
+            PHIE = 0.001
+        if (SWE == -999):
+            SWE = 0.999
         
-        return PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO
+        #BVW = PHIT * SWT
+        #BVO = PHIT - BVW
+        #BVWE = PHIE * SWE
+        #BVSH = (1-PHIT) * VSH
+        # Currently not running well. Use Standalone Module
+        BVW = BVO = BVWE = BVSH = -999
+        VCL = VSH * CLAY_FRAC
+        return PHIE, SWT, SWE, SXOT, SXOE, BVW, BVWE, BVSH, BVO, VCL
 
-		
+    ######################################################
+    # Min-Max Clamp
+    ######################################################
+    def clamp(self, n, minn, maxn):
+        return max(min(maxn, n), minn)
+
+    ######################################################
+    # Interpreting sand (carbonate) -silt-clay from VSH 
+    ######################################################
+    def SSC(self, PHIT, OPT_CLAY_SILT, VSH, CLAY_FRAC, SAND_FRAC, FLAG_LITH, BVSAND):
+        if (OPT_CLAY_SILT == 'NO'):
+            CLAY_FRAC = SAND_FRAC = 1
+
+        MVCL = VSH*CLAY_FRAC
+
+        if (VSH < (CLAY_FRAC + 0.1)):
+            MVSD = 1 - VSH
+        else:
+            MVSD = 0
+
+        BVCLAY = (1-PHIT)*MVCL
+        # To fractionate the portion of sand-silt from remaining non-clay portion. 
+        # A low sand fraction portions more of the non-clay matrix to silt*/
+        if (VSH < 0.1):
+            BVSC = self.clamp((1-PHIT)*MVSD, 0, 1)
+        else:
+            BVSC = self.clamp((1-PHIT)*(SAND_FRAC)*MVSD, 0, 1)
+
+        if (FLAG_LITH == 'CLASTICS'):
+            BVSAND = BVSC
+            BVLIM = 0
+        elif (FLAG_LITH == 'CARBONATES'):
+            BVLIM = BVSC
+            BVSAND = 0
+        else:
+            BVLIM = BVSAND = 0
+            BVCLAY = 1
+        
+        BVSILT = 1 - (PHIT + BVSAND + BVLIM + BVCLAY)
+
+        # Checking Condition; sum total must be 1 */
+        S = BVSILT + PHIT + BVSAND + BVLIM + BVCLAY
+
+        return S, BVSILT, BVLIM, BVCLAY, BVSAND
+
+    ######################################################
+    # Generating Pay Flags
+    ######################################################
+    def FLAG_PAY(self, VSH, VSHCO, PHIT, PHITCO, SWT, SWTCO):
+        # Net Sand
+        if (VSH < VSHCO):
+            # Net Reservoir
+            if (PHIT > PHITCO):
+                # Net Pay
+                if (SWT < SWTCO):
+                    SD = RESV = PAY = 1
+                else:
+                    SD = RESV = 1
+                    PAY = 0
+            else:
+                SD = 1
+                RESV = PAY = 0
+        else:
+            SD = RESV = PAY = 0
+        return SD, RESV, PAY

@@ -1,5 +1,5 @@
 # /***********************************************/
-#  * File dynamically created from IP: 09/17/2020 11:10:45
+#  * File dynamically created from IP: 08/24/2022 15:41:13
 #  * DO NOT MANUALLY EDIT
 # /***********************************************/
 
@@ -359,6 +359,238 @@ class Methods:
 	def Set_DiffBelowAbove_Attribute(self, attributeName, newValue):
 		self._IPProxy.SetText(2, self._outputCurves[4], attributeName, str(newValue))
 
+	def Save_ProdAbove(self, index, value):
+		self._IPProxy.SetCurveData(self._outputCurves[5], index, float(value))
+
+	def Save_Array_ProdAbove(self, index, xVal, yVal, value):
+		self._IPProxy.SetCurveData(self._outputCurves[5], index, float(value), xVal, yVal)
+
+	def Save_ProdAbove_Text(self, index, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[5], index, str(value))
+
+	def Save_Array_ProdAbove_Text(self, index, xVal, yVal, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[5], index, str(value), xVal, yVal)
+
+	def ProdAbove(self, index):
+		return self._IPProxy.GetCurveData(self._outputCurves[5], index)
+
+	def Array_ProdAbove(self, index, xVal, yVal):
+		return self._IPProxy.GetCurveData(self._outputCurves[5], index, xVal, yVal)
+
+	def ProdAbove_Text(self, index):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[5], index)
+
+	def Array_ProdAbove_Text(self, index, xVal, yVal):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[5], index, xVal, yVal)
+
+	def get_ProdAbove_Name(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[5], 1)
+
+	ProdAbove_Name = property(fget=get_ProdAbove_Name)
+
+	def get_ProdAbove_Units(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[5], 2)
+
+	ProdAbove_Units = property(fget=get_ProdAbove_Units)
+
+	def get_ProdAbove_Comments(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[5], 3)
+
+	ProdAbove_Comments = property(fget=get_ProdAbove_Comments)
+
+	def Save_ProdAbove_Comments(self, newValue):
+		self._IPProxy.SetCurveText(self._outputCurves[5], 3, str(newValue))
+
+	def get_Array_ProdAbove_MaxX(self):
+		return self._outArrayX[5]
+
+	Array_ProdAbove_MaxX = property(fget=get_Array_ProdAbove_MaxX)
+
+	def get_Array_ProdAbove_MaxY(self):
+		return self._outArrayY[5]
+
+	Array_ProdAbove_MaxY = property(fget=get_Array_ProdAbove_MaxY)
+
+	def Get_ProdAbove_Attribute(self, attributeName):
+		return self._IPProxy.GetText(2, self._outputCurves[5], attributeName)
+
+	def Set_ProdAbove_Attribute(self, attributeName, newValue):
+		self._IPProxy.SetText(2, self._outputCurves[5], attributeName, str(newValue))
+
+	def Save_ProdBelow(self, index, value):
+		self._IPProxy.SetCurveData(self._outputCurves[6], index, float(value))
+
+	def Save_Array_ProdBelow(self, index, xVal, yVal, value):
+		self._IPProxy.SetCurveData(self._outputCurves[6], index, float(value), xVal, yVal)
+
+	def Save_ProdBelow_Text(self, index, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[6], index, str(value))
+
+	def Save_Array_ProdBelow_Text(self, index, xVal, yVal, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[6], index, str(value), xVal, yVal)
+
+	def ProdBelow(self, index):
+		return self._IPProxy.GetCurveData(self._outputCurves[6], index)
+
+	def Array_ProdBelow(self, index, xVal, yVal):
+		return self._IPProxy.GetCurveData(self._outputCurves[6], index, xVal, yVal)
+
+	def ProdBelow_Text(self, index):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[6], index)
+
+	def Array_ProdBelow_Text(self, index, xVal, yVal):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[6], index, xVal, yVal)
+
+	def get_ProdBelow_Name(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[6], 1)
+
+	ProdBelow_Name = property(fget=get_ProdBelow_Name)
+
+	def get_ProdBelow_Units(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[6], 2)
+
+	ProdBelow_Units = property(fget=get_ProdBelow_Units)
+
+	def get_ProdBelow_Comments(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[6], 3)
+
+	ProdBelow_Comments = property(fget=get_ProdBelow_Comments)
+
+	def Save_ProdBelow_Comments(self, newValue):
+		self._IPProxy.SetCurveText(self._outputCurves[6], 3, str(newValue))
+
+	def get_Array_ProdBelow_MaxX(self):
+		return self._outArrayX[6]
+
+	Array_ProdBelow_MaxX = property(fget=get_Array_ProdBelow_MaxX)
+
+	def get_Array_ProdBelow_MaxY(self):
+		return self._outArrayY[6]
+
+	Array_ProdBelow_MaxY = property(fget=get_Array_ProdBelow_MaxY)
+
+	def Get_ProdBelow_Attribute(self, attributeName):
+		return self._IPProxy.GetText(2, self._outputCurves[6], attributeName)
+
+	def Set_ProdBelow_Attribute(self, attributeName, newValue):
+		self._IPProxy.SetText(2, self._outputCurves[6], attributeName, str(newValue))
+
+	def Save_HarmAbove(self, index, value):
+		self._IPProxy.SetCurveData(self._outputCurves[7], index, float(value))
+
+	def Save_Array_HarmAbove(self, index, xVal, yVal, value):
+		self._IPProxy.SetCurveData(self._outputCurves[7], index, float(value), xVal, yVal)
+
+	def Save_HarmAbove_Text(self, index, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[7], index, str(value))
+
+	def Save_Array_HarmAbove_Text(self, index, xVal, yVal, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[7], index, str(value), xVal, yVal)
+
+	def HarmAbove(self, index):
+		return self._IPProxy.GetCurveData(self._outputCurves[7], index)
+
+	def Array_HarmAbove(self, index, xVal, yVal):
+		return self._IPProxy.GetCurveData(self._outputCurves[7], index, xVal, yVal)
+
+	def HarmAbove_Text(self, index):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[7], index)
+
+	def Array_HarmAbove_Text(self, index, xVal, yVal):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[7], index, xVal, yVal)
+
+	def get_HarmAbove_Name(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[7], 1)
+
+	HarmAbove_Name = property(fget=get_HarmAbove_Name)
+
+	def get_HarmAbove_Units(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[7], 2)
+
+	HarmAbove_Units = property(fget=get_HarmAbove_Units)
+
+	def get_HarmAbove_Comments(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[7], 3)
+
+	HarmAbove_Comments = property(fget=get_HarmAbove_Comments)
+
+	def Save_HarmAbove_Comments(self, newValue):
+		self._IPProxy.SetCurveText(self._outputCurves[7], 3, str(newValue))
+
+	def get_Array_HarmAbove_MaxX(self):
+		return self._outArrayX[7]
+
+	Array_HarmAbove_MaxX = property(fget=get_Array_HarmAbove_MaxX)
+
+	def get_Array_HarmAbove_MaxY(self):
+		return self._outArrayY[7]
+
+	Array_HarmAbove_MaxY = property(fget=get_Array_HarmAbove_MaxY)
+
+	def Get_HarmAbove_Attribute(self, attributeName):
+		return self._IPProxy.GetText(2, self._outputCurves[7], attributeName)
+
+	def Set_HarmAbove_Attribute(self, attributeName, newValue):
+		self._IPProxy.SetText(2, self._outputCurves[7], attributeName, str(newValue))
+
+	def Save_HarmBelow(self, index, value):
+		self._IPProxy.SetCurveData(self._outputCurves[8], index, float(value))
+
+	def Save_Array_HarmBelow(self, index, xVal, yVal, value):
+		self._IPProxy.SetCurveData(self._outputCurves[8], index, float(value), xVal, yVal)
+
+	def Save_HarmBelow_Text(self, index, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[8], index, str(value))
+
+	def Save_Array_HarmBelow_Text(self, index, xVal, yVal, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[8], index, str(value), xVal, yVal)
+
+	def HarmBelow(self, index):
+		return self._IPProxy.GetCurveData(self._outputCurves[8], index)
+
+	def Array_HarmBelow(self, index, xVal, yVal):
+		return self._IPProxy.GetCurveData(self._outputCurves[8], index, xVal, yVal)
+
+	def HarmBelow_Text(self, index):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[8], index)
+
+	def Array_HarmBelow_Text(self, index, xVal, yVal):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[8], index, xVal, yVal)
+
+	def get_HarmBelow_Name(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[8], 1)
+
+	HarmBelow_Name = property(fget=get_HarmBelow_Name)
+
+	def get_HarmBelow_Units(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[8], 2)
+
+	HarmBelow_Units = property(fget=get_HarmBelow_Units)
+
+	def get_HarmBelow_Comments(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[8], 3)
+
+	HarmBelow_Comments = property(fget=get_HarmBelow_Comments)
+
+	def Save_HarmBelow_Comments(self, newValue):
+		self._IPProxy.SetCurveText(self._outputCurves[8], 3, str(newValue))
+
+	def get_Array_HarmBelow_MaxX(self):
+		return self._outArrayX[8]
+
+	Array_HarmBelow_MaxX = property(fget=get_Array_HarmBelow_MaxX)
+
+	def get_Array_HarmBelow_MaxY(self):
+		return self._outArrayY[8]
+
+	Array_HarmBelow_MaxY = property(fget=get_Array_HarmBelow_MaxY)
+
+	def Get_HarmBelow_Attribute(self, attributeName):
+		return self._IPProxy.GetText(2, self._outputCurves[8], attributeName)
+
+	def Set_HarmBelow_Attribute(self, attributeName, newValue):
+		self._IPProxy.SetText(2, self._outputCurves[8], attributeName, str(newValue))
+
 	def depthAbove(self, index):
 		if self._parCnIn[0] > 0:
 			return self._IPProxy.GetCurveData(self._parCnIn[0], index)
@@ -405,4 +637,9 @@ class Methods:
 		return self._textInputParameters[0]
 
 	OPT_MEAN_MTD = property(fget=get_OPT_MEAN_MTD)
+
+	def get_nullCheck(self):
+		return self._flagInputParameters[0]
+
+	nullCheck = property(fget=get_nullCheck)
 

@@ -19,52 +19,56 @@ class UserApp(Methods, IPLink):
 		index = self.TopDepth
 		while index <= self.BottomDepth:
 			# Enter user code here
-			RESD = self.RESD(index)
-			RW = self.RW(index)
-			VSH = self.VSH(index)
-			VSHCO = self.VSHCO(index)
-			PHIT = self.PHIT(index)
-			PHITCO = self.PHITCO(index)
-			SWT = self.SWT(index)
-			SWTCO = self.SWTCO(index)
+			try:
+				RESD = self.RESD(index)
+				RW = self.RW(index)
+				VSH = self.VSH(index)
+				VSHCO = self.VSHCO(index)
+				PHIT = self.PHIT(index)
+				PHITCO = self.PHITCO(index)
+				SWT = self.SWT(index)
+				SWTCO = self.SWTCO(index)
 
-			m = self.m(index)
-			CLAY_FRAC = self.CLAY_FRAC(index)
-			SAND_FRAC = self.SAND_FRAC(index)
+				m = self.m(index)
+				CLAY_FRAC = self.CLAY_FRAC(index)
+				SAND_FRAC = self.SAND_FRAC(index)
 
-			OPT_CLAY_SILT = self.OPT_CLAY_SILT
-			FLAG_LITH = self.FLAG_LITH
+				OPT_CLAY_SILT = self.OPT_CLAY_SILT
+				FLAG_LITH = self.FLAG_LITH
 
-			if (PHIT == None):
-				PHIT_R = 10**((math.log10(RESD)-math.log10(RW))/-m)
-				PHIT = PHIT_R
-				SWT = 1
+				if (PHIT == None):
+					PHIT_R = 10**((math.log10(RESD)-math.log10(RW))/-m)
+					PHIT = PHIT_R
+					SWT = 1
 
-			BVW = PHIT*SWT
-			BVHC = PHIT-BVW
-			BVSH = (1-PHIT)*VSH
-			BVSAND = (1-PHIT)*(1-VSH)
-			
-			SUM_TOT, BVSILT, BVLIM, BVCLAY, BVSAND, BVSALT, BVASH = self.SSC(PHIT, OPT_CLAY_SILT, VSH, CLAY_FRAC, SAND_FRAC, FLAG_LITH, BVSAND)
-			SD, RESV, PAY = self.FLAG_PAY(VSH, VSHCO, PHIT, PHITCO, SWT, SWTCO)
+				BVW = PHIT*SWT
+				BVHC = PHIT-BVW
+				BVSH = (1-PHIT)*VSH
+				BVSAND = (1-PHIT)*(1-VSH)
+				
+				SUM_TOT, BVSILT, BVLIM, BVCLAY, BVSAND, BVSALT, BVASH = self.SSC(PHIT, OPT_CLAY_SILT, VSH, CLAY_FRAC, SAND_FRAC, FLAG_LITH, BVSAND)
+				SD, RESV, PAY = self.FLAG_PAY(VSH, VSHCO, PHIT, PHITCO, SWT, SWTCO)
 
-			# output the curve results
-			self.Save_BVW(index, BVW)
-			self.Save_BVHC(index, BVHC)
-			self.Save_BVSH(index, BVSH)
-			self.Save_BVSAND(index, BVSAND)
-			
-			self.Save_BVSILT(index, BVSILT)
-			self.Save_BVLIM(index, BVLIM)
-			self.Save_BVCLAY(index, BVCLAY)
-			self.Save_BVSALT(index, BVSALT)
-			self.Save_BVASH(index, BVASH)
-			self.Save_SUM_TOT(index, SUM_TOT)
+				# output the curve results
+				self.Save_BVW(index, BVW)
+				self.Save_BVHC(index, BVHC)
+				self.Save_BVSH(index, BVSH)
+				self.Save_BVSAND(index, BVSAND)
+				
+				self.Save_BVSILT(index, BVSILT)
+				self.Save_BVLIM(index, BVLIM)
+				self.Save_BVCLAY(index, BVCLAY)
+				self.Save_BVSALT(index, BVSALT)
+				self.Save_BVASH(index, BVASH)
+				self.Save_SUM_TOT(index, SUM_TOT)
 
-			self.Save_SD(index, SD)
-			self.Save_RESV(index, RESV)
-			self.Save_PAY(index, PAY)
-			index += 1
+				self.Save_SD(index, SD)
+				self.Save_RESV(index, RESV)
+				self.Save_PAY(index, PAY)
+				index += 1
+			except Exception:
+				index += 1
+				continue
 
 	#*****************************************************************
 	# Min-Max Clamp
