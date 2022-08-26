@@ -21,8 +21,8 @@ class UserApp(Methods, IPLink):
 
 	def UserCode(self):
 		# Uncomment the next two lines to enable debgugging
-		#ptvsd.enable_attach(address=('127.0.0.1', 5678))
-		#ptvsd.wait_for_attach()
+#		ptvsd.enable_attach(address=('127.0.0.1', 5678))
+#		ptvsd.wait_for_attach()
 		#
 		# Loop through the data one level at a time
 		# TopDepth and BottomDepth are the index equivalent depths entered on the run window. 
@@ -103,9 +103,14 @@ class UserApp(Methods, IPLink):
 				FLAG_FLUIDS = self.FLAG_FLUIDS
 				OPT_FLUID_SYSTEM = self.OPT_FLUID_SYSTEM
 				CORE_REG_USE = self.CORE_REG_USE
+				CAP_PRESSURE = self.CAP_PRESSURE
 
 				CLAMP_MIN = 0.001
 				CLAMP_MAX = 8000
+
+				#Set to Null
+				HAFWL= PCLAB= PCRES= SW_PC= TCPERM= TCPERM_PHISH= KTIM_FREE_FLUID= HPERM= LUPERM= K_RGPZ= -999
+				REG_PERM_A1= REG_PERM_A2= PERM_MIN= PERM_MAX= PERM_FINAL= -999
 
 				################################
 				# Part A - Permeability
@@ -186,7 +191,7 @@ class UserApp(Methods, IPLink):
 
 				# Core Permeability to Log PHIE/PHIT Regression
 				REG_PERM_A1 = 10**(E1 + PHIE*F1)
-				REG_PERM_A2 = 10**(E2 + PHIE*F2)
+				REG_PERM_A2 = 10**(E2 + PHIT*F2)
 				#self.ipprint("REG_PERM_A1: " + str( REG_PERM_A1 ) +" @Depth: " + str( DEPTH ) )
 				#self.ipprint("REG_PERM_A2: " + str( REG_PERM_A2 ) +" @Depth: " + str( DEPTH ) )
 
@@ -219,48 +224,52 @@ class UserApp(Methods, IPLink):
 				################################
 				# Part B - Capillary Pressure
 				################################
-				if (FLAG_FLUIDS == 'WATER') or (FLAG_FLUIDS == 'PERCHED_WATER'):
-					HAFWL = PCRES = PCLAB = -999
-					SW_PC = 1
-				elif (FLAG_FLUIDS == 'RELICT_HC') or (FLAG_FLUIDS =='RESIDUAL_HC'):
-					HAFWL = PCRES = PCLAB = SW_PC = -999
-				elif (FLAG_FLUIDS == 'GAS') or (FLAG_FLUIDS == 'OIL'):
-					if (OPT_FLUID_SYSTEM == 'OIL') or (OPT_FLUID_SYSTEM == 'GAS'):
-						HAFWL = FWL - TVDSS
-						if (FLAG_FLUIDS == 'GAS'):
-							PCRES = HAFWL*(W_GD - G_GD)
-							PCLAB = PCRES*TCosT_AW_L/TCosT_GW_R
-						elif (FLAG_FLUIDS == 'OIL'):
-							PCRES = HAFWL*(W_GD - O_GD)
-							PCLAB = PCRES*TCosT_AW_L/TCosT_OW_R		
-					elif (OPT_FLUID_SYSTEM == 'GAS-OIL-WTR'):
-						X = (FWL - GOC)*(G_GD - O_GD)/(G_GD - W_GD)
-						PGWC = FWL - X
-						if (FLAG_FLUIDS == 'GAS'):
-							HAFWL = PGWC - TVDSS
-							PCRES = HAFWL*(W_GD - G_GD)
-							PCLAB = PCRES*TCosT_AW_L/TCosT_GW_R
-						elif (FLAG_FLUIDS == 'OIL'):
+				if (CAP_PRESSURE == 'YES'):
+					if (FLAG_FLUIDS == 'WATER') or (FLAG_FLUIDS == 'PERCHED_WATER'):
+						HAFWL = PCRES = PCLAB = -999
+						SW_PC = 1
+					elif (FLAG_FLUIDS == 'RELICT_HC') or (FLAG_FLUIDS =='RESIDUAL_HC'):
+						HAFWL = PCRES = PCLAB = SW_PC = -999
+					elif (FLAG_FLUIDS == 'GAS') or (FLAG_FLUIDS == 'OIL'):
+						if (OPT_FLUID_SYSTEM == 'OIL') or (OPT_FLUID_SYSTEM == 'GAS'):
 							HAFWL = FWL - TVDSS
-							PCRES = HAFWL*(W_GD - O_GD)
-							PCLAB = PCRES*TCosT_AW_L/TCosT_OW_R
+							if (FLAG_FLUIDS == 'GAS'):
+								PCRES = HAFWL*(W_GD - G_GD)
+								PCLAB = PCRES*TCosT_AW_L/TCosT_GW_R
+							elif (FLAG_FLUIDS == 'OIL'):
+								PCRES = HAFWL*(W_GD - O_GD)
+								PCLAB = PCRES*TCosT_AW_L/TCosT_OW_R		
+						elif (OPT_FLUID_SYSTEM == 'GAS-OIL-WTR'):
+							X = (FWL - GOC)*(G_GD - O_GD)/(G_GD - W_GD)
+							PGWC = FWL - X
+							if (FLAG_FLUIDS == 'GAS'):
+								HAFWL = PGWC - TVDSS
+								PCRES = HAFWL*(W_GD - G_GD)
+								PCLAB = PCRES*TCosT_AW_L/TCosT_GW_R
+							elif (FLAG_FLUIDS == 'OIL'):
+								HAFWL = FWL - TVDSS
+								PCRES = HAFWL*(W_GD - O_GD)
+								PCLAB = PCRES*TCosT_AW_L/TCosT_OW_R
 
-				# Calculations are only applied in gas leg (or oil leg), when coal is not present
-				# The 5 constants for each parameter are entered into Loglan as c0, c1, c2, c3, c4
-				# c and d will generally be constants (enter as c4 and set c1-3 to 0)
-				K = PERM
-				if (K > 0):
-					a = (A_C0 * (math.log(K)**4)) + (A_C1 * (math.log(K)**3)) + (A_C2 * (math.log(K)**2)) + (A_C3 * math.log(K)) + A_C4
-					b = B_C0 * math.exp(((B_C1 -(B_C2* math.log(K)))/(1 + (B_C3 *math.log(K)))))
-					c = (C_C0 * (math.log(K)**4)) + (C_C1 * (math.log(K)**3)) + (C_C2 * (math.log(K)**2)) + (C_C3 * math.log(K)) + C_C4
-					d = (D_C0 * (math.log(K)**4)) + (D_C1 * (math.log(K)**3)) + (D_C2 * (math.log(K)**2)) + (D_C3 * math.log(K)) + D_C4
-					SW_PC = min(0.9999, 1-(a*(math.exp(-((b/(d + PCLAB))**c)))))
+					# Calculations are only applied in gas leg (or oil leg), when coal is not present
+					# The 5 constants for each parameter are entered into Loglan as c0, c1, c2, c3, c4
+					# c and d will generally be constants (enter as c4 and set c1-3 to 0)
+					K = PERM
+					if (K > 0):
+						a = (A_C0 * (math.log(K)**4)) + (A_C1 * (math.log(K)**3)) + (A_C2 * (math.log(K)**2)) + (A_C3 * math.log(K)) + A_C4
+						b = B_C0 * math.exp(((B_C1 -(B_C2* math.log(K)))/(1 + (B_C3 *math.log(K)))))
+						c = (C_C0 * (math.log(K)**4)) + (C_C1 * (math.log(K)**3)) + (C_C2 * (math.log(K)**2)) + (C_C3 * math.log(K)) + C_C4
+						d = (D_C0 * (math.log(K)**4)) + (D_C1 * (math.log(K)**3)) + (D_C2 * (math.log(K)**2)) + (D_C3 * math.log(K)) + D_C4
+						SW_PC = min(0.9999, 1-(a*(math.exp(-((b/(d + PCLAB))**c)))))
+					else:
+						SW_PC = 1
 				else:
-					SW_PC = 1
+					SW_PC = -999
 
 				self.Save_HAFWL(index, HAFWL)
 				self.Save_PCLAB(index, PCLAB)
 				self.Save_PCRES(index, PCRES)
+				self.Save_SW_PC(index, SW_PC)
 				self.Save_TCPERM(index, TCPERM)
 				self.Save_TCPERM_PHISH(index, TCPERM_PHISH)
 				self.Save_KTIM_FREE_FLUID(index, KTIM_FREE_FLUID)
@@ -275,7 +284,8 @@ class UserApp(Methods, IPLink):
 				self.Save_PERM_FINAL(index, PERM_FINAL)
 				index += 1
 			except Exception:
-				pass
+				continue
+				index += 1
 
 	def ipprint(self, text):
 		from PGL.IP.API import IntPetroAPI

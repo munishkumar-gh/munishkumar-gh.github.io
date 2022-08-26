@@ -165,10 +165,10 @@ D_C1 , d=C0*log(K)^4 + C1*(logK)^3 + C2*(logK)^2 + C3*(logK) + C4 , 0 ,  ,  , 5 
 D_C2 , d=C0*log(K)^4 + C1*(logK)^3 + C2*(logK)^2 + C3*(logK) + C4 , 0 ,  ,  , 5 , 21 , False
 D_C3 , d=C0*log(K)^4 + C1*(logK)^3 + C2*(logK)^2 + C3*(logK) + C4 , 0 ,  ,  , 5 , 22 , False
 D_C4 , d=C0*log(K)^4 + C1*(logK)^3 + C2*(logK)^2 + C3*(logK) + C4 , 0 ,  ,  , 5 , 23 , False
-E1 , E1 Core Perm to Log PHIE Regression = 10**(E1*(PHIE)^F1) ,  ,  ,  , 3 , 1 , True
-F1 , F1 Core Perm to Log PHIE Regression = 10**(E1*F1(PHIE)^F1) ,  ,  ,  , 3 , 2 , True
-E2 , E2 Core Perm to Log PHIT Regression = 10**(E2*(PHIT)^F2) ,  ,  ,  , 3 , 3 , True
-F2 , F2 Core Perm to Log PHIT Regression = 10**(E2*(PHIT)^F2) ,  ,  ,  , 3 , 4 , True
+E1 , PERM to PHIE: 10**(E1 + PHIE*F1) ,  ,  ,  , 3 , 1 , True
+F1 , PERM to PHIE: 10**(E1 + PHIE*F1) ,  ,  ,  , 3 , 2 , True
+E2 , PERM to PHIT: 10**(E2 + PHIT*F2) ,  ,  ,  , 3 , 3 , True
+F2 , PERM to PHIT: 10**(E2 + PHIT*F2) ,  ,  ,  , 3 , 4 , True
 FLAG_SWT_RES , Switch for Timur-Coates - [0] indicates poor SWT_RES data , 0 , 0 , 1 , 1 , 1 , True
 MC , Max Edge Smoothing Window , 10 ,  ,  , 2 , 1 , True
 SR , Sample Rate for Smoothing , 0.1 ,  ,  , 2 , 2 , True
@@ -285,7 +285,7 @@ PHISH_INT , PHISH_INT = a%2C y = aTVDSS^x , 9.7970666e-08 ,  ,  , 4 , 15 , True
 FLAG_FLUIDS , Fluid Type , GAS%2COIL%2CWATER%2CPERCHED_WATER%2CRELICT_HC%2CRESIDUAL_HC , WATER , 8 , 1 , False
 OPT_FLUID_SYSTEM , HC Column Composition , GAS%2COIl%2CGAS-OIL-WTR , GAS-OIL-WTR , 8 , 2 , False
 CORE_REG_USE , Use Core Regression , YES%2CNO , NO , 8 , 3 , False
- ,  ,  ,  ,  ,  , 
+CAP_PRESSURE , Evaluate Capillary Pressure , YES%2CNO , NO , 8 , 4 , False
  ,  ,  ,  ,  ,  , 
  ,  ,  ,  ,  ,  , 
  ,  ,  ,  ,  ,  , 
@@ -1014,7 +1014,8 @@ $OutputCurvesV16
  , 
 Count=0
 $TextParamsV17
-Count=3
+Count=4
+False , False
 False , False
 False , False
 False , False

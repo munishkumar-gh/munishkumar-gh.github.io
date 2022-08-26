@@ -1,5 +1,5 @@
 # /***********************************************/
-#  * File dynamically created from IP: 08/24/2022 15:22:41
+#  * File dynamically created from IP: 08/25/2022 14:55:15
 #  * DO NOT MANUALLY EDIT
 # /***********************************************/
 
@@ -2409,4 +2409,9 @@ class Methods:
 		return self._textInputParameters[2]
 
 	CORE_REG_USE = property(fget=get_CORE_REG_USE)
+
+	def get_CAP_PRESSURE(self):
+		return self._textInputParameters[3]
+
+	CAP_PRESSURE = property(fget=get_CAP_PRESSURE)
 
