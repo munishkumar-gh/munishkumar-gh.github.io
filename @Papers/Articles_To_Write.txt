@@ -28,6 +28,7 @@ Energy Security in the New World. What needs to happen, and whats the deficit/de
 
 Modelling of Scope 3 Emissions 
 
+Panel Python library or visualisation project?
 
 
 
