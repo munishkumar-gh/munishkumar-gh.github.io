@@ -1,0 +1,43 @@
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 22 entries, 0 to 21
+Data columns (total 10 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Well Name             22 non-null     object 
+ 1   Sample ID             22 non-null     object 
+ 2   Depth (m)             22 non-null     float64
+ 3   NOB (psi)             22 non-null     int64  
+ 4   Grain Density (g/cc)  15 non-null     float64
+ 5   K_klin (mD)           22 non-null     float64
+ 6   Porosity (%)          22 non-null     float64
+ 7   F                     22 non-null     float64
+ 8   m                     22 non-null     float64
+ 9   color                 22 non-null     object 
+dtypes: float64(6), int64(1), object(3)
+memory usage: 1.9+ KB
+None
+       Well Name  Sample ID    Depth (m)    NOB (psi)  Grain Density (g/cc)  \
+count         22       22.0    22.000000    22.000000             15.000000   
+unique         4       22.0          NaN          NaN                   NaN   
+top       MTA-06      207.0          NaN          NaN                   NaN   
+freq           7        1.0          NaN          NaN                   NaN   
+mean         NaN        NaN  1969.862273  1311.636364              2.646667   
+std          NaN        NaN   525.629152   766.583922              0.016762   
+min          NaN        NaN  1265.500000   800.000000              2.620000   
+25%          NaN        NaN  1832.325000   800.000000              2.640000   
+50%          NaN        NaN  1852.685000   800.000000              2.640000   
+75%          NaN        NaN  2639.467500  2408.000000              2.650000   
+max          NaN        NaN  2651.380000  2408.000000              2.680000   
+
+        K_klin (mD)  Porosity (%)          F          m    color  
+count     22.000000     22.000000  22.000000  22.000000       22  
+unique          NaN           NaN        NaN        NaN        4  
+top             NaN           NaN        NaN        NaN  #a32638  
+freq            NaN           NaN        NaN        NaN        7  
+mean     164.583545     20.986364  17.268380   1.728823      NaN  
+std      295.965979      5.563683   7.998918   0.078495      NaN  
+min        0.070000     11.400000   7.552815   1.579503      NaN  
+25%        6.240000     17.375000  10.816050   1.687158      NaN  
+50%       28.850000     19.950000  16.782350   1.720000      NaN  
+75%      234.750000     25.300000  20.625000   1.787313      NaN  
+max     1310.000000     31.200000  37.500000   1.876051      NaN
