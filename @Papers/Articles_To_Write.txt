@@ -30,7 +30,7 @@ Modelling of Scope 3 Emissions
 
 Panel Python library or visualisation project?
 
-
+Natural Language Progression and Multiple Languages - how does sentiment analysis look across languages?
 
 
 
