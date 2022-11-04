@@ -584,9 +584,9 @@ Flags
 
 FLAG , Potential HC Type , FLAG ,  ,  ,  ,  , Lin ,  , False , 1 , 1 ,  ,  , Lin ,  ,  , Lin
 FLAG_HC , Flag Label , FLAG_HC ,  ,  ,  ,  , Lin ,  , False , 1 , 1 ,  ,  , Lin ,  ,  , Lin
- ,  ,  ,  ,  ,  ,  ,  ,  , False ,  ,  ,  ,  ,  ,  ,  , 
- ,  ,  ,  ,  ,  ,  ,  ,  , False ,  ,  ,  ,  ,  ,  ,  , 
- ,  ,  ,  ,  ,  ,  ,  ,  , False ,  ,  ,  ,  ,  ,  ,  , 
+Bh , Light to Heavy Ratio , LHR ,  ,  ,  ,  ,  ,  , False , 1 , 1 ,  ,  ,  ,  ,  , 
+Wh , Gas Wetness Ratio , GWR ,  ,  ,  ,  ,  ,  , False , 1 , 1 ,  ,  ,  ,  ,  , 
+Ch , Oil Character Qualifier , OCQ ,  ,  ,  ,  ,  ,  , False , 1 , 1 ,  ,  ,  ,  ,  , 
  ,  ,  ,  ,  ,  ,  ,  ,  , False ,  ,  ,  ,  ,  ,  ,  , 
  ,  ,  ,  ,  ,  ,  ,  ,  , False ,  ,  ,  ,  ,  ,  ,  , 
  ,  ,  ,  ,  ,  ,  ,  ,  , False ,  ,  ,  ,  ,  ,  ,  , 
@@ -874,9 +874,9 @@ Count=0
 $OutputCurvesV16
  , True , StringDataType
  , False , SingleDataType
- , 
- , 
- , 
+ , False , SingleDataType
+ , False , SingleDataType
+ , False , SingleDataType
  , 
  , 
  , 

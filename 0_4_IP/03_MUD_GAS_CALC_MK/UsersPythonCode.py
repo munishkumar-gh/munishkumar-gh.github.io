@@ -102,6 +102,9 @@ class UserApp(Methods, IPLink):
 					FLAG = "Undefined"
 
 				self.Save_FLAG_HC(index, FLAG_HC)
+				self.Save_Wh(index, Wh)
+				self.Save_Bh(index, Bh)
+				self.Save_Ch(index, Ch)
 				self.Save_FLAG_Text(index, FLAG)
 				index += 1
 			except Exception:

@@ -1,5 +1,5 @@
 # /***********************************************/
-#  * File dynamically created from IP: 08/24/2022 15:14:01
+#  * File dynamically created from IP: 10/26/2022 14:59:06
 #  * DO NOT MANUALLY EDIT
 # /***********************************************/
 
@@ -532,6 +532,180 @@ class Methods:
 
 	def Set_FLAG_HC_Attribute(self, attributeName, newValue):
 		self._IPProxy.SetText(2, self._outputCurves[1], attributeName, str(newValue))
+
+	def Save_Bh(self, index, value):
+		self._IPProxy.SetCurveData(self._outputCurves[2], index, float(value))
+
+	def Save_Array_Bh(self, index, xVal, yVal, value):
+		self._IPProxy.SetCurveData(self._outputCurves[2], index, float(value), xVal, yVal)
+
+	def Save_Bh_Text(self, index, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[2], index, str(value))
+
+	def Save_Array_Bh_Text(self, index, xVal, yVal, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[2], index, str(value), xVal, yVal)
+
+	def Bh(self, index):
+		return self._IPProxy.GetCurveData(self._outputCurves[2], index)
+
+	def Array_Bh(self, index, xVal, yVal):
+		return self._IPProxy.GetCurveData(self._outputCurves[2], index, xVal, yVal)
+
+	def Bh_Text(self, index):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[2], index)
+
+	def Array_Bh_Text(self, index, xVal, yVal):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[2], index, xVal, yVal)
+
+	def get_Bh_Name(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[2], 1)
+
+	Bh_Name = property(fget=get_Bh_Name)
+
+	def get_Bh_Units(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[2], 2)
+
+	Bh_Units = property(fget=get_Bh_Units)
+
+	def get_Bh_Comments(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[2], 3)
+
+	Bh_Comments = property(fget=get_Bh_Comments)
+
+	def Save_Bh_Comments(self, newValue):
+		self._IPProxy.SetCurveText(self._outputCurves[2], 3, str(newValue))
+
+	def get_Array_Bh_MaxX(self):
+		return self._outArrayX[2]
+
+	Array_Bh_MaxX = property(fget=get_Array_Bh_MaxX)
+
+	def get_Array_Bh_MaxY(self):
+		return self._outArrayY[2]
+
+	Array_Bh_MaxY = property(fget=get_Array_Bh_MaxY)
+
+	def Get_Bh_Attribute(self, attributeName):
+		return self._IPProxy.GetText(2, self._outputCurves[2], attributeName)
+
+	def Set_Bh_Attribute(self, attributeName, newValue):
+		self._IPProxy.SetText(2, self._outputCurves[2], attributeName, str(newValue))
+
+	def Save_Wh(self, index, value):
+		self._IPProxy.SetCurveData(self._outputCurves[3], index, float(value))
+
+	def Save_Array_Wh(self, index, xVal, yVal, value):
+		self._IPProxy.SetCurveData(self._outputCurves[3], index, float(value), xVal, yVal)
+
+	def Save_Wh_Text(self, index, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[3], index, str(value))
+
+	def Save_Array_Wh_Text(self, index, xVal, yVal, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[3], index, str(value), xVal, yVal)
+
+	def Wh(self, index):
+		return self._IPProxy.GetCurveData(self._outputCurves[3], index)
+
+	def Array_Wh(self, index, xVal, yVal):
+		return self._IPProxy.GetCurveData(self._outputCurves[3], index, xVal, yVal)
+
+	def Wh_Text(self, index):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[3], index)
+
+	def Array_Wh_Text(self, index, xVal, yVal):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[3], index, xVal, yVal)
+
+	def get_Wh_Name(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[3], 1)
+
+	Wh_Name = property(fget=get_Wh_Name)
+
+	def get_Wh_Units(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[3], 2)
+
+	Wh_Units = property(fget=get_Wh_Units)
+
+	def get_Wh_Comments(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[3], 3)
+
+	Wh_Comments = property(fget=get_Wh_Comments)
+
+	def Save_Wh_Comments(self, newValue):
+		self._IPProxy.SetCurveText(self._outputCurves[3], 3, str(newValue))
+
+	def get_Array_Wh_MaxX(self):
+		return self._outArrayX[3]
+
+	Array_Wh_MaxX = property(fget=get_Array_Wh_MaxX)
+
+	def get_Array_Wh_MaxY(self):
+		return self._outArrayY[3]
+
+	Array_Wh_MaxY = property(fget=get_Array_Wh_MaxY)
+
+	def Get_Wh_Attribute(self, attributeName):
+		return self._IPProxy.GetText(2, self._outputCurves[3], attributeName)
+
+	def Set_Wh_Attribute(self, attributeName, newValue):
+		self._IPProxy.SetText(2, self._outputCurves[3], attributeName, str(newValue))
+
+	def Save_Ch(self, index, value):
+		self._IPProxy.SetCurveData(self._outputCurves[4], index, float(value))
+
+	def Save_Array_Ch(self, index, xVal, yVal, value):
+		self._IPProxy.SetCurveData(self._outputCurves[4], index, float(value), xVal, yVal)
+
+	def Save_Ch_Text(self, index, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[4], index, str(value))
+
+	def Save_Array_Ch_Text(self, index, xVal, yVal, value):
+		self._IPProxy.SetTextCurveValue(self._outputCurves[4], index, str(value), xVal, yVal)
+
+	def Ch(self, index):
+		return self._IPProxy.GetCurveData(self._outputCurves[4], index)
+
+	def Array_Ch(self, index, xVal, yVal):
+		return self._IPProxy.GetCurveData(self._outputCurves[4], index, xVal, yVal)
+
+	def Ch_Text(self, index):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[4], index)
+
+	def Array_Ch_Text(self, index, xVal, yVal):
+		return self._IPProxy.GetTextCurveValue(self._outputCurves[4], index, xVal, yVal)
+
+	def get_Ch_Name(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[4], 1)
+
+	Ch_Name = property(fget=get_Ch_Name)
+
+	def get_Ch_Units(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[4], 2)
+
+	Ch_Units = property(fget=get_Ch_Units)
+
+	def get_Ch_Comments(self):
+		return self._IPProxy.GetCurveText(self._outputCurves[4], 3)
+
+	Ch_Comments = property(fget=get_Ch_Comments)
+
+	def Save_Ch_Comments(self, newValue):
+		self._IPProxy.SetCurveText(self._outputCurves[4], 3, str(newValue))
+
+	def get_Array_Ch_MaxX(self):
+		return self._outArrayX[4]
+
+	Array_Ch_MaxX = property(fget=get_Array_Ch_MaxX)
+
+	def get_Array_Ch_MaxY(self):
+		return self._outArrayY[4]
+
+	Array_Ch_MaxY = property(fget=get_Array_Ch_MaxY)
+
+	def Get_Ch_Attribute(self, attributeName):
+		return self._IPProxy.GetText(2, self._outputCurves[4], attributeName)
+
+	def Set_Ch_Attribute(self, attributeName, newValue):
+		self._IPProxy.SetText(2, self._outputCurves[4], attributeName, str(newValue))
 
 	def get_GASUNITS(self):
 		return self._textInputParameters[0]
