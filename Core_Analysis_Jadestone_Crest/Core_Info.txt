@@ -1,0 +1,84 @@
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 105 entries, 0 to 104
+Data columns (total 9 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Well Name             105 non-null    object 
+ 1   Sample ID             105 non-null    object 
+ 2   Depth (m)             105 non-null    float64
+ 3   NOB (psi)             105 non-null    int64  
+ 4   K (mD)                105 non-null    float64
+ 5   Porosity (%)          105 non-null    float64
+ 6   Grain Density (g/cc)  105 non-null    float64
+ 7   Core Type             105 non-null    object 
+ 8   color                 105 non-null    object 
+dtypes: float64(4), int64(1), object(4)
+memory usage: 8.2+ KB
+None
+       Well Name Sample ID    Depth (m)  NOB (psi)       K (mD)  Porosity (%)  \
+count        105       105   105.000000      105.0   105.000000    105.000000   
+unique         1       105          NaN        NaN          NaN           NaN   
+top       Crux_1        1H          NaN        NaN          NaN           NaN   
+freq         105         1          NaN        NaN          NaN           NaN   
+mean         NaN       NaN  3668.889619     3760.0  1015.562419     15.222857   
+std          NaN       NaN     7.240062        0.0  1220.151738      3.115787   
+min          NaN       NaN  3656.110000     3760.0     0.010000      3.100000   
+25%          NaN       NaN  3663.410000     3760.0   102.000000     14.500000   
+50%          NaN       NaN  3669.130000     3760.0   475.000000     16.300000   
+75%          NaN       NaN  3675.130000     3760.0  1650.000000     17.000000   
+max          NaN       NaN  3680.840000     3760.0  5590.000000     20.700000   
+
+        Grain Density (g/cc) Core Type    color  
+count             105.000000       105      105  
+unique                   NaN         1        1  
+top                      NaN       CCA  #5d8aa8  
+freq                     NaN       105      105  
+mean                2.650381       NaN      NaN  
+std                 0.019559       NaN      NaN  
+min                 2.560000       NaN      NaN  
+25%                 2.640000       NaN      NaN  
+50%                 2.650000       NaN      NaN  
+75%                 2.650000       NaN      NaN  
+max                 2.760000       NaN      NaN  
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 142 entries, 105 to 246
+Data columns (total 9 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Well Name             142 non-null    object 
+ 1   Sample ID             142 non-null    object 
+ 2   Depth (m)             142 non-null    float64
+ 3   NOB (psi)             142 non-null    int64  
+ 4   K (mD)                142 non-null    float64
+ 5   Porosity (%)          142 non-null    float64
+ 6   Grain Density (g/cc)  142 non-null    float64
+ 7   Core Type             142 non-null    object 
+ 8   color                 142 non-null    object 
+dtypes: float64(4), int64(1), object(4)
+memory usage: 11.1+ KB
+None
+       Well Name Sample ID    Depth (m)  NOB (psi)       K (mD)  Porosity (%)  \
+count        142       142   142.000000      142.0   142.000000    142.000000   
+unique         1       142          NaN        NaN          NaN           NaN   
+top       Crux_3       53H          NaN        NaN          NaN           NaN   
+freq         142         1          NaN        NaN          NaN           NaN   
+mean         NaN       NaN  3668.456972     3760.0  1084.020541     14.852472   
+std          NaN       NaN     9.855271        0.0  1193.080799      3.766266   
+min          NaN       NaN  3651.030000     3760.0     0.007859      0.449940   
+25%          NaN       NaN  3660.242500     3760.0   103.870830     13.526300   
+50%          NaN       NaN  3667.180000     3760.0   631.813313     16.062020   
+75%          NaN       NaN  3677.410000     3760.0  1831.996206     17.155860   
+max          NaN       NaN  3685.980000     3760.0  5256.268647     19.244100   
+
+        Grain Density (g/cc) Core Type    color  
+count             142.000000       142      142  
+unique                   NaN         1        1  
+top                      NaN       CCA  #00308f  
+freq                     NaN       142      142  
+mean                2.653845       NaN      NaN  
+std                 0.024266       NaN      NaN  
+min                 2.583000       NaN      NaN  
+25%                 2.645000       NaN      NaN  
+50%                 2.650000       NaN      NaN  
+75%                 2.653000       NaN      NaN  
+max                 2.824000       NaN      NaN 
