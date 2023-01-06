@@ -7,6 +7,8 @@ Elastic Properties from Logs
 Prediction of Pressures
 PRMS and Petrophysics
 
+Unique Minerologies and Associated Petrophysics - Tuffs, Volcanics, Opalines, CO2, Helium
+
 GHG article
 Solar and GHG combined
 Geothermal & GHG combined
