@@ -1,0 +1,60 @@
+Ok, Thank you
+Good Job
+
+1a)
+1b)
+1c)
+
+
+1a)
+Some positives for a scatter plot like this
+A) Nice axis and title lables
+B) Nice clear points
+C) Nice use of gridding
+
+Some negatives
+A) Trend line - not sure its needed? Can be misleading
+
+Mind you for purposes of this assignment its fine
+
+OK for table as well
+
+1b)
+Positives for a horizontal bar chart
+a) Nice clear axis and title
+B) Nice clear bars, no fancy colours
+C) Nice use of gridding
+
+Some negatives
+A) maybe some guide lines vertically down? Because the numbers are hard to make out
+B) With large numbers, you might want to use commas or plot in thousands
+C) Sorting might be a good idea here
+
+OK for table as well
+
+1c)
+Positives for a pie chart
+a) Nice clear segmentation of groups
+B) Godo that you included some percentages inside the chart
+
+Some negatives
+A) Would be good to also explain what a %value corresponds to in the chart
+B) Do the colours signify anything? One clever way of using colour is for max to be bright colour and for min to be dull colour
+C) Make the legend bigger
+
+Table is good; you have split the number of people before calculating %.
+
+1d)
+1d)
+Positives for a horizontal bar chart
+a) Nice clear axis and title
+B) Nice clear bars, no fancy colours
+C) Nice use of gridding
+
+Some negatives
+A) make your axis bigger
+
+Table is fine
+
+
+
