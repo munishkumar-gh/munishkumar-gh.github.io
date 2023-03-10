@@ -39,7 +39,7 @@ Year,Make,Model,Category
 2021,Chevrolet,Silverado 1500 Crew Cab,Pickup
 2021,Chevrolet,Silverado 2500 HD Crew Cab,Pickup
 2021,Chevrolet,Silverado 2500 HD Double Cab,Pickup
-2021,Chevrolet,Silverado 2500 HD Regular Cab,Pickup
+2020,Chevrolet,Silverado 2500 HD Regular Cab,Pickup
 2021,Chevrolet,Silverado 3500 HD Crew Cab,Pickup
 2021,Chevrolet,Spark,Hatchback
 2021,Chevrolet,Suburban,SUV
@@ -78,7 +78,7 @@ Year,Make,Model,Category
 2021,GMC,Sierra 3500 HD Crew Cab,Pickup
 2021,GMC,Terrain,SUV
 2021,GMC,Yukon,SUV
-2021,GMC,Yukon XL,SUV
+2020,GMC,Yukon XL,SUV
 2021,Honda,Accord,Sedan
 2021,Honda,Accord Hybrid,Sedan
 2021,Honda,Civic,"Hatchback,Sedan"
@@ -106,7 +106,7 @@ Year,Make,Model,Category
 2021,Hyundai,Venue,SUV
 2021,Hyundai,Tucson,SUV
 2021,INFINITI,Q50,Sedan
-2021,INFINITI,QX50,SUV
+2023,INFINITI,QX50,SUV
 2021,Jaguar,E-PACE,SUV
 2021,INFINITI,QX80,SUV
 2021,Jaguar,I-PACE,SUV
@@ -125,7 +125,7 @@ Year,Make,Model,Category
 2021,Kia,Seltos,SUV
 2021,Kia,Soul,Wagon
 2021,Kia,Sportage,SUV
-2021,Kia,Stinger,Sedan
+2022,Kia,Stinger,Sedan
 2021,Kia,Telluride,SUV
 2021,Land Rover,Discovery,SUV
 2021,Kia,Sedona,Van/Minivan
@@ -150,7 +150,7 @@ Year,Make,Model,Category
 2021,MAZDA,CX-3,SUV
 2021,MAZDA,CX-30,SUV
 2021,MAZDA,CX-5,SUV
-2021,MAZDA,CX-9,SUV
+2020,MAZDA,CX-9,SUV
 2021,MAZDA,MAZDA6,Sedan
 2021,MAZDA,MAZDA3,"Hatchback,Sedan"
 2021,MAZDA,MX-5 Miata,Convertible
@@ -161,7 +161,7 @@ Year,Make,Model,Category
 2021,Mercedes-Benz,G-Class,SUV
 2021,Mercedes-Benz,GLB,SUV
 2021,Mercedes-Benz,GLE,SUV
-2021,Mercedes-Benz,GLC,SUV
+2022,Mercedes-Benz,GLC,SUV
 2021,Mitsubishi,Outlander Sport,SUV
 2021,Mercedes-Benz,Mercedes-AMG G-Class,SUV
 2021,Nissan,Altima,Sedan
@@ -170,7 +170,7 @@ Year,Make,Model,Category
 2021,Nissan,Kicks,SUV
 2021,Nissan,LEAF,Hatchback
 2021,Nissan,Maxima,Sedan
-2021,Nissan,Murano,SUV
+2022,Nissan,Murano,SUV
 2021,Nissan,NV3500 HD Cargo,Van/Minivan
 2021,Nissan,Rogue,SUV
 2021,Nissan,Sentra,Sedan
@@ -183,7 +183,7 @@ Year,Make,Model,Category
 2021,Porsche,718 Spyder,Convertible
 2021,Porsche,911,"Coupe,Convertible"
 2021,Porsche,Macan,SUV
-2021,Porsche,Taycan,Sedan
+2023,Porsche,Taycan,Sedan
 2021,Porsche,Panamera,Sedan
 2021,Porsche,Cayenne Coupe,SUV
 2021,Ram,2500 Crew Cab,Pickup
@@ -202,7 +202,7 @@ Year,Make,Model,Category
 2021,Subaru,Outback,SUV
 2021,Tesla,Model S,Sedan
 2021,Tesla,Model X,SUV
-2021,Toyota,4Runner,SUV
+2023,Toyota,4Runner,SUV
 2021,Toyota,Avalon,Sedan
 2021,Toyota,Avalon Hybrid,Sedan
 2021,Toyota,Camry,Sedan
@@ -221,7 +221,7 @@ Year,Make,Model,Category
 2021,Toyota,RAV4 Hybrid,SUV
 2021,Toyota,RAV4 Prime,SUV
 2021,Toyota,Sequoia,SUV
-2021,Toyota,Sienna,Van/Minivan
+2023,Toyota,Sienna,Van/Minivan
 2021,Toyota,Tacoma Access Cab,Pickup
 2021,Toyota,Tacoma Double Cab,Pickup
 2021,Toyota,Tundra CrewMax,Pickup
@@ -233,7 +233,7 @@ Year,Make,Model,Category
 2021,Volkswagen,Golf,Hatchback
 2021,Volkswagen,Passat,Sedan
 2021,Volvo,S90,Sedan
-2021,Volvo,V90,Wagon
+2022,Volvo,V90,Wagon
 2021,Volvo,V60,Wagon
 2021,Volkswagen,Tiguan,SUV
 2021,Volvo,XC40,SUV

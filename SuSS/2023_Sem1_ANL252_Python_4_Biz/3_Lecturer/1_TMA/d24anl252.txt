@@ -1,0 +1,59 @@
+Good job on this -  
+
+
+1a) 
+1b) 
+1c) 
+1d) 
+2a) 
+2b) 
+
+1a)
+
+In coding, plagiarism is defined as using someone else's code or solution without proper attribution or permission (Lee, 2021).
+
+Why this happens:
+•	Lack of knowledge or skill to write from scratch.
+•	Laziness.
+•	Pressure of meeting deadlines.
+•	Lack of originality.
+•	Ignorance of ethical and legal ramifications.
+
+How one can avoid:
+•	Write original code, make mistakes, and learn the logic behind what works.
+•	Understand copyright laws and coding ethical principles.
+•	To prevent accidental plagiarism, check the code using tools such as code plagiarism software.
+•	Properly cite all third-party sources of codes or resources. Ask for permission whenever it is required.
+•	Be cognizant of the guidelines when using open-source licences.
+•	Respect others' intellectual property rights, and foster a culture of integrity and ethical behavior in school or the workplace
+•	When in doubt about the ethical use of code, seek advice from mentors or peers.
+
+1b) 
+I wanted you to walk me through the code (its inner workings) and not just tell me how it runs. If i wanted that, I could just run it my self
+
+1c)
+Can do other things as well - use functions, different libraries, restructure the code
+
+1d)
+Good, shows  the following
+
+A) Fn
+B) Loop/ if-else
+C) termination conditions
+D) lists and variables
+
+
+2a)
+
+Some things to try:
+
+• appropriate data structures such as tuple for the inventory and dictionary for storing the updated information, 
+• user defined functions, as appropriate 
+• checks and control mechanisms for user input such as ensuring correct data type is entered, stripping possible whitespaces entered by user and considering possible different letter casing entered by user. 
+
+
+2b) 
+Code works - checks are there for invalid input and terminate conditions
+
+However, there is no user output showing what was eventually input into the database
+
