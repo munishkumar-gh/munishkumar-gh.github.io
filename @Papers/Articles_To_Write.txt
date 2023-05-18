@@ -7,8 +7,6 @@ Elastic Properties from Logs
 Prediction of Pressures
 PRMS and Petrophysics
 
-Unique Minerologies and Associated Petrophysics - Tuffs, Volcanics, Opalines, CO2, Helium
-
 GHG article
 Solar and GHG combined
 Geothermal & GHG combined
@@ -37,12 +35,3 @@ Decarbonisation and GHG Emissions Management and Control
 Analysing the difference methods of carbon reduction and comparing efficiencies
 
 Economic drivers to optimise a renewales project - what combination of tariff, PPA etc would you need in order for a project to work?
-
-
-
-
-
-----------------------------------------------------------------------
-
-https://www.journals.elsevier.com/energy-research-and-social-science
-Journal of Applied Social Science
